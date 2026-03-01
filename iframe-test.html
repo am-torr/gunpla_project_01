@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe POC Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: 90vh;
+        }
+        .panel {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            background: #2a2a2a;
+        }
+        .panel h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: 1px solid #666;
+            border-radius: 4px;
+            background: white;
+        }
+        .status {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .loading {
+            background: #FFA726;
+            color: black;
+        }
+        .blocked {
+            background: #F44336;
+        }
+        .success {
+            background: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1> Iframe Embedding Test - Gunpla Price Tracker POC</h1>
+    
+    <div class="container">
+        <div class="panel">
+            <h2> Hobby Link Japan</h2>
+            <div id="hlj-status" class="status loading"> Loading...</div>
+            <iframe id="hlj-frame" src="https://www.hlj.com/search/?Word=gunpla" sandbox="allow-scripts allow-same-origin" onload="checkLoad('hlj')" onerror="checkError('hlj')"></iframe>
+        </div>
+
+        <div class="panel">
+            <h2> Scraped Data (Center)</h2>
+            <div style="padding: 20px; overflow-y: auto; height: calc(100% - 60px);">
+                <h3>Sample Comparison</h3>
+                <div style="background: #333; padding: 15px; border-radius: 4px; margin: 10px 0;">
+                    <strong>MG RX-78-2 Gundam</strong><br>
+                    HLJ: 3,500 (1,960)<br>
+                    Hobby Planet: 2,200<br>
+                    <span style="color: #4CAF50;"> HP cheaper by 240</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2> Hobby Planet</h2>
+            <div id="hp-status" class="status loading"> Loading...</div>
+            <iframe id="hp-frame" src="https://hobbyplanet.info/product-category/gundam-model-kits/" sandbox="allow-scripts allow-same-origin" onload="checkLoad('hp')" onerror="checkError('hp')"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const loadTimeout = {};
+
+        function checkLoad(store) {
+            const statusEl = document.getElementById(store + '-status');
+            const frame = document.getElementById(store + '-frame');
+            clearTimeout(loadTimeout[store]);
+
+            try {
+                const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+                if (iframeDoc) {
+                    statusEl.className = 'status success';
+                    statusEl.innerHTML = ' SUCCESS - Iframe loaded!';
+                } else {
+                    throw new Error('Cannot access iframe');
+                }
+            } catch (e) {
+                statusEl.className = 'status blocked';
+                statusEl.innerHTML = ' BLOCKED - X-Frame-Options or CORS';
+                console.error(store + ' iframe blocked:', e);
+            }
+        }
+
+        function checkError(store) {
+            const statusEl = document.getElementById(store + '-status');
+            statusEl.className = 'status blocked';
+            statusEl.innerHTML = ' ERROR - Failed to load';
+        }
+
+        ['hlj', 'hp'].forEach(store => {
+            loadTimeout[store] = setTimeout(() => {
+                const statusEl = document.getElementById(store + '-status');
+                if (statusEl.className.includes('loading')) {
+                    statusEl.className = 'status blocked';
+                    statusEl.innerHTML = ' TIMEOUT - May be blocked or slow';
+                }
+            }, 10000);
+        });
+
+        console.log(' Iframe Test Started');
+        console.log('- HLJ: https://www.hlj.com/search/?Word=gunpla');
+        console.log('- Hobby Planet: https://hobbyplanet.info/product-category/gundam-model-kits/');
+    </script>
+</body>
+</html>

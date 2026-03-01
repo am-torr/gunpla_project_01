@@ -1,0 +1,2451 @@
+﻿Folder PATH listing for volume Workspace
+Volume serial number is 2273-92DA
+D:.
+ª   .coverage
+ª   .env
+ª   .env.full-backup.045737
+ª   .env.step2.backup.045909
+ª   api_server.py
+ª   BUGS.md
+ª   docker-compose.yml
+ª   docker-compose_bk.yml
+ª   gunpla-poc-hybrid-v2 - Copy.html
+ª   gunpla-poc-hybrid-v2.html
+ª   gunpla-poc-hybrid.html
+ª   gunpla-poc-live-scrape - Copy.html
+ª   gunpla-poc-live-scrape.html
+ª   hlj_check.py
+ª   hlj_debug.png
+ª   hlj_page.html
+ª   iframe-test.html
+ª   mypy.ini
+ª   python_async_checker.py
+ª   python_health_checker.ps1
+ª   python_performance_checker.py
+ª   python_syntax_checker.py
+ª   readme.md
+ª   requirements.txt
+ª   scheduler.py
+ª   SYSTEM_TEST_REPORT.md
+ª   test_results.json
+ª   thread15-child-folders.txt
+ª   thread15-files.csv
+ª   thread15-folder-lock.txt
+ª   thread15-tree-visual.txt
+ª   thread15-tree.txt
+ª   UNIT_TEST_REPORT.md
+ª   
++---.mypy_cache
+ª   ª   .gitignore
+ª   ª   CACHEDIR.TAG
+ª   ª   missing_stubs
+ª   ª   
+ª   +---3.11
+ª       ª   @plugins_snapshot.json
+ª       ª   abc.data.json
+ª       ª   abc.meta.json
+ª       ª   argparse.data.json
+ª       ª   argparse.meta.json
+ª       ª   array.data.json
+ª       ª   array.meta.json
+ª       ª   ast.data.json
+ª       ª   ast.meta.json
+ª       ª   atexit.data.json
+ª       ª   atexit.meta.json
+ª       ª   base64.data.json
+ª       ª   base64.meta.json
+ª       ª   binascii.data.json
+ª       ª   binascii.meta.json
+ª       ª   bisect.data.json
+ª       ª   bisect.meta.json
+ª       ª   builtins.data.json
+ª       ª   builtins.meta.json
+ª       ª   bz2.data.json
+ª       ª   bz2.meta.json
+ª       ª   calendar.data.json
+ª       ª   calendar.meta.json
+ª       ª   codecs.data.json
+ª       ª   codecs.meta.json
+ª       ª   colorsys.data.json
+ª       ª   colorsys.meta.json
+ª       ª   configparser.data.json
+ª       ª   configparser.meta.json
+ª       ª   contextlib.data.json
+ª       ª   contextlib.meta.json
+ª       ª   contextvars.data.json
+ª       ª   contextvars.meta.json
+ª       ª   copy.data.json
+ª       ª   copy.meta.json
+ª       ª   copyreg.data.json
+ª       ª   copyreg.meta.json
+ª       ª   dataclasses.data.json
+ª       ª   dataclasses.meta.json
+ª       ª   datetime.data.json
+ª       ª   datetime.meta.json
+ª       ª   decimal.data.json
+ª       ª   decimal.meta.json
+ª       ª   difflib.data.json
+ª       ª   difflib.meta.json
+ª       ª   dis.data.json
+ª       ª   dis.meta.json
+ª       ª   enum.data.json
+ª       ª   enum.meta.json
+ª       ª   errno.data.json
+ª       ª   errno.meta.json
+ª       ª   fnmatch.data.json
+ª       ª   fnmatch.meta.json
+ª       ª   fractions.data.json
+ª       ª   fractions.meta.json
+ª       ª   functools.data.json
+ª       ª   functools.meta.json
+ª       ª   genericpath.data.json
+ª       ª   genericpath.meta.json
+ª       ª   getpass.data.json
+ª       ª   getpass.meta.json
+ª       ª   gettext.data.json
+ª       ª   gettext.meta.json
+ª       ª   glob.data.json
+ª       ª   glob.meta.json
+ª       ª   gzip.data.json
+ª       ª   gzip.meta.json
+ª       ª   hashlib.data.json
+ª       ª   hashlib.meta.json
+ª       ª   hmac.data.json
+ª       ª   hmac.meta.json
+ª       ª   inspect.data.json
+ª       ª   inspect.meta.json
+ª       ª   io.data.json
+ª       ª   io.meta.json
+ª       ª   ipaddress.data.json
+ª       ª   ipaddress.meta.json
+ª       ª   itertools.data.json
+ª       ª   itertools.meta.json
+ª       ª   keyword.data.json
+ª       ª   keyword.meta.json
+ª       ª   linecache.data.json
+ª       ª   linecache.meta.json
+ª       ª   marshal.data.json
+ª       ª   marshal.meta.json
+ª       ª   math.data.json
+ª       ª   math.meta.json
+ª       ª   mimetypes.data.json
+ª       ª   mimetypes.meta.json
+ª       ª   mmap.data.json
+ª       ª   mmap.meta.json
+ª       ª   msvcrt.data.json
+ª       ª   msvcrt.meta.json
+ª       ª   netrc.data.json
+ª       ª   netrc.meta.json
+ª       ª   ntpath.data.json
+ª       ª   ntpath.meta.json
+ª       ª   nturl2path.data.json
+ª       ª   nturl2path.meta.json
+ª       ª   numbers.data.json
+ª       ª   numbers.meta.json
+ª       ª   opcode.data.json
+ª       ª   opcode.meta.json
+ª       ª   operator.data.json
+ª       ª   operator.meta.json
+ª       ª   pickle.data.json
+ª       ª   pickle.meta.json
+ª       ª   platform.data.json
+ª       ª   platform.meta.json
+ª       ª   posixpath.data.json
+ª       ª   posixpath.meta.json
+ª       ª   pprint.data.json
+ª       ª   pprint.meta.json
+ª       ª   pydoc.data.json
+ª       ª   pydoc.meta.json
+ª       ª   queue.data.json
+ª       ª   queue.meta.json
+ª       ª   random.data.json
+ª       ª   random.meta.json
+ª       ª   re.data.json
+ª       ª   re.meta.json
+ª       ª   reprlib.data.json
+ª       ª   reprlib.meta.json
+ª       ª   secrets.data.json
+ª       ª   secrets.meta.json
+ª       ª   select.data.json
+ª       ª   select.meta.json
+ª       ª   selectors.data.json
+ª       ª   selectors.meta.json
+ª       ª   shlex.data.json
+ª       ª   shlex.meta.json
+ª       ª   shutil.data.json
+ª       ª   shutil.meta.json
+ª       ª   signal.data.json
+ª       ª   signal.meta.json
+ª       ª   socket.data.json
+ª       ª   socket.meta.json
+ª       ª   sre_compile.data.json
+ª       ª   sre_compile.meta.json
+ª       ª   sre_constants.data.json
+ª       ª   sre_constants.meta.json
+ª       ª   sre_parse.data.json
+ª       ª   sre_parse.meta.json
+ª       ª   ssl.data.json
+ª       ª   ssl.meta.json
+ª       ª   stat.data.json
+ª       ª   stat.meta.json
+ª       ª   struct.data.json
+ª       ª   struct.meta.json
+ª       ª   subprocess.data.json
+ª       ª   subprocess.meta.json
+ª       ª   tarfile.data.json
+ª       ª   tarfile.meta.json
+ª       ª   tempfile.data.json
+ª       ª   tempfile.meta.json
+ª       ª   textwrap.data.json
+ª       ª   textwrap.meta.json
+ª       ª   threading.data.json
+ª       ª   threading.meta.json
+ª       ª   time.data.json
+ª       ª   time.meta.json
+ª       ª   tomllib.data.json
+ª       ª   tomllib.meta.json
+ª       ª   traceback.data.json
+ª       ª   traceback.meta.json
+ª       ª   types.data.json
+ª       ª   types.meta.json
+ª       ª   typing.data.json
+ª       ª   typing.meta.json
+ª       ª   typing_extensions.data.json
+ª       ª   typing_extensions.meta.json
+ª       ª   unicodedata.data.json
+ª       ª   unicodedata.meta.json
+ª       ª   uuid.data.json
+ª       ª   uuid.meta.json
+ª       ª   warnings.data.json
+ª       ª   warnings.meta.json
+ª       ª   weakref.data.json
+ª       ª   weakref.meta.json
+ª       ª   zipimport.data.json
+ª       ª   zipimport.meta.json
+ª       ª   zlib.data.json
+ª       ª   zlib.meta.json
+ª       ª   _ast.data.json
+ª       ª   _ast.meta.json
+ª       ª   _asyncio.data.json
+ª       ª   _asyncio.meta.json
+ª       ª   _bisect.data.json
+ª       ª   _bisect.meta.json
+ª       ª   _blake2.data.json
+ª       ª   _blake2.meta.json
+ª       ª   _bz2.data.json
+ª       ª   _bz2.meta.json
+ª       ª   _codecs.data.json
+ª       ª   _codecs.meta.json
+ª       ª   _collections_abc.data.json
+ª       ª   _collections_abc.meta.json
+ª       ª   _compression.data.json
+ª       ª   _compression.meta.json
+ª       ª   _contextvars.data.json
+ª       ª   _contextvars.meta.json
+ª       ª   _ctypes.data.json
+ª       ª   _ctypes.meta.json
+ª       ª   _decimal.data.json
+ª       ª   _decimal.meta.json
+ª       ª   _frozen_importlib.data.json
+ª       ª   _frozen_importlib.meta.json
+ª       ª   _frozen_importlib_external.data.json
+ª       ª   _frozen_importlib_external.meta.json
+ª       ª   _hashlib.data.json
+ª       ª   _hashlib.meta.json
+ª       ª   _io.data.json
+ª       ª   _io.meta.json
+ª       ª   _operator.data.json
+ª       ª   _operator.meta.json
+ª       ª   _pickle.data.json
+ª       ª   _pickle.meta.json
+ª       ª   _queue.data.json
+ª       ª   _queue.meta.json
+ª       ª   _random.data.json
+ª       ª   _random.meta.json
+ª       ª   _sitebuiltins.data.json
+ª       ª   _sitebuiltins.meta.json
+ª       ª   _socket.data.json
+ª       ª   _socket.meta.json
+ª       ª   _ssl.data.json
+ª       ª   _ssl.meta.json
+ª       ª   _stat.data.json
+ª       ª   _stat.meta.json
+ª       ª   _struct.data.json
+ª       ª   _struct.meta.json
+ª       ª   _thread.data.json
+ª       ª   _thread.meta.json
+ª       ª   _warnings.data.json
+ª       ª   _warnings.meta.json
+ª       ª   _weakref.data.json
+ª       ª   _weakref.meta.json
+ª       ª   _weakrefset.data.json
+ª       ª   _weakrefset.meta.json
+ª       ª   _winapi.data.json
+ª       ª   _winapi.meta.json
+ª       ª   __future__.data.json
+ª       ª   __future__.meta.json
+ª       ª   
+ª       +---annotated_types
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---anyio
+ª       ª   ª   from_thread.data.json
+ª       ª   ª   from_thread.meta.json
+ª       ª   ª   lowlevel.data.json
+ª       ª   ª   lowlevel.meta.json
+ª       ª   ª   to_thread.data.json
+ª       ª   ª   to_thread.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---abc
+ª       ª   ª       _eventloop.data.json
+ª       ª   ª       _eventloop.meta.json
+ª       ª   ª       _resources.data.json
+ª       ª   ª       _resources.meta.json
+ª       ª   ª       _sockets.data.json
+ª       ª   ª       _sockets.meta.json
+ª       ª   ª       _streams.data.json
+ª       ª   ª       _streams.meta.json
+ª       ª   ª       _subprocesses.data.json
+ª       ª   ª       _subprocesses.meta.json
+ª       ª   ª       _tasks.data.json
+ª       ª   ª       _tasks.meta.json
+ª       ª   ª       _testing.data.json
+ª       ª   ª       _testing.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---streams
+ª       ª   ª       memory.data.json
+ª       ª   ª       memory.meta.json
+ª       ª   ª       stapled.data.json
+ª       ª   ª       stapled.meta.json
+ª       ª   ª       tls.data.json
+ª       ª   ª       tls.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_core
+ª       ª           _eventloop.data.json
+ª       ª           _eventloop.meta.json
+ª       ª           _exceptions.data.json
+ª       ª           _exceptions.meta.json
+ª       ª           _fileio.data.json
+ª       ª           _fileio.meta.json
+ª       ª           _resources.data.json
+ª       ª           _resources.meta.json
+ª       ª           _signals.data.json
+ª       ª           _signals.meta.json
+ª       ª           _sockets.data.json
+ª       ª           _sockets.meta.json
+ª       ª           _streams.data.json
+ª       ª           _streams.meta.json
+ª       ª           _subprocesses.data.json
+ª       ª           _subprocesses.meta.json
+ª       ª           _synchronization.data.json
+ª       ª           _synchronization.meta.json
+ª       ª           _tasks.data.json
+ª       ª           _tasks.meta.json
+ª       ª           _tempfile.data.json
+ª       ª           _tempfile.meta.json
+ª       ª           _testing.data.json
+ª       ª           _testing.meta.json
+ª       ª           _typedattr.data.json
+ª       ª           _typedattr.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---app
+ª       ª   ª   backup.data.json
+ª       ª   ª   backup.meta.json
+ª       ª   ª   comparison.data.json
+ª       ª   ª   comparison.meta.json
+ª       ª   ª   config.data.json
+ª       ª   ª   config.meta.json
+ª       ª   ª   database.data.json
+ª       ª   ª   database.meta.json
+ª       ª   ª   logger.data.json
+ª       ª   ª   logger.meta.json
+ª       ª   ª   scrapers.data.json
+ª       ª   ª   scrapers.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---backup
+ª       ª   ª       base_scraper_bk.data.json
+ª       ª   ª       base_scraper_bk.meta.json
+ª       ª   ª       comparison_bk.data.json
+ª       ª   ª       comparison_bk.meta.json
+ª       ª   ª       
+ª       ª   +---scrapers
+ª       ª       ª   backup.data.json
+ª       ª       ª   backup.meta.json
+ª       ª       ª   base_scraper.data.json
+ª       ª       ª   base_scraper.meta.json
+ª       ª       ª   hobby_link_japan.data.json
+ª       ª       ª   hobby_link_japan.meta.json
+ª       ª       ª   hobby_planet.data.json
+ª       ª       ª   hobby_planet.meta.json
+ª       ª       ª   _selectors.data.json
+ª       ª       ª   _selectors.meta.json
+ª       ª       ª   
+ª       ª       +---backup
+ª       ª           ª   hobby_link_japan_backup.data.json
+ª       ª           ª   hobby_link_japan_backup.meta.json
+ª       ª           ª   hobby_link_japan_bk_2026.data.json
+ª       ª           ª   hobby_link_japan_bk_2026.meta.json
+ª       ª           ª   hobby_link_japan_bk_error_feb26.data.json
+ª       ª           ª   hobby_link_japan_bk_error_feb26.meta.json
+ª       ª           ª   
+ª       ª           +---hobby_link_japan
+ª       ª               +---py
+ª       ª                       backup.data.json
+ª       ª                       backup.meta.json
+ª       ª                       
+ª       +---asyncio
+ª       ª       base_events.data.json
+ª       ª       base_events.meta.json
+ª       ª       base_futures.data.json
+ª       ª       base_futures.meta.json
+ª       ª       constants.data.json
+ª       ª       constants.meta.json
+ª       ª       coroutines.data.json
+ª       ª       coroutines.meta.json
+ª       ª       events.data.json
+ª       ª       events.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       futures.data.json
+ª       ª       futures.meta.json
+ª       ª       locks.data.json
+ª       ª       locks.meta.json
+ª       ª       mixins.data.json
+ª       ª       mixins.meta.json
+ª       ª       proactor_events.data.json
+ª       ª       proactor_events.meta.json
+ª       ª       protocols.data.json
+ª       ª       protocols.meta.json
+ª       ª       queues.data.json
+ª       ª       queues.meta.json
+ª       ª       runners.data.json
+ª       ª       runners.meta.json
+ª       ª       selector_events.data.json
+ª       ª       selector_events.meta.json
+ª       ª       streams.data.json
+ª       ª       streams.meta.json
+ª       ª       subprocess.data.json
+ª       ª       subprocess.meta.json
+ª       ª       taskgroups.data.json
+ª       ª       taskgroups.meta.json
+ª       ª       tasks.data.json
+ª       ª       tasks.meta.json
+ª       ª       threads.data.json
+ª       ª       threads.meta.json
+ª       ª       timeouts.data.json
+ª       ª       timeouts.meta.json
+ª       ª       transports.data.json
+ª       ª       transports.meta.json
+ª       ª       unix_events.data.json
+ª       ª       unix_events.meta.json
+ª       ª       windows_events.data.json
+ª       ª       windows_events.meta.json
+ª       ª       windows_utils.data.json
+ª       ª       windows_utils.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---attr
+ª       ª       converters.data.json
+ª       ª       converters.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       filters.data.json
+ª       ª       filters.meta.json
+ª       ª       setters.data.json
+ª       ª       setters.meta.json
+ª       ª       validators.data.json
+ª       ª       validators.meta.json
+ª       ª       _cmp.data.json
+ª       ª       _cmp.meta.json
+ª       ª       _version_info.data.json
+ª       ª       _version_info.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---certifi
+ª       ª       core.data.json
+ª       ª       core.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---click
+ª       ª       core.data.json
+ª       ª       core.meta.json
+ª       ª       decorators.data.json
+ª       ª       decorators.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       formatting.data.json
+ª       ª       formatting.meta.json
+ª       ª       globals.data.json
+ª       ª       globals.meta.json
+ª       ª       parser.data.json
+ª       ª       parser.meta.json
+ª       ª       shell_completion.data.json
+ª       ª       shell_completion.meta.json
+ª       ª       termui.data.json
+ª       ª       termui.meta.json
+ª       ª       types.data.json
+ª       ª       types.meta.json
+ª       ª       utils.data.json
+ª       ª       utils.meta.json
+ª       ª       _compat.data.json
+ª       ª       _compat.meta.json
+ª       ª       _termui_impl.data.json
+ª       ª       _termui_impl.meta.json
+ª       ª       _winconsole.data.json
+ª       ª       _winconsole.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---collections
+ª       ª       abc.data.json
+ª       ª       abc.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---concurrent
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---futures
+ª       ª           process.data.json
+ª       ª           process.meta.json
+ª       ª           thread.data.json
+ª       ª           thread.meta.json
+ª       ª           _base.data.json
+ª       ª           _base.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---cryptography
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   __about__.data.json
+ª       ª   ª   __about__.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---hazmat
+ª       ª       ª   _oid.data.json
+ª       ª       ª   _oid.meta.json
+ª       ª       ª   __init__.data.json
+ª       ª       ª   __init__.meta.json
+ª       ª       ª   
+ª       ª       +---backends
+ª       ª       ª   ª   __init__.data.json
+ª       ª       ª   ª   __init__.meta.json
+ª       ª       ª   ª   
+ª       ª       ª   +---openssl
+ª       ª       ª           backend.data.json
+ª       ª       ª           backend.meta.json
+ª       ª       ª           __init__.data.json
+ª       ª       ª           __init__.meta.json
+ª       ª       ª           
+ª       ª       +---bindings
+ª       ª       ª   ª   __init__.data.json
+ª       ª       ª   ª   __init__.meta.json
+ª       ª       ª   ª   
+ª       ª       ª   +---openssl
+ª       ª       ª   ª       binding.data.json
+ª       ª       ª   ª       binding.meta.json
+ª       ª       ª   ª       _conditional.data.json
+ª       ª       ª   ª       _conditional.meta.json
+ª       ª       ª   ª       __init__.data.json
+ª       ª       ª   ª       __init__.meta.json
+ª       ª       ª   ª       
+ª       ª       ª   +---_rust
+ª       ª       ª       ª   asn1.data.json
+ª       ª       ª       ª   asn1.meta.json
+ª       ª       ª       ª   exceptions.data.json
+ª       ª       ª       ª   exceptions.meta.json
+ª       ª       ª       ª   _openssl.data.json
+ª       ª       ª       ª   _openssl.meta.json
+ª       ª       ª       ª   __init__.data.json
+ª       ª       ª       ª   __init__.meta.json
+ª       ª       ª       ª   
+ª       ª       ª       +---openssl
+ª       ª       ª               aead.data.json
+ª       ª       ª               aead.meta.json
+ª       ª       ª               ciphers.data.json
+ª       ª       ª               ciphers.meta.json
+ª       ª       ª               cmac.data.json
+ª       ª       ª               cmac.meta.json
+ª       ª       ª               dh.data.json
+ª       ª       ª               dh.meta.json
+ª       ª       ª               dsa.data.json
+ª       ª       ª               dsa.meta.json
+ª       ª       ª               ec.data.json
+ª       ª       ª               ec.meta.json
+ª       ª       ª               ed25519.data.json
+ª       ª       ª               ed25519.meta.json
+ª       ª       ª               ed448.data.json
+ª       ª       ª               ed448.meta.json
+ª       ª       ª               hashes.data.json
+ª       ª       ª               hashes.meta.json
+ª       ª       ª               hmac.data.json
+ª       ª       ª               hmac.meta.json
+ª       ª       ª               kdf.data.json
+ª       ª       ª               kdf.meta.json
+ª       ª       ª               keys.data.json
+ª       ª       ª               keys.meta.json
+ª       ª       ª               poly1305.data.json
+ª       ª       ª               poly1305.meta.json
+ª       ª       ª               rsa.data.json
+ª       ª       ª               rsa.meta.json
+ª       ª       ª               x25519.data.json
+ª       ª       ª               x25519.meta.json
+ª       ª       ª               x448.data.json
+ª       ª       ª               x448.meta.json
+ª       ª       ª               __init__.data.json
+ª       ª       ª               __init__.meta.json
+ª       ª       ª               
+ª       ª       +---decrepit
+ª       ª       ª   ª   __init__.data.json
+ª       ª       ª   ª   __init__.meta.json
+ª       ª       ª   ª   
+ª       ª       ª   +---ciphers
+ª       ª       ª           algorithms.data.json
+ª       ª       ª           algorithms.meta.json
+ª       ª       ª           __init__.data.json
+ª       ª       ª           __init__.meta.json
+ª       ª       ª           
+ª       ª       +---primitives
+ª       ª           ª   hashes.data.json
+ª       ª           ª   hashes.meta.json
+ª       ª           ª   padding.data.json
+ª       ª           ª   padding.meta.json
+ª       ª           ª   _asymmetric.data.json
+ª       ª           ª   _asymmetric.meta.json
+ª       ª           ª   _cipheralgorithm.data.json
+ª       ª           ª   _cipheralgorithm.meta.json
+ª       ª           ª   _serialization.data.json
+ª       ª           ª   _serialization.meta.json
+ª       ª           ª   __init__.data.json
+ª       ª           ª   __init__.meta.json
+ª       ª           ª   
+ª       ª           +---asymmetric
+ª       ª           ª       dh.data.json
+ª       ª           ª       dh.meta.json
+ª       ª           ª       dsa.data.json
+ª       ª           ª       dsa.meta.json
+ª       ª           ª       ec.data.json
+ª       ª           ª       ec.meta.json
+ª       ª           ª       ed25519.data.json
+ª       ª           ª       ed25519.meta.json
+ª       ª           ª       ed448.data.json
+ª       ª           ª       ed448.meta.json
+ª       ª           ª       padding.data.json
+ª       ª           ª       padding.meta.json
+ª       ª           ª       rsa.data.json
+ª       ª           ª       rsa.meta.json
+ª       ª           ª       types.data.json
+ª       ª           ª       types.meta.json
+ª       ª           ª       utils.data.json
+ª       ª           ª       utils.meta.json
+ª       ª           ª       x25519.data.json
+ª       ª           ª       x25519.meta.json
+ª       ª           ª       x448.data.json
+ª       ª           ª       x448.meta.json
+ª       ª           ª       __init__.data.json
+ª       ª           ª       __init__.meta.json
+ª       ª           ª       
+ª       ª           +---ciphers
+ª       ª           ª       algorithms.data.json
+ª       ª           ª       algorithms.meta.json
+ª       ª           ª       base.data.json
+ª       ª           ª       base.meta.json
+ª       ª           ª       modes.data.json
+ª       ª           ª       modes.meta.json
+ª       ª           ª       __init__.data.json
+ª       ª           ª       __init__.meta.json
+ª       ª           ª       
+ª       ª           +---serialization
+ª       ª                   base.data.json
+ª       ª                   base.meta.json
+ª       ª                   ssh.data.json
+ª       ª                   ssh.meta.json
+ª       ª                   __init__.data.json
+ª       ª                   __init__.meta.json
+ª       ª                   
+ª       +---ctypes
+ª       ª       wintypes.data.json
+ª       ª       wintypes.meta.json
+ª       ª       _endian.data.json
+ª       ª       _endian.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---dotenv
+ª       ª       main.data.json
+ª       ª       main.meta.json
+ª       ª       parser.data.json
+ª       ª       parser.meta.json
+ª       ª       variables.data.json
+ª       ª       variables.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---email
+ª       ª       charset.data.json
+ª       ª       charset.meta.json
+ª       ª       contentmanager.data.json
+ª       ª       contentmanager.meta.json
+ª       ª       errors.data.json
+ª       ª       errors.meta.json
+ª       ª       header.data.json
+ª       ª       header.meta.json
+ª       ª       message.data.json
+ª       ª       message.meta.json
+ª       ª       policy.data.json
+ª       ª       policy.meta.json
+ª       ª       utils.data.json
+ª       ª       utils.meta.json
+ª       ª       _policybase.data.json
+ª       ª       _policybase.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---h11
+ª       ª       _abnf.data.json
+ª       ª       _abnf.meta.json
+ª       ª       _connection.data.json
+ª       ª       _connection.meta.json
+ª       ª       _events.data.json
+ª       ª       _events.meta.json
+ª       ª       _headers.data.json
+ª       ª       _headers.meta.json
+ª       ª       _readers.data.json
+ª       ª       _readers.meta.json
+ª       ª       _receivebuffer.data.json
+ª       ª       _receivebuffer.meta.json
+ª       ª       _state.data.json
+ª       ª       _state.meta.json
+ª       ª       _util.data.json
+ª       ª       _util.meta.json
+ª       ª       _version.data.json
+ª       ª       _version.meta.json
+ª       ª       _writers.data.json
+ª       ª       _writers.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---h2
+ª       ª       config.data.json
+ª       ª       config.meta.json
+ª       ª       connection.data.json
+ª       ª       connection.meta.json
+ª       ª       errors.data.json
+ª       ª       errors.meta.json
+ª       ª       events.data.json
+ª       ª       events.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       frame_buffer.data.json
+ª       ª       frame_buffer.meta.json
+ª       ª       settings.data.json
+ª       ª       settings.meta.json
+ª       ª       stream.data.json
+ª       ª       stream.meta.json
+ª       ª       utilities.data.json
+ª       ª       utilities.meta.json
+ª       ª       windows.data.json
+ª       ª       windows.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---hpack
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       hpack.data.json
+ª       ª       hpack.meta.json
+ª       ª       huffman.data.json
+ª       ª       huffman.meta.json
+ª       ª       huffman_constants.data.json
+ª       ª       huffman_constants.meta.json
+ª       ª       huffman_table.data.json
+ª       ª       huffman_table.meta.json
+ª       ª       struct.data.json
+ª       ª       struct.meta.json
+ª       ª       table.data.json
+ª       ª       table.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---html
+ª       ª       entities.data.json
+ª       ª       entities.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---http
+ª       ª       client.data.json
+ª       ª       client.meta.json
+ª       ª       cookiejar.data.json
+ª       ª       cookiejar.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---httpcore
+ª       ª   ª   _api.data.json
+ª       ª   ª   _api.meta.json
+ª       ª   ª   _exceptions.data.json
+ª       ª   ª   _exceptions.meta.json
+ª       ª   ª   _models.data.json
+ª       ª   ª   _models.meta.json
+ª       ª   ª   _ssl.data.json
+ª       ª   ª   _ssl.meta.json
+ª       ª   ª   _synchronization.data.json
+ª       ª   ª   _synchronization.meta.json
+ª       ª   ª   _trace.data.json
+ª       ª   ª   _trace.meta.json
+ª       ª   ª   _utils.data.json
+ª       ª   ª   _utils.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       connection.data.json
+ª       ª   ª       connection.meta.json
+ª       ª   ª       connection_pool.data.json
+ª       ª   ª       connection_pool.meta.json
+ª       ª   ª       http11.data.json
+ª       ª   ª       http11.meta.json
+ª       ª   ª       http2.data.json
+ª       ª   ª       http2.meta.json
+ª       ª   ª       http_proxy.data.json
+ª       ª   ª       http_proxy.meta.json
+ª       ª   ª       interfaces.data.json
+ª       ª   ª       interfaces.meta.json
+ª       ª   ª       socks_proxy.data.json
+ª       ª   ª       socks_proxy.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_backends
+ª       ª   ª       anyio.data.json
+ª       ª   ª       anyio.meta.json
+ª       ª   ª       auto.data.json
+ª       ª   ª       auto.meta.json
+ª       ª   ª       base.data.json
+ª       ª   ª       base.meta.json
+ª       ª   ª       mock.data.json
+ª       ª   ª       mock.meta.json
+ª       ª   ª       sync.data.json
+ª       ª   ª       sync.meta.json
+ª       ª   ª       trio.data.json
+ª       ª   ª       trio.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           connection.data.json
+ª       ª           connection.meta.json
+ª       ª           connection_pool.data.json
+ª       ª           connection_pool.meta.json
+ª       ª           http11.data.json
+ª       ª           http11.meta.json
+ª       ª           http2.data.json
+ª       ª           http2.meta.json
+ª       ª           http_proxy.data.json
+ª       ª           http_proxy.meta.json
+ª       ª           interfaces.data.json
+ª       ª           interfaces.meta.json
+ª       ª           socks_proxy.data.json
+ª       ª           socks_proxy.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---httpx
+ª       ª   ª   _api.data.json
+ª       ª   ª   _api.meta.json
+ª       ª   ª   _auth.data.json
+ª       ª   ª   _auth.meta.json
+ª       ª   ª   _client.data.json
+ª       ª   ª   _client.meta.json
+ª       ª   ª   _config.data.json
+ª       ª   ª   _config.meta.json
+ª       ª   ª   _content.data.json
+ª       ª   ª   _content.meta.json
+ª       ª   ª   _decoders.data.json
+ª       ª   ª   _decoders.meta.json
+ª       ª   ª   _exceptions.data.json
+ª       ª   ª   _exceptions.meta.json
+ª       ª   ª   _main.data.json
+ª       ª   ª   _main.meta.json
+ª       ª   ª   _models.data.json
+ª       ª   ª   _models.meta.json
+ª       ª   ª   _multipart.data.json
+ª       ª   ª   _multipart.meta.json
+ª       ª   ª   _status_codes.data.json
+ª       ª   ª   _status_codes.meta.json
+ª       ª   ª   _types.data.json
+ª       ª   ª   _types.meta.json
+ª       ª   ª   _urlparse.data.json
+ª       ª   ª   _urlparse.meta.json
+ª       ª   ª   _urls.data.json
+ª       ª   ª   _urls.meta.json
+ª       ª   ª   _utils.data.json
+ª       ª   ª   _utils.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   __version__.data.json
+ª       ª   ª   __version__.meta.json
+ª       ª   ª   
+ª       ª   +---_transports
+ª       ª           asgi.data.json
+ª       ª           asgi.meta.json
+ª       ª           base.data.json
+ª       ª           base.meta.json
+ª       ª           default.data.json
+ª       ª           default.meta.json
+ª       ª           mock.data.json
+ª       ª           mock.meta.json
+ª       ª           wsgi.data.json
+ª       ª           wsgi.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---hyperframe
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       flags.data.json
+ª       ª       flags.meta.json
+ª       ª       frame.data.json
+ª       ª       frame.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---idna
+ª       ª       core.data.json
+ª       ª       core.meta.json
+ª       ª       idnadata.data.json
+ª       ª       idnadata.meta.json
+ª       ª       intranges.data.json
+ª       ª       intranges.meta.json
+ª       ª       package_data.data.json
+ª       ª       package_data.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---importlib
+ª       ª   ª   abc.data.json
+ª       ª   ª   abc.meta.json
+ª       ª   ª   machinery.data.json
+ª       ª   ª   machinery.meta.json
+ª       ª   ª   readers.data.json
+ª       ª   ª   readers.meta.json
+ª       ª   ª   util.data.json
+ª       ª   ª   util.meta.json
+ª       ª   ª   _abc.data.json
+ª       ª   ª   _abc.meta.json
+ª       ª   ª   _bootstrap.data.json
+ª       ª   ª   _bootstrap.meta.json
+ª       ª   ª   _bootstrap_external.data.json
+ª       ª   ª   _bootstrap_external.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---metadata
+ª       ª   ª       _meta.data.json
+ª       ª   ª       _meta.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---resources
+ª       ª           abc.data.json
+ª       ª           abc.meta.json
+ª       ª           _common.data.json
+ª       ª           _common.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---jinja2
+ª       ª       async_utils.data.json
+ª       ª       async_utils.meta.json
+ª       ª       bccache.data.json
+ª       ª       bccache.meta.json
+ª       ª       compiler.data.json
+ª       ª       compiler.meta.json
+ª       ª       debug.data.json
+ª       ª       debug.meta.json
+ª       ª       defaults.data.json
+ª       ª       defaults.meta.json
+ª       ª       environment.data.json
+ª       ª       environment.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       ext.data.json
+ª       ª       ext.meta.json
+ª       ª       filters.data.json
+ª       ª       filters.meta.json
+ª       ª       idtracking.data.json
+ª       ª       idtracking.meta.json
+ª       ª       lexer.data.json
+ª       ª       lexer.meta.json
+ª       ª       loaders.data.json
+ª       ª       loaders.meta.json
+ª       ª       nodes.data.json
+ª       ª       nodes.meta.json
+ª       ª       optimizer.data.json
+ª       ª       optimizer.meta.json
+ª       ª       parser.data.json
+ª       ª       parser.meta.json
+ª       ª       runtime.data.json
+ª       ª       runtime.meta.json
+ª       ª       sandbox.data.json
+ª       ª       sandbox.meta.json
+ª       ª       tests.data.json
+ª       ª       tests.meta.json
+ª       ª       utils.data.json
+ª       ª       utils.meta.json
+ª       ª       visitor.data.json
+ª       ª       visitor.meta.json
+ª       ª       _identifier.data.json
+ª       ª       _identifier.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---json
+ª       ª       decoder.data.json
+ª       ª       decoder.meta.json
+ª       ª       encoder.data.json
+ª       ª       encoder.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---jwt
+ª       ª       algorithms.data.json
+ª       ª       algorithms.meta.json
+ª       ª       api_jwk.data.json
+ª       ª       api_jwk.meta.json
+ª       ª       api_jws.data.json
+ª       ª       api_jws.meta.json
+ª       ª       api_jwt.data.json
+ª       ª       api_jwt.meta.json
+ª       ª       exceptions.data.json
+ª       ª       exceptions.meta.json
+ª       ª       jwks_client.data.json
+ª       ª       jwks_client.meta.json
+ª       ª       jwk_set_cache.data.json
+ª       ª       jwk_set_cache.meta.json
+ª       ª       types.data.json
+ª       ª       types.meta.json
+ª       ª       utils.data.json
+ª       ª       utils.meta.json
+ª       ª       warnings.data.json
+ª       ª       warnings.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---logging
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---markdown_it
+ª       ª   ª   main.data.json
+ª       ª   ª   main.meta.json
+ª       ª   ª   parser_block.data.json
+ª       ª   ª   parser_block.meta.json
+ª       ª   ª   parser_core.data.json
+ª       ª   ª   parser_core.meta.json
+ª       ª   ª   parser_inline.data.json
+ª       ª   ª   parser_inline.meta.json
+ª       ª   ª   renderer.data.json
+ª       ª   ª   renderer.meta.json
+ª       ª   ª   ruler.data.json
+ª       ª   ª   ruler.meta.json
+ª       ª   ª   token.data.json
+ª       ª   ª   token.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   _punycode.data.json
+ª       ª   ª   _punycode.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---common
+ª       ª   ª       entities.data.json
+ª       ª   ª       entities.meta.json
+ª       ª   ª       html_blocks.data.json
+ª       ª   ª       html_blocks.meta.json
+ª       ª   ª       html_re.data.json
+ª       ª   ª       html_re.meta.json
+ª       ª   ª       normalize_url.data.json
+ª       ª   ª       normalize_url.meta.json
+ª       ª   ª       utils.data.json
+ª       ª   ª       utils.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---helpers
+ª       ª   ª       parse_link_destination.data.json
+ª       ª   ª       parse_link_destination.meta.json
+ª       ª   ª       parse_link_label.data.json
+ª       ª   ª       parse_link_label.meta.json
+ª       ª   ª       parse_link_title.data.json
+ª       ª   ª       parse_link_title.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---presets
+ª       ª   ª       commonmark.data.json
+ª       ª   ª       commonmark.meta.json
+ª       ª   ª       default.data.json
+ª       ª   ª       default.meta.json
+ª       ª   ª       zero.data.json
+ª       ª   ª       zero.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---rules_block
+ª       ª   ª       blockquote.data.json
+ª       ª   ª       blockquote.meta.json
+ª       ª   ª       code.data.json
+ª       ª   ª       code.meta.json
+ª       ª   ª       fence.data.json
+ª       ª   ª       fence.meta.json
+ª       ª   ª       heading.data.json
+ª       ª   ª       heading.meta.json
+ª       ª   ª       hr.data.json
+ª       ª   ª       hr.meta.json
+ª       ª   ª       html_block.data.json
+ª       ª   ª       html_block.meta.json
+ª       ª   ª       lheading.data.json
+ª       ª   ª       lheading.meta.json
+ª       ª   ª       list.data.json
+ª       ª   ª       list.meta.json
+ª       ª   ª       paragraph.data.json
+ª       ª   ª       paragraph.meta.json
+ª       ª   ª       reference.data.json
+ª       ª   ª       reference.meta.json
+ª       ª   ª       state_block.data.json
+ª       ª   ª       state_block.meta.json
+ª       ª   ª       table.data.json
+ª       ª   ª       table.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---rules_core
+ª       ª   ª       block.data.json
+ª       ª   ª       block.meta.json
+ª       ª   ª       inline.data.json
+ª       ª   ª       inline.meta.json
+ª       ª   ª       linkify.data.json
+ª       ª   ª       linkify.meta.json
+ª       ª   ª       normalize.data.json
+ª       ª   ª       normalize.meta.json
+ª       ª   ª       replacements.data.json
+ª       ª   ª       replacements.meta.json
+ª       ª   ª       smartquotes.data.json
+ª       ª   ª       smartquotes.meta.json
+ª       ª   ª       state_core.data.json
+ª       ª   ª       state_core.meta.json
+ª       ª   ª       text_join.data.json
+ª       ª   ª       text_join.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---rules_inline
+ª       ª           autolink.data.json
+ª       ª           autolink.meta.json
+ª       ª           backticks.data.json
+ª       ª           backticks.meta.json
+ª       ª           balance_pairs.data.json
+ª       ª           balance_pairs.meta.json
+ª       ª           emphasis.data.json
+ª       ª           emphasis.meta.json
+ª       ª           entity.data.json
+ª       ª           entity.meta.json
+ª       ª           escape.data.json
+ª       ª           escape.meta.json
+ª       ª           fragments_join.data.json
+ª       ª           fragments_join.meta.json
+ª       ª           html_inline.data.json
+ª       ª           html_inline.meta.json
+ª       ª           image.data.json
+ª       ª           image.meta.json
+ª       ª           link.data.json
+ª       ª           link.meta.json
+ª       ª           linkify.data.json
+ª       ª           linkify.meta.json
+ª       ª           newline.data.json
+ª       ª           newline.meta.json
+ª       ª           state_inline.data.json
+ª       ª           state_inline.meta.json
+ª       ª           strikethrough.data.json
+ª       ª           strikethrough.meta.json
+ª       ª           text.data.json
+ª       ª           text.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---markupsafe
+ª       ª       _native.data.json
+ª       ª       _native.meta.json
+ª       ª       _speedups.data.json
+ª       ª       _speedups.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---mdurl
+ª       ª       _decode.data.json
+ª       ª       _decode.meta.json
+ª       ª       _encode.data.json
+ª       ª       _encode.meta.json
+ª       ª       _format.data.json
+ª       ª       _format.meta.json
+ª       ª       _parse.data.json
+ª       ª       _parse.meta.json
+ª       ª       _url.data.json
+ª       ª       _url.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---mmh3
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---multidict
+ª       ª       _abc.data.json
+ª       ª       _abc.meta.json
+ª       ª       _compat.data.json
+ª       ª       _compat.meta.json
+ª       ª       _multidict_py.data.json
+ª       ª       _multidict_py.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---multiprocessing
+ª       ª       connection.data.json
+ª       ª       connection.meta.json
+ª       ª       context.data.json
+ª       ª       context.meta.json
+ª       ª       managers.data.json
+ª       ª       managers.meta.json
+ª       ª       pool.data.json
+ª       ª       pool.meta.json
+ª       ª       popen_fork.data.json
+ª       ª       popen_fork.meta.json
+ª       ª       popen_forkserver.data.json
+ª       ª       popen_forkserver.meta.json
+ª       ª       popen_spawn_posix.data.json
+ª       ª       popen_spawn_posix.meta.json
+ª       ª       popen_spawn_win32.data.json
+ª       ª       popen_spawn_win32.meta.json
+ª       ª       process.data.json
+ª       ª       process.meta.json
+ª       ª       queues.data.json
+ª       ª       queues.meta.json
+ª       ª       reduction.data.json
+ª       ª       reduction.meta.json
+ª       ª       sharedctypes.data.json
+ª       ª       sharedctypes.meta.json
+ª       ª       shared_memory.data.json
+ª       ª       shared_memory.meta.json
+ª       ª       spawn.data.json
+ª       ª       spawn.meta.json
+ª       ª       synchronize.data.json
+ª       ª       synchronize.meta.json
+ª       ª       util.data.json
+ª       ª       util.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---os
+ª       ª       path.data.json
+ª       ª       path.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---packaging
+ª       ª       version.data.json
+ª       ª       version.meta.json
+ª       ª       _structures.data.json
+ª       ª       _structures.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---pathlib
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---playwright
+ª       ª   ª   _repo_version.data.json
+ª       ª   ª   _repo_version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---async_api
+ª       ª   ª       _context_manager.data.json
+ª       ª   ª       _context_manager.meta.json
+ª       ª   ª       _generated.data.json
+ª       ª   ª       _generated.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_impl
+ª       ª           _accessibility.data.json
+ª       ª           _accessibility.meta.json
+ª       ª           _api_structures.data.json
+ª       ª           _api_structures.meta.json
+ª       ª           _artifact.data.json
+ª       ª           _artifact.meta.json
+ª       ª           _assertions.data.json
+ª       ª           _assertions.meta.json
+ª       ª           _async_base.data.json
+ª       ª           _async_base.meta.json
+ª       ª           _browser.data.json
+ª       ª           _browser.meta.json
+ª       ª           _browser_context.data.json
+ª       ª           _browser_context.meta.json
+ª       ª           _browser_type.data.json
+ª       ª           _browser_type.meta.json
+ª       ª           _cdp_session.data.json
+ª       ª           _cdp_session.meta.json
+ª       ª           _clock.data.json
+ª       ª           _clock.meta.json
+ª       ª           _connection.data.json
+ª       ª           _connection.meta.json
+ª       ª           _console_message.data.json
+ª       ª           _console_message.meta.json
+ª       ª           _dialog.data.json
+ª       ª           _dialog.meta.json
+ª       ª           _download.data.json
+ª       ª           _download.meta.json
+ª       ª           _driver.data.json
+ª       ª           _driver.meta.json
+ª       ª           _element_handle.data.json
+ª       ª           _element_handle.meta.json
+ª       ª           _errors.data.json
+ª       ª           _errors.meta.json
+ª       ª           _event_context_manager.data.json
+ª       ª           _event_context_manager.meta.json
+ª       ª           _fetch.data.json
+ª       ª           _fetch.meta.json
+ª       ª           _file_chooser.data.json
+ª       ª           _file_chooser.meta.json
+ª       ª           _frame.data.json
+ª       ª           _frame.meta.json
+ª       ª           _glob.data.json
+ª       ª           _glob.meta.json
+ª       ª           _greenlets.data.json
+ª       ª           _greenlets.meta.json
+ª       ª           _har_router.data.json
+ª       ª           _har_router.meta.json
+ª       ª           _helper.data.json
+ª       ª           _helper.meta.json
+ª       ª           _impl_to_api_mapping.data.json
+ª       ª           _impl_to_api_mapping.meta.json
+ª       ª           _input.data.json
+ª       ª           _input.meta.json
+ª       ª           _json_pipe.data.json
+ª       ª           _json_pipe.meta.json
+ª       ª           _js_handle.data.json
+ª       ª           _js_handle.meta.json
+ª       ª           _local_utils.data.json
+ª       ª           _local_utils.meta.json
+ª       ª           _locator.data.json
+ª       ª           _locator.meta.json
+ª       ª           _map.data.json
+ª       ª           _map.meta.json
+ª       ª           _network.data.json
+ª       ª           _network.meta.json
+ª       ª           _object_factory.data.json
+ª       ª           _object_factory.meta.json
+ª       ª           _page.data.json
+ª       ª           _page.meta.json
+ª       ª           _playwright.data.json
+ª       ª           _playwright.meta.json
+ª       ª           _selectors.data.json
+ª       ª           _selectors.meta.json
+ª       ª           _set_input_files_helpers.data.json
+ª       ª           _set_input_files_helpers.meta.json
+ª       ª           _stream.data.json
+ª       ª           _stream.meta.json
+ª       ª           _str_utils.data.json
+ª       ª           _str_utils.meta.json
+ª       ª           _tracing.data.json
+ª       ª           _tracing.meta.json
+ª       ª           _transport.data.json
+ª       ª           _transport.meta.json
+ª       ª           _video.data.json
+ª       ª           _video.meta.json
+ª       ª           _waiter.data.json
+ª       ª           _waiter.meta.json
+ª       ª           _web_error.data.json
+ª       ª           _web_error.meta.json
+ª       ª           _writable_stream.data.json
+ª       ª           _writable_stream.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---postgrest
+ª       ª   ª   base_client.data.json
+ª       ª   ª   base_client.meta.json
+ª       ª   ª   base_request_builder.data.json
+ª       ª   ª   base_request_builder.meta.json
+ª       ª   ª   constants.data.json
+ª       ª   ª   constants.meta.json
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       client.data.json
+ª       ª   ª       client.meta.json
+ª       ª   ª       request_builder.data.json
+ª       ª   ª       request_builder.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           client.data.json
+ª       ª           client.meta.json
+ª       ª           request_builder.data.json
+ª       ª           request_builder.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---propcache
+ª       ª       api.data.json
+ª       ª       api.meta.json
+ª       ª       _helpers.data.json
+ª       ª       _helpers.meta.json
+ª       ª       _helpers_py.data.json
+ª       ª       _helpers_py.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---pydantic
+ª       ª   ª   aliases.data.json
+ª       ª   ª   aliases.meta.json
+ª       ª   ª   alias_generators.data.json
+ª       ª   ª   alias_generators.meta.json
+ª       ª   ª   annotated_handlers.data.json
+ª       ª   ª   annotated_handlers.meta.json
+ª       ª   ª   color.data.json
+ª       ª   ª   color.meta.json
+ª       ª   ª   config.data.json
+ª       ª   ª   config.meta.json
+ª       ª   ª   dataclasses.data.json
+ª       ª   ª   dataclasses.meta.json
+ª       ª   ª   errors.data.json
+ª       ª   ª   errors.meta.json
+ª       ª   ª   fields.data.json
+ª       ª   ª   fields.meta.json
+ª       ª   ª   functional_serializers.data.json
+ª       ª   ª   functional_serializers.meta.json
+ª       ª   ª   functional_validators.data.json
+ª       ª   ª   functional_validators.meta.json
+ª       ª   ª   json_schema.data.json
+ª       ª   ª   json_schema.meta.json
+ª       ª   ª   main.data.json
+ª       ª   ª   main.meta.json
+ª       ª   ª   networks.data.json
+ª       ª   ª   networks.meta.json
+ª       ª   ª   root_model.data.json
+ª       ª   ª   root_model.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   type_adapter.data.json
+ª       ª   ª   type_adapter.meta.json
+ª       ª   ª   validate_call_decorator.data.json
+ª       ª   ª   validate_call_decorator.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   warnings.data.json
+ª       ª   ª   warnings.meta.json
+ª       ª   ª   _migration.data.json
+ª       ª   ª   _migration.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---deprecated
+ª       ª   ª       class_validators.data.json
+ª       ª   ª       class_validators.meta.json
+ª       ª   ª       config.data.json
+ª       ª   ª       config.meta.json
+ª       ª   ª       copy_internals.data.json
+ª       ª   ª       copy_internals.meta.json
+ª       ª   ª       json.data.json
+ª       ª   ª       json.meta.json
+ª       ª   ª       parse.data.json
+ª       ª   ª       parse.meta.json
+ª       ª   ª       tools.data.json
+ª       ª   ª       tools.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---plugin
+ª       ª   ª       _schema_validator.data.json
+ª       ª   ª       _schema_validator.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---v1
+ª       ª   ª       annotated_types.data.json
+ª       ª   ª       annotated_types.meta.json
+ª       ª   ª       class_validators.data.json
+ª       ª   ª       class_validators.meta.json
+ª       ª   ª       color.data.json
+ª       ª   ª       color.meta.json
+ª       ª   ª       config.data.json
+ª       ª   ª       config.meta.json
+ª       ª   ª       dataclasses.data.json
+ª       ª   ª       dataclasses.meta.json
+ª       ª   ª       datetime_parse.data.json
+ª       ª   ª       datetime_parse.meta.json
+ª       ª   ª       decorator.data.json
+ª       ª   ª       decorator.meta.json
+ª       ª   ª       env_settings.data.json
+ª       ª   ª       env_settings.meta.json
+ª       ª   ª       errors.data.json
+ª       ª   ª       errors.meta.json
+ª       ª   ª       error_wrappers.data.json
+ª       ª   ª       error_wrappers.meta.json
+ª       ª   ª       fields.data.json
+ª       ª   ª       fields.meta.json
+ª       ª   ª       json.data.json
+ª       ª   ª       json.meta.json
+ª       ª   ª       main.data.json
+ª       ª   ª       main.meta.json
+ª       ª   ª       networks.data.json
+ª       ª   ª       networks.meta.json
+ª       ª   ª       parse.data.json
+ª       ª   ª       parse.meta.json
+ª       ª   ª       schema.data.json
+ª       ª   ª       schema.meta.json
+ª       ª   ª       tools.data.json
+ª       ª   ª       tools.meta.json
+ª       ª   ª       types.data.json
+ª       ª   ª       types.meta.json
+ª       ª   ª       typing.data.json
+ª       ª   ª       typing.meta.json
+ª       ª   ª       utils.data.json
+ª       ª   ª       utils.meta.json
+ª       ª   ª       validators.data.json
+ª       ª   ª       validators.meta.json
+ª       ª   ª       version.data.json
+ª       ª   ª       version.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_internal
+ª       ª           _config.data.json
+ª       ª           _config.meta.json
+ª       ª           _core_metadata.data.json
+ª       ª           _core_metadata.meta.json
+ª       ª           _core_utils.data.json
+ª       ª           _core_utils.meta.json
+ª       ª           _dataclasses.data.json
+ª       ª           _dataclasses.meta.json
+ª       ª           _decorators.data.json
+ª       ª           _decorators.meta.json
+ª       ª           _decorators_v1.data.json
+ª       ª           _decorators_v1.meta.json
+ª       ª           _discriminated_union.data.json
+ª       ª           _discriminated_union.meta.json
+ª       ª           _docs_extraction.data.json
+ª       ª           _docs_extraction.meta.json
+ª       ª           _fields.data.json
+ª       ª           _fields.meta.json
+ª       ª           _forward_ref.data.json
+ª       ª           _forward_ref.meta.json
+ª       ª           _generate_schema.data.json
+ª       ª           _generate_schema.meta.json
+ª       ª           _generics.data.json
+ª       ª           _generics.meta.json
+ª       ª           _import_utils.data.json
+ª       ª           _import_utils.meta.json
+ª       ª           _internal_dataclass.data.json
+ª       ª           _internal_dataclass.meta.json
+ª       ª           _known_annotated_metadata.data.json
+ª       ª           _known_annotated_metadata.meta.json
+ª       ª           _mock_val_ser.data.json
+ª       ª           _mock_val_ser.meta.json
+ª       ª           _model_construction.data.json
+ª       ª           _model_construction.meta.json
+ª       ª           _namespace_utils.data.json
+ª       ª           _namespace_utils.meta.json
+ª       ª           _repr.data.json
+ª       ª           _repr.meta.json
+ª       ª           _schema_gather.data.json
+ª       ª           _schema_gather.meta.json
+ª       ª           _schema_generation_shared.data.json
+ª       ª           _schema_generation_shared.meta.json
+ª       ª           _serializers.data.json
+ª       ª           _serializers.meta.json
+ª       ª           _signature.data.json
+ª       ª           _signature.meta.json
+ª       ª           _typing_extra.data.json
+ª       ª           _typing_extra.meta.json
+ª       ª           _utils.data.json
+ª       ª           _utils.meta.json
+ª       ª           _validate_call.data.json
+ª       ª           _validate_call.meta.json
+ª       ª           _validators.data.json
+ª       ª           _validators.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---pydantic_core
+ª       ª       core_schema.data.json
+ª       ª       core_schema.meta.json
+ª       ª       _pydantic_core.data.json
+ª       ª       _pydantic_core.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---pydantic_settings
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   main.data.json
+ª       ª   ª   main.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---sources
+ª       ª       ª   base.data.json
+ª       ª       ª   base.meta.json
+ª       ª       ª   types.data.json
+ª       ª       ª   types.meta.json
+ª       ª       ª   utils.data.json
+ª       ª       ª   utils.meta.json
+ª       ª       ª   __init__.data.json
+ª       ª       ª   __init__.meta.json
+ª       ª       ª   
+ª       ª       +---providers
+ª       ª               aws.data.json
+ª       ª               aws.meta.json
+ª       ª               azure.data.json
+ª       ª               azure.meta.json
+ª       ª               cli.data.json
+ª       ª               cli.meta.json
+ª       ª               dotenv.data.json
+ª       ª               dotenv.meta.json
+ª       ª               env.data.json
+ª       ª               env.meta.json
+ª       ª               gcp.data.json
+ª       ª               gcp.meta.json
+ª       ª               json.data.json
+ª       ª               json.meta.json
+ª       ª               nested_secrets.data.json
+ª       ª               nested_secrets.meta.json
+ª       ª               pyproject.data.json
+ª       ª               pyproject.meta.json
+ª       ª               secrets.data.json
+ª       ª               secrets.meta.json
+ª       ª               toml.data.json
+ª       ª               toml.meta.json
+ª       ª               yaml.data.json
+ª       ª               yaml.meta.json
+ª       ª               __init__.data.json
+ª       ª               __init__.meta.json
+ª       ª               
+ª       +---pyee
+ª       ª       asyncio.data.json
+ª       ª       asyncio.meta.json
+ª       ª       base.data.json
+ª       ª       base.meta.json
+ª       ª       executor.data.json
+ª       ª       executor.meta.json
+ª       ª       trio.data.json
+ª       ª       trio.meta.json
+ª       ª       twisted.data.json
+ª       ª       twisted.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---pyiceberg
+ª       ª   ª   conversions.data.json
+ª       ª   ª   conversions.meta.json
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   manifest.data.json
+ª       ª   ª   manifest.meta.json
+ª       ª   ª   partitioning.data.json
+ª       ª   ª   partitioning.meta.json
+ª       ª   ª   schema.data.json
+ª       ª   ª   schema.meta.json
+ª       ª   ª   serializers.data.json
+ª       ª   ª   serializers.meta.json
+ª       ª   ª   transforms.data.json
+ª       ª   ª   transforms.meta.json
+ª       ª   ª   typedef.data.json
+ª       ª   ª   typedef.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---avro
+ª       ª   ª   ª   decoder.data.json
+ª       ª   ª   ª   decoder.meta.json
+ª       ª   ª   ª   encoder.data.json
+ª       ª   ª   ª   encoder.meta.json
+ª       ª   ª   ª   file.data.json
+ª       ª   ª   ª   file.meta.json
+ª       ª   ª   ª   reader.data.json
+ª       ª   ª   ª   reader.meta.json
+ª       ª   ª   ª   resolver.data.json
+ª       ª   ª   ª   resolver.meta.json
+ª       ª   ª   ª   writer.data.json
+ª       ª   ª   ª   writer.meta.json
+ª       ª   ª   ª   __init__.data.json
+ª       ª   ª   ª   __init__.meta.json
+ª       ª   ª   ª   
+ª       ª   ª   +---codecs
+ª       ª   ª           bzip2.data.json
+ª       ª   ª           bzip2.meta.json
+ª       ª   ª           codec.data.json
+ª       ª   ª           codec.meta.json
+ª       ª   ª           deflate.data.json
+ª       ª   ª           deflate.meta.json
+ª       ª   ª           snappy_codec.data.json
+ª       ª   ª           snappy_codec.meta.json
+ª       ª   ª           zstandard_codec.data.json
+ª       ª   ª           zstandard_codec.meta.json
+ª       ª   ª           __init__.data.json
+ª       ª   ª           __init__.meta.json
+ª       ª   ª           
+ª       ª   +---catalog
+ª       ª   ª   ª   noop.data.json
+ª       ª   ª   ª   noop.meta.json
+ª       ª   ª   ª   __init__.data.json
+ª       ª   ª   ª   __init__.meta.json
+ª       ª   ª   ª   
+ª       ª   ª   +---rest
+ª       ª   ª           auth.data.json
+ª       ª   ª           auth.meta.json
+ª       ª   ª           response.data.json
+ª       ª   ª           response.meta.json
+ª       ª   ª           __init__.data.json
+ª       ª   ª           __init__.meta.json
+ª       ª   ª           
+ª       ª   +---expressions
+ª       ª   ª       literals.data.json
+ª       ª   ª       literals.meta.json
+ª       ª   ª       parser.data.json
+ª       ª   ª       parser.meta.json
+ª       ª   ª       visitors.data.json
+ª       ª   ª       visitors.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---io
+ª       ª   ª       pyarrow.data.json
+ª       ª   ª       pyarrow.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---table
+ª       ª   ª   ª   inspect.data.json
+ª       ª   ª   ª   inspect.meta.json
+ª       ª   ª   ª   locations.data.json
+ª       ª   ª   ª   locations.meta.json
+ª       ª   ª   ª   maintenance.data.json
+ª       ª   ª   ª   maintenance.meta.json
+ª       ª   ª   ª   metadata.data.json
+ª       ª   ª   ª   metadata.meta.json
+ª       ª   ª   ª   name_mapping.data.json
+ª       ª   ª   ª   name_mapping.meta.json
+ª       ª   ª   ª   puffin.data.json
+ª       ª   ª   ª   puffin.meta.json
+ª       ª   ª   ª   refs.data.json
+ª       ª   ª   ª   refs.meta.json
+ª       ª   ª   ª   snapshots.data.json
+ª       ª   ª   ª   snapshots.meta.json
+ª       ª   ª   ª   sorting.data.json
+ª       ª   ª   ª   sorting.meta.json
+ª       ª   ª   ª   statistics.data.json
+ª       ª   ª   ª   statistics.meta.json
+ª       ª   ª   ª   upsert_util.data.json
+ª       ª   ª   ª   upsert_util.meta.json
+ª       ª   ª   ª   __init__.data.json
+ª       ª   ª   ª   __init__.meta.json
+ª       ª   ª   ª   
+ª       ª   ª   +---update
+ª       ª   ª           schema.data.json
+ª       ª   ª           schema.meta.json
+ª       ª   ª           snapshot.data.json
+ª       ª   ª           snapshot.meta.json
+ª       ª   ª           spec.data.json
+ª       ª   ª           spec.meta.json
+ª       ª   ª           statistics.data.json
+ª       ª   ª           statistics.meta.json
+ª       ª   ª           __init__.data.json
+ª       ª   ª           __init__.meta.json
+ª       ª   ª           
+ª       ª   +---utils
+ª       ª           bin_packing.data.json
+ª       ª           bin_packing.meta.json
+ª       ª           concurrent.data.json
+ª       ª           concurrent.meta.json
+ª       ª           config.data.json
+ª       ª           config.meta.json
+ª       ª           datetime.data.json
+ª       ª           datetime.meta.json
+ª       ª           decimal.data.json
+ª       ª           decimal.meta.json
+ª       ª           deprecated.data.json
+ª       ª           deprecated.meta.json
+ª       ª           lazydict.data.json
+ª       ª           lazydict.meta.json
+ª       ª           parsing.data.json
+ª       ª           parsing.meta.json
+ª       ª           properties.data.json
+ª       ª           properties.meta.json
+ª       ª           schema_conversion.data.json
+ª       ª           schema_conversion.meta.json
+ª       ª           singleton.data.json
+ª       ª           singleton.meta.json
+ª       ª           truncate.data.json
+ª       ª           truncate.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---pyparsing
+ª       ª   ª   actions.data.json
+ª       ª   ª   actions.meta.json
+ª       ª   ª   common.data.json
+ª       ª   ª   common.meta.json
+ª       ª   ª   core.data.json
+ª       ª   ª   core.meta.json
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   helpers.data.json
+ª       ª   ª   helpers.meta.json
+ª       ª   ª   results.data.json
+ª       ª   ª   results.meta.json
+ª       ª   ª   testing.data.json
+ª       ª   ª   testing.meta.json
+ª       ª   ª   unicode.data.json
+ª       ª   ª   unicode.meta.json
+ª       ª   ª   util.data.json
+ª       ª   ª   util.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---diagram
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---pyroaring
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---realtime
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   message.data.json
+ª       ª   ª   message.meta.json
+ª       ª   ª   transformers.data.json
+ª       ª   ª   transformers.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       channel.data.json
+ª       ª   ª       channel.meta.json
+ª       ª   ª       client.data.json
+ª       ª   ª       client.meta.json
+ª       ª   ª       presence.data.json
+ª       ª   ª       presence.meta.json
+ª       ª   ª       push.data.json
+ª       ª   ª       push.meta.json
+ª       ª   ª       timer.data.json
+ª       ª   ª       timer.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           channel.data.json
+ª       ª           channel.meta.json
+ª       ª           client.data.json
+ª       ª           client.meta.json
+ª       ª           presence.data.json
+ª       ª           presence.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---rich
+ª       ª       abc.data.json
+ª       ª       abc.meta.json
+ª       ª       align.data.json
+ª       ª       align.meta.json
+ª       ª       ansi.data.json
+ª       ª       ansi.meta.json
+ª       ª       box.data.json
+ª       ª       box.meta.json
+ª       ª       cells.data.json
+ª       ª       cells.meta.json
+ª       ª       color.data.json
+ª       ª       color.meta.json
+ª       ª       color_triplet.data.json
+ª       ª       color_triplet.meta.json
+ª       ª       columns.data.json
+ª       ª       columns.meta.json
+ª       ª       console.data.json
+ª       ª       console.meta.json
+ª       ª       constrain.data.json
+ª       ª       constrain.meta.json
+ª       ª       containers.data.json
+ª       ª       containers.meta.json
+ª       ª       control.data.json
+ª       ª       control.meta.json
+ª       ª       default_styles.data.json
+ª       ª       default_styles.meta.json
+ª       ª       emoji.data.json
+ª       ª       emoji.meta.json
+ª       ª       errors.data.json
+ª       ª       errors.meta.json
+ª       ª       filesize.data.json
+ª       ª       filesize.meta.json
+ª       ª       file_proxy.data.json
+ª       ª       file_proxy.meta.json
+ª       ª       highlighter.data.json
+ª       ª       highlighter.meta.json
+ª       ª       json.data.json
+ª       ª       json.meta.json
+ª       ª       jupyter.data.json
+ª       ª       jupyter.meta.json
+ª       ª       live.data.json
+ª       ª       live.meta.json
+ª       ª       live_render.data.json
+ª       ª       live_render.meta.json
+ª       ª       markdown.data.json
+ª       ª       markdown.meta.json
+ª       ª       markup.data.json
+ª       ª       markup.meta.json
+ª       ª       measure.data.json
+ª       ª       measure.meta.json
+ª       ª       padding.data.json
+ª       ª       padding.meta.json
+ª       ª       pager.data.json
+ª       ª       pager.meta.json
+ª       ª       palette.data.json
+ª       ª       palette.meta.json
+ª       ª       panel.data.json
+ª       ª       panel.meta.json
+ª       ª       pretty.data.json
+ª       ª       pretty.meta.json
+ª       ª       progress.data.json
+ª       ª       progress.meta.json
+ª       ª       progress_bar.data.json
+ª       ª       progress_bar.meta.json
+ª       ª       protocol.data.json
+ª       ª       protocol.meta.json
+ª       ª       region.data.json
+ª       ª       region.meta.json
+ª       ª       repr.data.json
+ª       ª       repr.meta.json
+ª       ª       rule.data.json
+ª       ª       rule.meta.json
+ª       ª       scope.data.json
+ª       ª       scope.meta.json
+ª       ª       screen.data.json
+ª       ª       screen.meta.json
+ª       ª       segment.data.json
+ª       ª       segment.meta.json
+ª       ª       spinner.data.json
+ª       ª       spinner.meta.json
+ª       ª       status.data.json
+ª       ª       status.meta.json
+ª       ª       style.data.json
+ª       ª       style.meta.json
+ª       ª       styled.data.json
+ª       ª       styled.meta.json
+ª       ª       syntax.data.json
+ª       ª       syntax.meta.json
+ª       ª       table.data.json
+ª       ª       table.meta.json
+ª       ª       terminal_theme.data.json
+ª       ª       terminal_theme.meta.json
+ª       ª       text.data.json
+ª       ª       text.meta.json
+ª       ª       theme.data.json
+ª       ª       theme.meta.json
+ª       ª       themes.data.json
+ª       ª       themes.meta.json
+ª       ª       traceback.data.json
+ª       ª       traceback.meta.json
+ª       ª       _cell_widths.data.json
+ª       ª       _cell_widths.meta.json
+ª       ª       _emoji_codes.data.json
+ª       ª       _emoji_codes.meta.json
+ª       ª       _emoji_replace.data.json
+ª       ª       _emoji_replace.meta.json
+ª       ª       _export_format.data.json
+ª       ª       _export_format.meta.json
+ª       ª       _extension.data.json
+ª       ª       _extension.meta.json
+ª       ª       _fileno.data.json
+ª       ª       _fileno.meta.json
+ª       ª       _log_render.data.json
+ª       ª       _log_render.meta.json
+ª       ª       _loop.data.json
+ª       ª       _loop.meta.json
+ª       ª       _null_file.data.json
+ª       ª       _null_file.meta.json
+ª       ª       _palettes.data.json
+ª       ª       _palettes.meta.json
+ª       ª       _pick.data.json
+ª       ª       _pick.meta.json
+ª       ª       _ratio.data.json
+ª       ª       _ratio.meta.json
+ª       ª       _spinners.data.json
+ª       ª       _spinners.meta.json
+ª       ª       _stack.data.json
+ª       ª       _stack.meta.json
+ª       ª       _timer.data.json
+ª       ª       _timer.meta.json
+ª       ª       _win32_console.data.json
+ª       ª       _win32_console.meta.json
+ª       ª       _windows.data.json
+ª       ª       _windows.meta.json
+ª       ª       _windows_renderer.data.json
+ª       ª       _windows_renderer.meta.json
+ª       ª       _wrap.data.json
+ª       ª       _wrap.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       __main__.data.json
+ª       ª       __main__.meta.json
+ª       ª       
+ª       +---sniffio
+ª       ª       _impl.data.json
+ª       ª       _impl.meta.json
+ª       ª       _version.data.json
+ª       ª       _version.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---storage3
+ª       ª   ª   constants.data.json
+ª       ª   ª   constants.meta.json
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       analytics.data.json
+ª       ª   ª       analytics.meta.json
+ª       ª   ª       bucket.data.json
+ª       ª   ª       bucket.meta.json
+ª       ª   ª       client.data.json
+ª       ª   ª       client.meta.json
+ª       ª   ª       file_api.data.json
+ª       ª   ª       file_api.meta.json
+ª       ª   ª       request.data.json
+ª       ª   ª       request.meta.json
+ª       ª   ª       vectors.data.json
+ª       ª   ª       vectors.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           analytics.data.json
+ª       ª           analytics.meta.json
+ª       ª           bucket.data.json
+ª       ª           bucket.meta.json
+ª       ª           client.data.json
+ª       ª           client.meta.json
+ª       ª           file_api.data.json
+ª       ª           file_api.meta.json
+ª       ª           request.data.json
+ª       ª           request.meta.json
+ª       ª           vectors.data.json
+ª       ª           vectors.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---string
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---supabase
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---lib
+ª       ª   ª       client_options.data.json
+ª       ª   ª       client_options.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_async
+ª       ª   ª       auth_client.data.json
+ª       ª   ª       auth_client.meta.json
+ª       ª   ª       client.data.json
+ª       ª   ª       client.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           auth_client.data.json
+ª       ª           auth_client.meta.json
+ª       ª           client.data.json
+ª       ª           client.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---supabase_auth
+ª       ª   ª   constants.data.json
+ª       ª   ª   constants.meta.json
+ª       ª   ª   errors.data.json
+ª       ª   ª   errors.meta.json
+ª       ª   ª   helpers.data.json
+ª       ª   ª   helpers.meta.json
+ª       ª   ª   timer.data.json
+ª       ª   ª   timer.meta.json
+ª       ª   ª   types.data.json
+ª       ª   ª   types.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       gotrue_admin_api.data.json
+ª       ª   ª       gotrue_admin_api.meta.json
+ª       ª   ª       gotrue_admin_mfa_api.data.json
+ª       ª   ª       gotrue_admin_mfa_api.meta.json
+ª       ª   ª       gotrue_admin_oauth_api.data.json
+ª       ª   ª       gotrue_admin_oauth_api.meta.json
+ª       ª   ª       gotrue_base_api.data.json
+ª       ª   ª       gotrue_base_api.meta.json
+ª       ª   ª       gotrue_client.data.json
+ª       ª   ª       gotrue_client.meta.json
+ª       ª   ª       gotrue_mfa_api.data.json
+ª       ª   ª       gotrue_mfa_api.meta.json
+ª       ª   ª       storage.data.json
+ª       ª   ª       storage.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           gotrue_admin_api.data.json
+ª       ª           gotrue_admin_api.meta.json
+ª       ª           gotrue_admin_mfa_api.data.json
+ª       ª           gotrue_admin_mfa_api.meta.json
+ª       ª           gotrue_admin_oauth_api.data.json
+ª       ª           gotrue_admin_oauth_api.meta.json
+ª       ª           gotrue_base_api.data.json
+ª       ª           gotrue_base_api.meta.json
+ª       ª           gotrue_client.data.json
+ª       ª           gotrue_client.meta.json
+ª       ª           gotrue_mfa_api.data.json
+ª       ª           gotrue_mfa_api.meta.json
+ª       ª           storage.data.json
+ª       ª           storage.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---supabase_functions
+ª       ª   ª   errors.data.json
+ª       ª   ª   errors.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---_async
+ª       ª   ª       functions_client.data.json
+ª       ª   ª       functions_client.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---_sync
+ª       ª           functions_client.data.json
+ª       ª           functions_client.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---sys
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---tenacity
+ª       ª   ª   after.data.json
+ª       ª   ª   after.meta.json
+ª       ª   ª   before.data.json
+ª       ª   ª   before.meta.json
+ª       ª   ª   before_sleep.data.json
+ª       ª   ª   before_sleep.meta.json
+ª       ª   ª   nap.data.json
+ª       ª   ª   nap.meta.json
+ª       ª   ª   retry.data.json
+ª       ª   ª   retry.meta.json
+ª       ª   ª   stop.data.json
+ª       ª   ª   stop.meta.json
+ª       ª   ª   tornadoweb.data.json
+ª       ª   ª   tornadoweb.meta.json
+ª       ª   ª   wait.data.json
+ª       ª   ª   wait.meta.json
+ª       ª   ª   _utils.data.json
+ª       ª   ª   _utils.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---asyncio
+ª       ª           retry.data.json
+ª       ª           retry.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---typing_inspection
+ª       ª       introspection.data.json
+ª       ª       introspection.meta.json
+ª       ª       typing_objects.data.json
+ª       ª       typing_objects.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---unittest
+ª       ª       async_case.data.json
+ª       ª       async_case.meta.json
+ª       ª       case.data.json
+ª       ª       case.meta.json
+ª       ª       loader.data.json
+ª       ª       loader.meta.json
+ª       ª       main.data.json
+ª       ª       main.meta.json
+ª       ª       result.data.json
+ª       ª       result.meta.json
+ª       ª       runner.data.json
+ª       ª       runner.meta.json
+ª       ª       signals.data.json
+ª       ª       signals.meta.json
+ª       ª       suite.data.json
+ª       ª       suite.meta.json
+ª       ª       _log.data.json
+ª       ª       _log.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---urllib
+ª       ª       error.data.json
+ª       ª       error.meta.json
+ª       ª       parse.data.json
+ª       ª       parse.meta.json
+ª       ª       request.data.json
+ª       ª       request.meta.json
+ª       ª       response.data.json
+ª       ª       response.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---websockets
+ª       ª   ª   client.data.json
+ª       ª   ª   client.meta.json
+ª       ª   ª   datastructures.data.json
+ª       ª   ª   datastructures.meta.json
+ª       ª   ª   exceptions.data.json
+ª       ª   ª   exceptions.meta.json
+ª       ª   ª   frames.data.json
+ª       ª   ª   frames.meta.json
+ª       ª   ª   headers.data.json
+ª       ª   ª   headers.meta.json
+ª       ª   ª   http11.data.json
+ª       ª   ª   http11.meta.json
+ª       ª   ª   imports.data.json
+ª       ª   ª   imports.meta.json
+ª       ª   ª   protocol.data.json
+ª       ª   ª   protocol.meta.json
+ª       ª   ª   server.data.json
+ª       ª   ª   server.meta.json
+ª       ª   ª   speedups.data.json
+ª       ª   ª   speedups.meta.json
+ª       ª   ª   streams.data.json
+ª       ª   ª   streams.meta.json
+ª       ª   ª   typing.data.json
+ª       ª   ª   typing.meta.json
+ª       ª   ª   uri.data.json
+ª       ª   ª   uri.meta.json
+ª       ª   ª   utils.data.json
+ª       ª   ª   utils.meta.json
+ª       ª   ª   version.data.json
+ª       ª   ª   version.meta.json
+ª       ª   ª   __init__.data.json
+ª       ª   ª   __init__.meta.json
+ª       ª   ª   
+ª       ª   +---asyncio
+ª       ª   ª       client.data.json
+ª       ª   ª       client.meta.json
+ª       ª   ª       compatibility.data.json
+ª       ª   ª       compatibility.meta.json
+ª       ª   ª       connection.data.json
+ª       ª   ª       connection.meta.json
+ª       ª   ª       messages.data.json
+ª       ª   ª       messages.meta.json
+ª       ª   ª       router.data.json
+ª       ª   ª       router.meta.json
+ª       ª   ª       server.data.json
+ª       ª   ª       server.meta.json
+ª       ª   ª       __init__.data.json
+ª       ª   ª       __init__.meta.json
+ª       ª   ª       
+ª       ª   +---extensions
+ª       ª           base.data.json
+ª       ª           base.meta.json
+ª       ª           permessage_deflate.data.json
+ª       ª           permessage_deflate.meta.json
+ª       ª           __init__.data.json
+ª       ª           __init__.meta.json
+ª       ª           
+ª       +---wsgiref
+ª       ª       types.data.json
+ª       ª       types.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---yarl
+ª       ª       _parse.data.json
+ª       ª       _parse.meta.json
+ª       ª       _path.data.json
+ª       ª       _path.meta.json
+ª       ª       _query.data.json
+ª       ª       _query.meta.json
+ª       ª       _quoters.data.json
+ª       ª       _quoters.meta.json
+ª       ª       _quoting.data.json
+ª       ª       _quoting.meta.json
+ª       ª       _quoting_py.data.json
+ª       ª       _quoting_py.meta.json
+ª       ª       _url.data.json
+ª       ª       _url.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---zipfile
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---zoneinfo
+ª       ª       _common.data.json
+ª       ª       _common.meta.json
+ª       ª       _tzpath.data.json
+ª       ª       _tzpath.meta.json
+ª       ª       __init__.data.json
+ª       ª       __init__.meta.json
+ª       ª       
+ª       +---_typeshed
+ª               importlib.data.json
+ª               importlib.meta.json
+ª               wsgi.data.json
+ª               wsgi.meta.json
+ª               __init__.data.json
+ª               __init__.meta.json
+ª               
++---.pytest_cache
+ª   ª   .gitignore
+ª   ª   CACHEDIR.TAG
+ª   ª   README.md
+ª   ª   
+ª   +---v
+ª       +---cache
+ª               lastfailed
+ª               nodeids
+ª               
++---app
+ª   ª   comparison.py
+ª   ª   comparison.py.backup
+ª   ª   config.py
+ª   ª   database.py
+ª   ª   logger.py
+ª   ª   __init__.py
+ª   ª   
+ª   +---backup
+ª   ª       base_scraper_bk.py
+ª   ª       comparison_bk.py
+ª   ª       
+ª   +---scrapers
+ª   ª   ª   base_scraper.py
+ª   ª   ª   base_scraper.py.backup
+ª   ª   ª   hobby_link_japan.py
+ª   ª   ª   hobby_link_japan.py.backup
+ª   ª   ª   hobby_planet.py
+ª   ª   ª   hobby_planet.py.backup
+ª   ª   ª   hobby_planet.py.backup2
+ª   ª   ª   _selectors.py
+ª   ª   ª   
+ª   ª   +---backup
+ª   ª   ª       hobby_link_japan.py.backup.py
+ª   ª   ª       hobby_link_japan_backup.py
+ª   ª   ª       hobby_link_japan_bk_2026.py
+ª   ª   ª       hobby_link_japan_bk_error_feb26.py
+ª   ª   ª       
+ª   ª   +---__pycache__
+ª   ª           base_scraper.cpython-311.pyc
+ª   ª           hobby_link_japan.cpython-311.pyc
+ª   ª           hobby_planet.cpython-311.pyc
+ª   ª           _selectors.cpython-311.pyc
+ª   ª           
+ª   +---__pycache__
+ª           comparison.cpython-311.pyc
+ª           config.cpython-311.pyc
+ª           database.cpython-311.pyc
+ª           logger.cpython-311.pyc
+ª           __init__.cpython-311.pyc
+ª           
++---backup
+ª       .env_bk
+ª       
++---tests
+ª   ª   test_results.json
+ª   ª   test_scrapers.py
+ª   ª   __init__.py
+ª   ª   
+ª   +---__pycache__
+ª           test_scrapers.cpython-311-pytest-9.0.2.pyc
+ª           test_scrapers.cpython-311.pyc
+ª           __init__.cpython-311.pyc
+ª           
++---__pycache__
+        api_server.cpython-311.pyc
+        
