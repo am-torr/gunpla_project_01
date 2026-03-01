@@ -1,0 +1,33 @@
+services:
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile.scraper
+    container_name: gunpla-scraper
+    env_file:
+      - .env
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+    depends_on:
+      - n8n
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: gunpla-n8n
+    ports:
+      - "5679:5678"
+    env_file:
+      - .env  # Loads ALL vars (PERPLEXITY_*, FB_*, EXECUTIONS_TIMEOUT, WEBHOOK_URL...)
+    volumes:
+      - n8n-data:/home/node/.n8n
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+networks:
+  gunpla-network:
+    driver: bridge
+
+volumes:
+  n8n-data:

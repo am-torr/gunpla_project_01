@@ -1,0 +1,262 @@
+{
+  "test_date": "2026-02-26T05:24:24.657888",
+  "stores": [
+    {
+      "store_name": "Hobby Planet",
+      "products_scraped": 5,
+      "products": [
+        {
+          "product": {
+            "product_name": "Alaya-Vijnana Technology Barbatos Lupus Head Bust with Sound Control RGB Lighting Effect",
+            "grade": null,
+            "scale": "N/A",
+            "special_edition": "Standard",
+            "bandai_sku": null
+          },
+          "price": {
+            "price": 2800.0,
+            "currency": "PHP",
+            "stock_status": "In Stock",
+            "product_url": "https://hobbyplanet.info/product/alaya-vijnana-technology-barbatos-lupus-head-bust-with-sound-control-rgb-lighting-effect/"
+          }
+        },
+        {
+          "product": {
+            "product_name": "Daban 6609 MG 1/100 Duel Gundam Assault Shroud",
+            "grade": "MG",
+            "scale": "1/100",
+            "special_edition": "Standard",
+            "bandai_sku": null
+          },
+          "price": {
+            "price": 1200.0,
+            "currency": "PHP",
+            "stock_status": "In Stock",
+            "product_url": "https://hobbyplanet.info/product/dbn-mg-1-100-duel-assault-shroud-6609/"
+          }
+        },
+        {
+          "product": {
+            "product_name": "BL 2508 1/100 ZGMF-X13A Providence Gundam",
+            "grade": "MG",
+            "scale": "1/100",
+            "special_edition": "Standard",
+            "bandai_sku": null
+          },
+          "price": {
+            "price": 1350.0,
+            "currency": "PHP",
+            "stock_status": "In Stock",
+            "product_url": "https://hobbyplanet.info/product/bl-2508-1-100-zgmf-x13a-providence-gundam/"
+          }
+        },
+        {
+          "product": {
+            "product_name": "Daban MG 1/100 Aegis Gundam (#6617)",
+            "grade": "MG",
+            "scale": "1/100",
+            "special_edition": "Standard",
+            "bandai_sku": null
+          },
+          "price": {
+            "price": 1250.0,
+            "currency": "PHP",
+            "stock_status": "In Stock",
+            "product_url": "https://hobbyplanet.info/product/daban-mg-1-100-6617-aegis-fighter/"
+          }
+        },
+        {
+          "product": {
+            "product_name": "M-Boy Model MG 1/100 Hazel Gundam Custom MZ-001",
+            "grade": "MG",
+            "scale": "1/100",
+            "special_edition": "Standard",
+            "bandai_sku": null
+          },
+          "price": {
+            "price": 1200.0,
+            "currency": "PHP",
+            "stock_status": "In Stock",
+            "product_url": "https://hobbyplanet.info/product/m-boy-model-mg-1-100-hazel-custom-mz-001/"
+          }
+        }
+      ]
+    },
+    {
+      "store_name": "Hobby Link Japan",
+      "products_scraped": 5,
+      "products": [
+        {
+          "product": {
+            "product_name": "Gunpla Catalog Special Edition: Gunpla 45th Anniversary: A collection of Gundams from all the anime series!",
+            "sku": "HBJ64136",
+            "brand": "Unknown",
+            "grade": "Unknown",
+            "scale": "Unknown",
+            "image_url": "https://www.hlj.com/media/original_images/noImage.png",
+            "on_sale": true
+          },
+          "price": {
+            "price": 1469.06,
+            "currency": "PHP",
+            "stock_status": "Order now!",
+            "product_url": "https://www.hlj.com/gunpla-catalog-special-edition-gunpla-45th-anniversary-a-collection-of-gundams-from-all-the-anime-series-hbj64136"
+          },
+          "details": {
+            "code": "HBJ64136",
+            "jan_code": "9784798641362",
+            "release_date": "2026/03/31",
+            "category": "Gundam",
+            "series": [
+              "Gundam"
+            ],
+            "description": null,
+            "includes": [],
+            "country_of_origin": "N/A",
+            "manufacturer": "Hobby Japan",
+            "dimensions": null,
+            "weight": null,
+            "item_type": "Gundam Universe Books/Magazines",
+            "cancellation_deadline": "2026-02-28"
+          }
+        },
+        {
+          "product": {
+            "product_name": "Gundam Weapons Gunpla 45th Anniversary RX-93 New Gundam",
+            "sku": "HBJ64071",
+            "brand": "Unknown",
+            "grade": "Unknown",
+            "scale": "Unknown",
+            "image_url": "https://www.hlj.com/media/original_images/noImage.png",
+            "on_sale": true
+          },
+          "price": {
+            "price": 1691.65,
+            "currency": "PHP",
+            "stock_status": "Order now!",
+            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-45th-anniversary-rx-93-new-gundam-hbj64071"
+          },
+          "details": {
+            "code": "HBJ64071",
+            "jan_code": "9784798640716",
+            "release_date": "2026/03/12",
+            "category": "Gundam",
+            "series": [
+              "Gundam"
+            ],
+            "description": null,
+            "includes": [],
+            "country_of_origin": "N/A",
+            "manufacturer": "Hobby Japan",
+            "dimensions": null,
+            "weight": null,
+            "item_type": "Gundam Universe Books/Magazines",
+            "cancellation_deadline": "2026-01-30"
+          }
+        },
+        {
+          "product": {
+            "product_name": "1/144 Option Parts Set Gunpla 13 (Gunpla Battle Arm Arms)",
+            "sku": "BANH674296",
+            "brand": "Unknown",
+            "grade": "Unknown",
+            "scale": "Unknown",
+            "image_url": "https://www.hlj.com/productthumbs/ban/banh674296_0_1732246224.jpg?v=1732246224",
+            "on_sale": true
+          },
+          "price": {
+            "price": 356.14,
+            "currency": "PHP",
+            "stock_status": "Order now!",
+            "product_url": "https://www.hlj.com/1-144-scale-option-parts-set-gunpla-13-gunpla-battle-arm-arms-banh674296"
+          },
+          "details": {
+            "code": "BANH674296",
+            "jan_code": "4573102674296",
+            "release_date": "2024/11/21",
+            "category": "Gundam",
+            "series": [
+              "Gundam Build Fighters / Gundam Build Divers / Gundam Build Metaverse"
+            ],
+            "description": null,
+            "includes": [],
+            "country_of_origin": "Japan",
+            "manufacturer": "Bandai",
+            "dimensions": "19 x 15 x 4.7 cm",
+            "weight": "150g",
+            "item_type": "Other Gundam Kits",
+            "cancellation_deadline": "2024-06-04"
+          }
+        },
+        {
+          "product": {
+            "product_name": "Gundam Weapons: Gunpla Builders J",
+            "sku": "HBJGW44",
+            "brand": "Unknown",
+            "grade": "Unknown",
+            "scale": "Unknown",
+            "image_url": "https://www.hlj.com/productthumbs/hbj/hbjgw44_1_1484532615.jpg?v=1484532615",
+            "on_sale": true
+          },
+          "price": {
+            "price": 1187.27,
+            "currency": "PHP",
+            "stock_status": "Only 3 left in stock.  Order now!",
+            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-builders-j-hbjgw44"
+          },
+          "details": {
+            "code": "HBJGW44",
+            "jan_code": "9784798604206",
+            "release_date": "2012/06/29",
+            "category": "Gundam",
+            "series": [
+              "Gundam Weapons"
+            ],
+            "description": null,
+            "includes": [],
+            "country_of_origin": "Japan",
+            "manufacturer": "Hobby Japan",
+            "dimensions": "29.8 x 21.3 x 1 cm",
+            "weight": "590g",
+            "item_type": "Gundam Universe Books/Magazines",
+            "cancellation_deadline": "2012-05-25"
+          }
+        },
+        {
+          "product": {
+            "product_name": "1/144 HGUC Zeta Gundam - Gunpla Evolution Project",
+            "sku": "BANH556110-UP",
+            "brand": "Unknown",
+            "grade": "Unknown",
+            "scale": "Unknown",
+            "image_url": "https://www.hlj.com/productthumbs/ban/banh556110-up_0_1746077472.jpg?v=1746077472",
+            "on_sale": true
+          },
+          "price": {
+            "price": 890.34,
+            "currency": "PHP",
+            "stock_status": "Order now!",
+            "product_url": "https://www.hlj.com/1-144-scale-hguc-zeta-gundam-gunpla-evolution-project-banh556110-up"
+          },
+          "details": {
+            "code": "BANH556110",
+            "jan_code": "4573102556110",
+            "release_date": "2025/04/30",
+            "category": "Gundam",
+            "series": [
+              "Zeta Gundam"
+            ],
+            "description": null,
+            "includes": [],
+            "country_of_origin": "Japan",
+            "manufacturer": "Bandai",
+            "dimensions": "30 x 19 x 8 cm",
+            "weight": "420g",
+            "item_type": "High Grade Kits",
+            "cancellation_deadline": "2024-11-13"
+          }
+        }
+      ]
+    }
+  ]
+}

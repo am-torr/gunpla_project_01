@@ -1,0 +1,434 @@
+﻿[
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app",
+        "Name":  "app",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\tests",
+        "Name":  "tests",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.env",
+        "Name":  ".env",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\api_server.py",
+        "Name":  "api_server.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\docker-compose.yml",
+        "Name":  "docker-compose.yml",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\gunpla-dir-map-thread15.json",
+        "Name":  "gunpla-dir-map-thread15.json",
+        "LengthMB":  0.9,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\gunpla-poc-live-scrape - Copy.html",
+        "Name":  "gunpla-poc-live-scrape - Copy.html",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\gunpla-poc-live-scrape.html",
+        "Name":  "gunpla-poc-live-scrape.html",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\gunpla-tree-thread15.txt",
+        "Name":  "gunpla-tree-thread15.txt",
+        "LengthMB":  0.2,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\gunpla_structure_thread15.csv",
+        "Name":  "gunpla_structure_thread15.csv",
+        "LengthMB":  0.2,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\hlj_check.py",
+        "Name":  "hlj_check.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\hlj_page.html",
+        "Name":  "hlj_page.html",
+        "LengthMB":  0.4,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\iframe-test.html",
+        "Name":  "iframe-test.html",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\mypy.ini",
+        "Name":  "mypy.ini",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\python_async_checker.py",
+        "Name":  "python_async_checker.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\python_health_checker.ps1",
+        "Name":  "python_health_checker.ps1",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\python_performance_checker.py",
+        "Name":  "python_performance_checker.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\python_syntax_checker.py",
+        "Name":  "python_syntax_checker.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\readme.md",
+        "Name":  "readme.md",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\requirements.txt",
+        "Name":  "requirements.txt",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\scheduler.py",
+        "Name":  "scheduler.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\SYSTEM_TEST_REPORT.md",
+        "Name":  "SYSTEM_TEST_REPORT.md",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\test_results.json",
+        "Name":  "test_results.json",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-child-folders.txt",
+        "Name":  "thread15-child-folders.txt",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-dir-tree.txt",
+        "Name":  "thread15-dir-tree.txt",
+        "LengthMB":  0.1,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-files.csv",
+        "Name":  "thread15-files.csv",
+        "LengthMB":  0.2,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-folder-lock.txt",
+        "Name":  "thread15-folder-lock.txt",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-lock.json",
+        "Name":  "thread15-lock.json",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-structure-lock.json",
+        "Name":  "thread15-structure-lock.json",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-tree-visual.txt",
+        "Name":  "thread15-tree-visual.txt",
+        "LengthMB":  0.1,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\thread15-tree.txt",
+        "Name":  "thread15-tree.txt",
+        "LengthMB":  0.2,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\UNIT_TEST_REPORT.md",
+        "Name":  "UNIT_TEST_REPORT.md",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks",
+        "Name":  "hooks",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\info",
+        "Name":  "info",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\logs",
+        "Name":  "logs",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\refs",
+        "Name":  "refs",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\COMMIT_EDITMSG",
+        "Name":  "COMMIT_EDITMSG",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\config",
+        "Name":  "config",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\description",
+        "Name":  "description",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\HEAD",
+        "Name":  "HEAD",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\index",
+        "Name":  "index",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\ORIG_HEAD",
+        "Name":  "ORIG_HEAD",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\applypatch-msg.sample",
+        "Name":  "applypatch-msg.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\commit-msg.sample",
+        "Name":  "commit-msg.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\fsmonitor-watchman.sample",
+        "Name":  "fsmonitor-watchman.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\post-update.sample",
+        "Name":  "post-update.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\pre-applypatch.sample",
+        "Name":  "pre-applypatch.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\pre-commit.sample",
+        "Name":  "pre-commit.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\pre-merge-commit.sample",
+        "Name":  "pre-merge-commit.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\pre-push.sample",
+        "Name":  "pre-push.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\pre-receive.sample",
+        "Name":  "pre-receive.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\prepare-commit-msg.sample",
+        "Name":  "prepare-commit-msg.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\push-to-checkout.sample",
+        "Name":  "push-to-checkout.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\sendemail-validate.sample",
+        "Name":  "sendemail-validate.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\hooks\\update.sample",
+        "Name":  "update.sample",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\info\\exclude",
+        "Name":  "exclude",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\logs\\refs",
+        "Name":  "refs",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\logs\\HEAD",
+        "Name":  "HEAD",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\logs\\refs\\heads",
+        "Name":  "heads",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\logs\\refs\\heads\\master",
+        "Name":  "master",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\refs\\heads",
+        "Name":  "heads",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\refs\\tags",
+        "Name":  "tags",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\.git\\refs\\heads\\master",
+        "Name":  "master",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\scrapers",
+        "Name":  "scrapers",
+        "LengthMB":  0,
+        "PSIsContainer":  true
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\comparison.py",
+        "Name":  "comparison.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\config.py",
+        "Name":  "config.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\logger.py",
+        "Name":  "logger.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\__init__.py",
+        "Name":  "__init__.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\app\\scrapers\\_selectors.py",
+        "Name":  "_selectors.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\tests\\test_results.json",
+        "Name":  "test_results.json",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\tests\\test_scrapers.py",
+        "Name":  "test_scrapers.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    },
+    {
+        "FullName":  "D:\\PROJECT\\gunpla-tracker-verified\\tests\\__init__.py",
+        "Name":  "__init__.py",
+        "LengthMB":  0,
+        "PSIsContainer":  false
+    }
+]

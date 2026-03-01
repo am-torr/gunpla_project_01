@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gunpla Tracker - LIVE Scraping POC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* PROOF OF LIVE Section */
+        .proof-box {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4CAF50;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            max-width: 1800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .proof-box h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .proof-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .proof-item {
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #4CAF50;
+        }
+        .proof-label {
+            font-size: 0.85em;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        .proof-value {
+            font-weight: bold;
+            color: #4CAF50;
+            font-size: 1.1em;
+            word-break: break-word;
+        }
+        .live-pulse {
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .controls {
+            background: rgba(42, 42, 42, 0.8);
+            border: 2px solid #4CAF50;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .search-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .filter-group label {
+            font-size: 0.9em;
+            color: #aaa;
+            font-weight: 600;
+        }
+        .filter-group input, .filter-group select {
+            padding: 10px;
+            border: 2px solid #444;
+            border-radius: 6px;
+            background: #1a1a1a;
+            color: white;
+            font-size: 1em;
+        }
+        .sort-dropdown {
+            padding: 12px;
+            border: 2px solid #4CAF50;
+            border-radius: 6px;
+            background: #1a1a1a;
+            color: white;
+            font-size: 1em;
+            width: 100%;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+            background: #4CAF50;
+            color: black;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #45a049; transform: translateY(-2px); }
+        .btn:disabled { background: #666; cursor: not-allowed; transform: none; }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 35% 30% 35%;
+            gap: 20px;
+            height: calc(100vh - 480px);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .panel {
+            background: rgba(42, 42, 42, 0.8);
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #444;
+        }
+        .panel-header h2 { font-size: 1.3em; color: #4CAF50; }
+        .badge {
+            font-size: 0.7em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #4CAF50;
+            color: black;
+            font-weight: bold;
+        }
+        iframe { width: 100%; flex: 1; border: none; border-radius: 8px; background: white; }
+        .content { flex: 1; overflow-y: auto; padding: 10px; }
+        
+        .comparison-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.2s;
+        }
+        .comparison-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+        .product-name { font-weight: bold; font-size: 1.1em; margin-bottom: 10px; }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        .price { font-size: 1.2em; font-weight: bold; color: #4CAF50; }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #aaa;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1> Gunpla Price Tracker POC</h1>
+        <p>Live Scraping Demo - NOT Hardcoded</p>
+    </div>
+
+    <!-- PROOF OF LIVE Section -->
+    <div class="proof-box">
+        <h3><span class="live-pulse"></span> PROOF: This is LIVE Scraping</h3>
+        <div class="proof-items">
+            <div class="proof-item">
+                <div class="proof-label">Last Scraped:</div>
+                <div class="proof-value" id="last-scraped">Never</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-label">Scraped URL:</div>
+                <div class="proof-value" id="scraped-url" style="font-size: 0.85em;">-</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-label">Products Found:</div>
+                <div class="proof-value" id="product-count">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <h3 style="color: #4CAF50; margin-bottom: 15px;"> Interactive Filters (Changes Results)</h3>
+        <div class="search-row">
+            <div class="filter-group">
+                <label>Search (Try: "Gundam", "Aegis")</label>
+                <input type="text" id="search-input" placeholder="Type to search..." />
+            </div>
+            <div class="filter-group">
+                <label>Grade Filter</label>
+                <select id="grade-filter">
+                    <option value="">All</option>
+                    <option value="MG">MG</option>
+                    <option value="HG">HG</option>
+                    <option value="PG">PG</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort Results</label>
+                <select class="sort-dropdown" id="sort-select">
+                    <option value="latest">Latest</option>
+                    <option value="price-low">Price: Low  High</option>
+                    <option value="price-high">Price: High  Low</option>
+                </select>
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <button class="btn" id="scrape-btn" onclick="triggerScrape()"> Scrape Live</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="panel">
+            <div class="panel-header">
+                <h2> Hobby Planet <span class="badge">LIVE</span></h2>
+            </div>
+            <iframe src="https://hobbyplanet.info/"></iframe>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2> Scraped Results</h2>
+            </div>
+            <div class="content" id="results">
+                <div class="loading"> Click "Scrape Live" to fetch real data</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2> HLJ Results</h2>
+            </div>
+            <div class="content" id="hlj-results">
+                <div class="loading">Waiting...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scrapeStartTime;
+
+        async function triggerScrape() {
+            scrapeStartTime = Date.now();
+            const search = document.getElementById('search-input').value;
+            const grade = document.getElementById('grade-filter').value;
+            const sort = document.getElementById('sort-select').value;
+            
+            const btn = document.getElementById('scrape-btn');
+            btn.disabled = true;
+            btn.textContent = ' Scraping...';
+
+            // Update proof indicators
+            document.getElementById('last-scraped').textContent = 'Scraping now...';
+            document.getElementById('scraped-url').textContent = 'Connecting...';
+            document.getElementById('product-count').textContent = '...';
+
+            document.getElementById('results').innerHTML = '<div class="loading"> Scraping Hobby Planet LIVE...</div>';
+            document.getElementById('hlj-results').innerHTML = '<div class="loading"> Scraping HLJ...</div>';
+
+            try {
+                const url = `http://localhost:8000/api/scrape?search=${encodeURIComponent(search)}&grade=${grade}&sort=${sort}&limit=10`;
+                
+                console.log(' Calling API:', url);
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const elapsed = ((Date.now() - scrapeStartTime) / 1000).toFixed(1);
+                
+                // Update proof indicators
+                document.getElementById('last-scraped').textContent = `${elapsed}s ago`;
+                document.getElementById('scraped-url').textContent = data.scraped_url || 'Hobby Planet';
+                document.getElementById('product-count').textContent = data.count;
+
+                // Render results
+                renderResults(data);
+
+
+				// Server-side filter
+				const hljResponse = await fetch(`http://localhost:8000/api/kits?filter=available&grade=HG&limit=20`);
+				const responseData = await hljResponse.json();
+				const hljData = responseData.kits;  // Filtered array
+				renderHLJ(hljData);
+
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('results').innerHTML = 
+                    '<div class="loading" style="color: #F44336;"> Error: Make sure API is running</div>';
+                document.getElementById('last-scraped').textContent = 'Failed';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = ' Scrape Live';
+            }
+        }
+
+		function showLiveOnly(products) {
+			return products.filter(p => 
+				!p.stock_status?.includes('ORDER_STOP') && 
+				!p.stock_status?.includes('BACKORDER') &&
+				!p.stock_status?.includes('ORDERSTOP') &&  // Undercore/no-space
+				p.stock_status?.toUpperCase() !== 'OUT_OF_STOCK'
+			);
+		}
+
+
+        function renderResults(data) {
+            const container = document.getElementById('results');
+            if (data.success && data.products && data.products.length > 0) {
+                container.innerHTML = data.products.map(p => `
+                    <div class="comparison-card">
+                        <div class="product-name">${p.name}</div>
+                        <div class="price-row">
+                            <span>Price:</span>
+                            <span class="price">${p.price.toLocaleString()}</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Stock:</span>
+                            <span style="color: #4CAF50;">${p.stock}</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 10px; color: #666;">
+                            ${p.grade} | ${p.scale}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<div class="loading">No results found</div>';
+            }
+        }
+
+        function renderHLJ(data) {
+            const container = document.getElementById('hlj-results');
+            if (data.success && data.products && data.products.length > 0) {
+                container.innerHTML = data.products.map(p => `
+                    <div class="comparison-card">
+                        <div class="product-name">${p.name}</div>
+                        <div class="price-row">
+                            <span>Price:</span>
+                            <span class="price">${p.price.toLocaleString()}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<div class="loading">No HLJ results</div>';
+            }
+        }
+
+        document.getElementById('search-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') triggerScrape();
+        });
+
+        console.log(' POC Ready - Click "Scrape Live" to prove it\'s not hardcoded!');
+    </script>
+</body>
+</html>

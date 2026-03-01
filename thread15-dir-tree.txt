@@ -1,0 +1,2452 @@
+﻿Folder PATH listing for volume Workspace
+Volume serial number is 2273-92DA
+D:.
+|   .coverage
+|   .env
+|   .env.full-backup.045737
+|   .env.step2.backup.045909
+|   api_server.py
+|   BUGS.md
+|   docker-compose.yml
+|   docker-compose_bk.yml
+|   gunpla-poc-hybrid-v2 - Copy.html
+|   gunpla-poc-hybrid-v2.html
+|   gunpla-poc-hybrid.html
+|   gunpla-poc-live-scrape - Copy.html
+|   gunpla-poc-live-scrape.html
+|   hlj_check.py
+|   hlj_debug.png
+|   hlj_page.html
+|   iframe-test.html
+|   mypy.ini
+|   python_async_checker.py
+|   python_health_checker.ps1
+|   python_performance_checker.py
+|   python_syntax_checker.py
+|   readme.md
+|   requirements.txt
+|   scheduler.py
+|   SYSTEM_TEST_REPORT.md
+|   test_results.json
+|   thread15-child-folders.txt
+|   thread15-dir-tree.txt
+|   thread15-files.csv
+|   thread15-folder-lock.txt
+|   thread15-tree-visual.txt
+|   thread15-tree.txt
+|   UNIT_TEST_REPORT.md
+|   
++---.mypy_cache
+|   |   .gitignore
+|   |   CACHEDIR.TAG
+|   |   missing_stubs
+|   |   
+|   \---3.11
+|       |   @plugins_snapshot.json
+|       |   abc.data.json
+|       |   abc.meta.json
+|       |   argparse.data.json
+|       |   argparse.meta.json
+|       |   array.data.json
+|       |   array.meta.json
+|       |   ast.data.json
+|       |   ast.meta.json
+|       |   atexit.data.json
+|       |   atexit.meta.json
+|       |   base64.data.json
+|       |   base64.meta.json
+|       |   binascii.data.json
+|       |   binascii.meta.json
+|       |   bisect.data.json
+|       |   bisect.meta.json
+|       |   builtins.data.json
+|       |   builtins.meta.json
+|       |   bz2.data.json
+|       |   bz2.meta.json
+|       |   calendar.data.json
+|       |   calendar.meta.json
+|       |   codecs.data.json
+|       |   codecs.meta.json
+|       |   colorsys.data.json
+|       |   colorsys.meta.json
+|       |   configparser.data.json
+|       |   configparser.meta.json
+|       |   contextlib.data.json
+|       |   contextlib.meta.json
+|       |   contextvars.data.json
+|       |   contextvars.meta.json
+|       |   copy.data.json
+|       |   copy.meta.json
+|       |   copyreg.data.json
+|       |   copyreg.meta.json
+|       |   dataclasses.data.json
+|       |   dataclasses.meta.json
+|       |   datetime.data.json
+|       |   datetime.meta.json
+|       |   decimal.data.json
+|       |   decimal.meta.json
+|       |   difflib.data.json
+|       |   difflib.meta.json
+|       |   dis.data.json
+|       |   dis.meta.json
+|       |   enum.data.json
+|       |   enum.meta.json
+|       |   errno.data.json
+|       |   errno.meta.json
+|       |   fnmatch.data.json
+|       |   fnmatch.meta.json
+|       |   fractions.data.json
+|       |   fractions.meta.json
+|       |   functools.data.json
+|       |   functools.meta.json
+|       |   genericpath.data.json
+|       |   genericpath.meta.json
+|       |   getpass.data.json
+|       |   getpass.meta.json
+|       |   gettext.data.json
+|       |   gettext.meta.json
+|       |   glob.data.json
+|       |   glob.meta.json
+|       |   gzip.data.json
+|       |   gzip.meta.json
+|       |   hashlib.data.json
+|       |   hashlib.meta.json
+|       |   hmac.data.json
+|       |   hmac.meta.json
+|       |   inspect.data.json
+|       |   inspect.meta.json
+|       |   io.data.json
+|       |   io.meta.json
+|       |   ipaddress.data.json
+|       |   ipaddress.meta.json
+|       |   itertools.data.json
+|       |   itertools.meta.json
+|       |   keyword.data.json
+|       |   keyword.meta.json
+|       |   linecache.data.json
+|       |   linecache.meta.json
+|       |   marshal.data.json
+|       |   marshal.meta.json
+|       |   math.data.json
+|       |   math.meta.json
+|       |   mimetypes.data.json
+|       |   mimetypes.meta.json
+|       |   mmap.data.json
+|       |   mmap.meta.json
+|       |   msvcrt.data.json
+|       |   msvcrt.meta.json
+|       |   netrc.data.json
+|       |   netrc.meta.json
+|       |   ntpath.data.json
+|       |   ntpath.meta.json
+|       |   nturl2path.data.json
+|       |   nturl2path.meta.json
+|       |   numbers.data.json
+|       |   numbers.meta.json
+|       |   opcode.data.json
+|       |   opcode.meta.json
+|       |   operator.data.json
+|       |   operator.meta.json
+|       |   pickle.data.json
+|       |   pickle.meta.json
+|       |   platform.data.json
+|       |   platform.meta.json
+|       |   posixpath.data.json
+|       |   posixpath.meta.json
+|       |   pprint.data.json
+|       |   pprint.meta.json
+|       |   pydoc.data.json
+|       |   pydoc.meta.json
+|       |   queue.data.json
+|       |   queue.meta.json
+|       |   random.data.json
+|       |   random.meta.json
+|       |   re.data.json
+|       |   re.meta.json
+|       |   reprlib.data.json
+|       |   reprlib.meta.json
+|       |   secrets.data.json
+|       |   secrets.meta.json
+|       |   select.data.json
+|       |   select.meta.json
+|       |   selectors.data.json
+|       |   selectors.meta.json
+|       |   shlex.data.json
+|       |   shlex.meta.json
+|       |   shutil.data.json
+|       |   shutil.meta.json
+|       |   signal.data.json
+|       |   signal.meta.json
+|       |   socket.data.json
+|       |   socket.meta.json
+|       |   sre_compile.data.json
+|       |   sre_compile.meta.json
+|       |   sre_constants.data.json
+|       |   sre_constants.meta.json
+|       |   sre_parse.data.json
+|       |   sre_parse.meta.json
+|       |   ssl.data.json
+|       |   ssl.meta.json
+|       |   stat.data.json
+|       |   stat.meta.json
+|       |   struct.data.json
+|       |   struct.meta.json
+|       |   subprocess.data.json
+|       |   subprocess.meta.json
+|       |   tarfile.data.json
+|       |   tarfile.meta.json
+|       |   tempfile.data.json
+|       |   tempfile.meta.json
+|       |   textwrap.data.json
+|       |   textwrap.meta.json
+|       |   threading.data.json
+|       |   threading.meta.json
+|       |   time.data.json
+|       |   time.meta.json
+|       |   tomllib.data.json
+|       |   tomllib.meta.json
+|       |   traceback.data.json
+|       |   traceback.meta.json
+|       |   types.data.json
+|       |   types.meta.json
+|       |   typing.data.json
+|       |   typing.meta.json
+|       |   typing_extensions.data.json
+|       |   typing_extensions.meta.json
+|       |   unicodedata.data.json
+|       |   unicodedata.meta.json
+|       |   uuid.data.json
+|       |   uuid.meta.json
+|       |   warnings.data.json
+|       |   warnings.meta.json
+|       |   weakref.data.json
+|       |   weakref.meta.json
+|       |   zipimport.data.json
+|       |   zipimport.meta.json
+|       |   zlib.data.json
+|       |   zlib.meta.json
+|       |   _ast.data.json
+|       |   _ast.meta.json
+|       |   _asyncio.data.json
+|       |   _asyncio.meta.json
+|       |   _bisect.data.json
+|       |   _bisect.meta.json
+|       |   _blake2.data.json
+|       |   _blake2.meta.json
+|       |   _bz2.data.json
+|       |   _bz2.meta.json
+|       |   _codecs.data.json
+|       |   _codecs.meta.json
+|       |   _collections_abc.data.json
+|       |   _collections_abc.meta.json
+|       |   _compression.data.json
+|       |   _compression.meta.json
+|       |   _contextvars.data.json
+|       |   _contextvars.meta.json
+|       |   _ctypes.data.json
+|       |   _ctypes.meta.json
+|       |   _decimal.data.json
+|       |   _decimal.meta.json
+|       |   _frozen_importlib.data.json
+|       |   _frozen_importlib.meta.json
+|       |   _frozen_importlib_external.data.json
+|       |   _frozen_importlib_external.meta.json
+|       |   _hashlib.data.json
+|       |   _hashlib.meta.json
+|       |   _io.data.json
+|       |   _io.meta.json
+|       |   _operator.data.json
+|       |   _operator.meta.json
+|       |   _pickle.data.json
+|       |   _pickle.meta.json
+|       |   _queue.data.json
+|       |   _queue.meta.json
+|       |   _random.data.json
+|       |   _random.meta.json
+|       |   _sitebuiltins.data.json
+|       |   _sitebuiltins.meta.json
+|       |   _socket.data.json
+|       |   _socket.meta.json
+|       |   _ssl.data.json
+|       |   _ssl.meta.json
+|       |   _stat.data.json
+|       |   _stat.meta.json
+|       |   _struct.data.json
+|       |   _struct.meta.json
+|       |   _thread.data.json
+|       |   _thread.meta.json
+|       |   _warnings.data.json
+|       |   _warnings.meta.json
+|       |   _weakref.data.json
+|       |   _weakref.meta.json
+|       |   _weakrefset.data.json
+|       |   _weakrefset.meta.json
+|       |   _winapi.data.json
+|       |   _winapi.meta.json
+|       |   __future__.data.json
+|       |   __future__.meta.json
+|       |   
+|       +---annotated_types
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---anyio
+|       |   |   from_thread.data.json
+|       |   |   from_thread.meta.json
+|       |   |   lowlevel.data.json
+|       |   |   lowlevel.meta.json
+|       |   |   to_thread.data.json
+|       |   |   to_thread.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---abc
+|       |   |       _eventloop.data.json
+|       |   |       _eventloop.meta.json
+|       |   |       _resources.data.json
+|       |   |       _resources.meta.json
+|       |   |       _sockets.data.json
+|       |   |       _sockets.meta.json
+|       |   |       _streams.data.json
+|       |   |       _streams.meta.json
+|       |   |       _subprocesses.data.json
+|       |   |       _subprocesses.meta.json
+|       |   |       _tasks.data.json
+|       |   |       _tasks.meta.json
+|       |   |       _testing.data.json
+|       |   |       _testing.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---streams
+|       |   |       memory.data.json
+|       |   |       memory.meta.json
+|       |   |       stapled.data.json
+|       |   |       stapled.meta.json
+|       |   |       tls.data.json
+|       |   |       tls.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_core
+|       |           _eventloop.data.json
+|       |           _eventloop.meta.json
+|       |           _exceptions.data.json
+|       |           _exceptions.meta.json
+|       |           _fileio.data.json
+|       |           _fileio.meta.json
+|       |           _resources.data.json
+|       |           _resources.meta.json
+|       |           _signals.data.json
+|       |           _signals.meta.json
+|       |           _sockets.data.json
+|       |           _sockets.meta.json
+|       |           _streams.data.json
+|       |           _streams.meta.json
+|       |           _subprocesses.data.json
+|       |           _subprocesses.meta.json
+|       |           _synchronization.data.json
+|       |           _synchronization.meta.json
+|       |           _tasks.data.json
+|       |           _tasks.meta.json
+|       |           _tempfile.data.json
+|       |           _tempfile.meta.json
+|       |           _testing.data.json
+|       |           _testing.meta.json
+|       |           _typedattr.data.json
+|       |           _typedattr.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---app
+|       |   |   backup.data.json
+|       |   |   backup.meta.json
+|       |   |   comparison.data.json
+|       |   |   comparison.meta.json
+|       |   |   config.data.json
+|       |   |   config.meta.json
+|       |   |   database.data.json
+|       |   |   database.meta.json
+|       |   |   logger.data.json
+|       |   |   logger.meta.json
+|       |   |   scrapers.data.json
+|       |   |   scrapers.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---backup
+|       |   |       base_scraper_bk.data.json
+|       |   |       base_scraper_bk.meta.json
+|       |   |       comparison_bk.data.json
+|       |   |       comparison_bk.meta.json
+|       |   |       
+|       |   \---scrapers
+|       |       |   backup.data.json
+|       |       |   backup.meta.json
+|       |       |   base_scraper.data.json
+|       |       |   base_scraper.meta.json
+|       |       |   hobby_link_japan.data.json
+|       |       |   hobby_link_japan.meta.json
+|       |       |   hobby_planet.data.json
+|       |       |   hobby_planet.meta.json
+|       |       |   _selectors.data.json
+|       |       |   _selectors.meta.json
+|       |       |   
+|       |       \---backup
+|       |           |   hobby_link_japan_backup.data.json
+|       |           |   hobby_link_japan_backup.meta.json
+|       |           |   hobby_link_japan_bk_2026.data.json
+|       |           |   hobby_link_japan_bk_2026.meta.json
+|       |           |   hobby_link_japan_bk_error_feb26.data.json
+|       |           |   hobby_link_japan_bk_error_feb26.meta.json
+|       |           |   
+|       |           \---hobby_link_japan
+|       |               \---py
+|       |                       backup.data.json
+|       |                       backup.meta.json
+|       |                       
+|       +---asyncio
+|       |       base_events.data.json
+|       |       base_events.meta.json
+|       |       base_futures.data.json
+|       |       base_futures.meta.json
+|       |       constants.data.json
+|       |       constants.meta.json
+|       |       coroutines.data.json
+|       |       coroutines.meta.json
+|       |       events.data.json
+|       |       events.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       futures.data.json
+|       |       futures.meta.json
+|       |       locks.data.json
+|       |       locks.meta.json
+|       |       mixins.data.json
+|       |       mixins.meta.json
+|       |       proactor_events.data.json
+|       |       proactor_events.meta.json
+|       |       protocols.data.json
+|       |       protocols.meta.json
+|       |       queues.data.json
+|       |       queues.meta.json
+|       |       runners.data.json
+|       |       runners.meta.json
+|       |       selector_events.data.json
+|       |       selector_events.meta.json
+|       |       streams.data.json
+|       |       streams.meta.json
+|       |       subprocess.data.json
+|       |       subprocess.meta.json
+|       |       taskgroups.data.json
+|       |       taskgroups.meta.json
+|       |       tasks.data.json
+|       |       tasks.meta.json
+|       |       threads.data.json
+|       |       threads.meta.json
+|       |       timeouts.data.json
+|       |       timeouts.meta.json
+|       |       transports.data.json
+|       |       transports.meta.json
+|       |       unix_events.data.json
+|       |       unix_events.meta.json
+|       |       windows_events.data.json
+|       |       windows_events.meta.json
+|       |       windows_utils.data.json
+|       |       windows_utils.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---attr
+|       |       converters.data.json
+|       |       converters.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       filters.data.json
+|       |       filters.meta.json
+|       |       setters.data.json
+|       |       setters.meta.json
+|       |       validators.data.json
+|       |       validators.meta.json
+|       |       _cmp.data.json
+|       |       _cmp.meta.json
+|       |       _version_info.data.json
+|       |       _version_info.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---certifi
+|       |       core.data.json
+|       |       core.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---click
+|       |       core.data.json
+|       |       core.meta.json
+|       |       decorators.data.json
+|       |       decorators.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       formatting.data.json
+|       |       formatting.meta.json
+|       |       globals.data.json
+|       |       globals.meta.json
+|       |       parser.data.json
+|       |       parser.meta.json
+|       |       shell_completion.data.json
+|       |       shell_completion.meta.json
+|       |       termui.data.json
+|       |       termui.meta.json
+|       |       types.data.json
+|       |       types.meta.json
+|       |       utils.data.json
+|       |       utils.meta.json
+|       |       _compat.data.json
+|       |       _compat.meta.json
+|       |       _termui_impl.data.json
+|       |       _termui_impl.meta.json
+|       |       _winconsole.data.json
+|       |       _winconsole.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---collections
+|       |       abc.data.json
+|       |       abc.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---concurrent
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   \---futures
+|       |           process.data.json
+|       |           process.meta.json
+|       |           thread.data.json
+|       |           thread.meta.json
+|       |           _base.data.json
+|       |           _base.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---cryptography
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   __about__.data.json
+|       |   |   __about__.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   \---hazmat
+|       |       |   _oid.data.json
+|       |       |   _oid.meta.json
+|       |       |   __init__.data.json
+|       |       |   __init__.meta.json
+|       |       |   
+|       |       +---backends
+|       |       |   |   __init__.data.json
+|       |       |   |   __init__.meta.json
+|       |       |   |   
+|       |       |   \---openssl
+|       |       |           backend.data.json
+|       |       |           backend.meta.json
+|       |       |           __init__.data.json
+|       |       |           __init__.meta.json
+|       |       |           
+|       |       +---bindings
+|       |       |   |   __init__.data.json
+|       |       |   |   __init__.meta.json
+|       |       |   |   
+|       |       |   +---openssl
+|       |       |   |       binding.data.json
+|       |       |   |       binding.meta.json
+|       |       |   |       _conditional.data.json
+|       |       |   |       _conditional.meta.json
+|       |       |   |       __init__.data.json
+|       |       |   |       __init__.meta.json
+|       |       |   |       
+|       |       |   \---_rust
+|       |       |       |   asn1.data.json
+|       |       |       |   asn1.meta.json
+|       |       |       |   exceptions.data.json
+|       |       |       |   exceptions.meta.json
+|       |       |       |   _openssl.data.json
+|       |       |       |   _openssl.meta.json
+|       |       |       |   __init__.data.json
+|       |       |       |   __init__.meta.json
+|       |       |       |   
+|       |       |       \---openssl
+|       |       |               aead.data.json
+|       |       |               aead.meta.json
+|       |       |               ciphers.data.json
+|       |       |               ciphers.meta.json
+|       |       |               cmac.data.json
+|       |       |               cmac.meta.json
+|       |       |               dh.data.json
+|       |       |               dh.meta.json
+|       |       |               dsa.data.json
+|       |       |               dsa.meta.json
+|       |       |               ec.data.json
+|       |       |               ec.meta.json
+|       |       |               ed25519.data.json
+|       |       |               ed25519.meta.json
+|       |       |               ed448.data.json
+|       |       |               ed448.meta.json
+|       |       |               hashes.data.json
+|       |       |               hashes.meta.json
+|       |       |               hmac.data.json
+|       |       |               hmac.meta.json
+|       |       |               kdf.data.json
+|       |       |               kdf.meta.json
+|       |       |               keys.data.json
+|       |       |               keys.meta.json
+|       |       |               poly1305.data.json
+|       |       |               poly1305.meta.json
+|       |       |               rsa.data.json
+|       |       |               rsa.meta.json
+|       |       |               x25519.data.json
+|       |       |               x25519.meta.json
+|       |       |               x448.data.json
+|       |       |               x448.meta.json
+|       |       |               __init__.data.json
+|       |       |               __init__.meta.json
+|       |       |               
+|       |       +---decrepit
+|       |       |   |   __init__.data.json
+|       |       |   |   __init__.meta.json
+|       |       |   |   
+|       |       |   \---ciphers
+|       |       |           algorithms.data.json
+|       |       |           algorithms.meta.json
+|       |       |           __init__.data.json
+|       |       |           __init__.meta.json
+|       |       |           
+|       |       \---primitives
+|       |           |   hashes.data.json
+|       |           |   hashes.meta.json
+|       |           |   padding.data.json
+|       |           |   padding.meta.json
+|       |           |   _asymmetric.data.json
+|       |           |   _asymmetric.meta.json
+|       |           |   _cipheralgorithm.data.json
+|       |           |   _cipheralgorithm.meta.json
+|       |           |   _serialization.data.json
+|       |           |   _serialization.meta.json
+|       |           |   __init__.data.json
+|       |           |   __init__.meta.json
+|       |           |   
+|       |           +---asymmetric
+|       |           |       dh.data.json
+|       |           |       dh.meta.json
+|       |           |       dsa.data.json
+|       |           |       dsa.meta.json
+|       |           |       ec.data.json
+|       |           |       ec.meta.json
+|       |           |       ed25519.data.json
+|       |           |       ed25519.meta.json
+|       |           |       ed448.data.json
+|       |           |       ed448.meta.json
+|       |           |       padding.data.json
+|       |           |       padding.meta.json
+|       |           |       rsa.data.json
+|       |           |       rsa.meta.json
+|       |           |       types.data.json
+|       |           |       types.meta.json
+|       |           |       utils.data.json
+|       |           |       utils.meta.json
+|       |           |       x25519.data.json
+|       |           |       x25519.meta.json
+|       |           |       x448.data.json
+|       |           |       x448.meta.json
+|       |           |       __init__.data.json
+|       |           |       __init__.meta.json
+|       |           |       
+|       |           +---ciphers
+|       |           |       algorithms.data.json
+|       |           |       algorithms.meta.json
+|       |           |       base.data.json
+|       |           |       base.meta.json
+|       |           |       modes.data.json
+|       |           |       modes.meta.json
+|       |           |       __init__.data.json
+|       |           |       __init__.meta.json
+|       |           |       
+|       |           \---serialization
+|       |                   base.data.json
+|       |                   base.meta.json
+|       |                   ssh.data.json
+|       |                   ssh.meta.json
+|       |                   __init__.data.json
+|       |                   __init__.meta.json
+|       |                   
+|       +---ctypes
+|       |       wintypes.data.json
+|       |       wintypes.meta.json
+|       |       _endian.data.json
+|       |       _endian.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---dotenv
+|       |       main.data.json
+|       |       main.meta.json
+|       |       parser.data.json
+|       |       parser.meta.json
+|       |       variables.data.json
+|       |       variables.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---email
+|       |       charset.data.json
+|       |       charset.meta.json
+|       |       contentmanager.data.json
+|       |       contentmanager.meta.json
+|       |       errors.data.json
+|       |       errors.meta.json
+|       |       header.data.json
+|       |       header.meta.json
+|       |       message.data.json
+|       |       message.meta.json
+|       |       policy.data.json
+|       |       policy.meta.json
+|       |       utils.data.json
+|       |       utils.meta.json
+|       |       _policybase.data.json
+|       |       _policybase.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---h11
+|       |       _abnf.data.json
+|       |       _abnf.meta.json
+|       |       _connection.data.json
+|       |       _connection.meta.json
+|       |       _events.data.json
+|       |       _events.meta.json
+|       |       _headers.data.json
+|       |       _headers.meta.json
+|       |       _readers.data.json
+|       |       _readers.meta.json
+|       |       _receivebuffer.data.json
+|       |       _receivebuffer.meta.json
+|       |       _state.data.json
+|       |       _state.meta.json
+|       |       _util.data.json
+|       |       _util.meta.json
+|       |       _version.data.json
+|       |       _version.meta.json
+|       |       _writers.data.json
+|       |       _writers.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---h2
+|       |       config.data.json
+|       |       config.meta.json
+|       |       connection.data.json
+|       |       connection.meta.json
+|       |       errors.data.json
+|       |       errors.meta.json
+|       |       events.data.json
+|       |       events.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       frame_buffer.data.json
+|       |       frame_buffer.meta.json
+|       |       settings.data.json
+|       |       settings.meta.json
+|       |       stream.data.json
+|       |       stream.meta.json
+|       |       utilities.data.json
+|       |       utilities.meta.json
+|       |       windows.data.json
+|       |       windows.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---hpack
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       hpack.data.json
+|       |       hpack.meta.json
+|       |       huffman.data.json
+|       |       huffman.meta.json
+|       |       huffman_constants.data.json
+|       |       huffman_constants.meta.json
+|       |       huffman_table.data.json
+|       |       huffman_table.meta.json
+|       |       struct.data.json
+|       |       struct.meta.json
+|       |       table.data.json
+|       |       table.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---html
+|       |       entities.data.json
+|       |       entities.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---http
+|       |       client.data.json
+|       |       client.meta.json
+|       |       cookiejar.data.json
+|       |       cookiejar.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---httpcore
+|       |   |   _api.data.json
+|       |   |   _api.meta.json
+|       |   |   _exceptions.data.json
+|       |   |   _exceptions.meta.json
+|       |   |   _models.data.json
+|       |   |   _models.meta.json
+|       |   |   _ssl.data.json
+|       |   |   _ssl.meta.json
+|       |   |   _synchronization.data.json
+|       |   |   _synchronization.meta.json
+|       |   |   _trace.data.json
+|       |   |   _trace.meta.json
+|       |   |   _utils.data.json
+|       |   |   _utils.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       connection.data.json
+|       |   |       connection.meta.json
+|       |   |       connection_pool.data.json
+|       |   |       connection_pool.meta.json
+|       |   |       http11.data.json
+|       |   |       http11.meta.json
+|       |   |       http2.data.json
+|       |   |       http2.meta.json
+|       |   |       http_proxy.data.json
+|       |   |       http_proxy.meta.json
+|       |   |       interfaces.data.json
+|       |   |       interfaces.meta.json
+|       |   |       socks_proxy.data.json
+|       |   |       socks_proxy.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---_backends
+|       |   |       anyio.data.json
+|       |   |       anyio.meta.json
+|       |   |       auto.data.json
+|       |   |       auto.meta.json
+|       |   |       base.data.json
+|       |   |       base.meta.json
+|       |   |       mock.data.json
+|       |   |       mock.meta.json
+|       |   |       sync.data.json
+|       |   |       sync.meta.json
+|       |   |       trio.data.json
+|       |   |       trio.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           connection.data.json
+|       |           connection.meta.json
+|       |           connection_pool.data.json
+|       |           connection_pool.meta.json
+|       |           http11.data.json
+|       |           http11.meta.json
+|       |           http2.data.json
+|       |           http2.meta.json
+|       |           http_proxy.data.json
+|       |           http_proxy.meta.json
+|       |           interfaces.data.json
+|       |           interfaces.meta.json
+|       |           socks_proxy.data.json
+|       |           socks_proxy.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---httpx
+|       |   |   _api.data.json
+|       |   |   _api.meta.json
+|       |   |   _auth.data.json
+|       |   |   _auth.meta.json
+|       |   |   _client.data.json
+|       |   |   _client.meta.json
+|       |   |   _config.data.json
+|       |   |   _config.meta.json
+|       |   |   _content.data.json
+|       |   |   _content.meta.json
+|       |   |   _decoders.data.json
+|       |   |   _decoders.meta.json
+|       |   |   _exceptions.data.json
+|       |   |   _exceptions.meta.json
+|       |   |   _main.data.json
+|       |   |   _main.meta.json
+|       |   |   _models.data.json
+|       |   |   _models.meta.json
+|       |   |   _multipart.data.json
+|       |   |   _multipart.meta.json
+|       |   |   _status_codes.data.json
+|       |   |   _status_codes.meta.json
+|       |   |   _types.data.json
+|       |   |   _types.meta.json
+|       |   |   _urlparse.data.json
+|       |   |   _urlparse.meta.json
+|       |   |   _urls.data.json
+|       |   |   _urls.meta.json
+|       |   |   _utils.data.json
+|       |   |   _utils.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   __version__.data.json
+|       |   |   __version__.meta.json
+|       |   |   
+|       |   \---_transports
+|       |           asgi.data.json
+|       |           asgi.meta.json
+|       |           base.data.json
+|       |           base.meta.json
+|       |           default.data.json
+|       |           default.meta.json
+|       |           mock.data.json
+|       |           mock.meta.json
+|       |           wsgi.data.json
+|       |           wsgi.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---hyperframe
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       flags.data.json
+|       |       flags.meta.json
+|       |       frame.data.json
+|       |       frame.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---idna
+|       |       core.data.json
+|       |       core.meta.json
+|       |       idnadata.data.json
+|       |       idnadata.meta.json
+|       |       intranges.data.json
+|       |       intranges.meta.json
+|       |       package_data.data.json
+|       |       package_data.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---importlib
+|       |   |   abc.data.json
+|       |   |   abc.meta.json
+|       |   |   machinery.data.json
+|       |   |   machinery.meta.json
+|       |   |   readers.data.json
+|       |   |   readers.meta.json
+|       |   |   util.data.json
+|       |   |   util.meta.json
+|       |   |   _abc.data.json
+|       |   |   _abc.meta.json
+|       |   |   _bootstrap.data.json
+|       |   |   _bootstrap.meta.json
+|       |   |   _bootstrap_external.data.json
+|       |   |   _bootstrap_external.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---metadata
+|       |   |       _meta.data.json
+|       |   |       _meta.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---resources
+|       |           abc.data.json
+|       |           abc.meta.json
+|       |           _common.data.json
+|       |           _common.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---jinja2
+|       |       async_utils.data.json
+|       |       async_utils.meta.json
+|       |       bccache.data.json
+|       |       bccache.meta.json
+|       |       compiler.data.json
+|       |       compiler.meta.json
+|       |       debug.data.json
+|       |       debug.meta.json
+|       |       defaults.data.json
+|       |       defaults.meta.json
+|       |       environment.data.json
+|       |       environment.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       ext.data.json
+|       |       ext.meta.json
+|       |       filters.data.json
+|       |       filters.meta.json
+|       |       idtracking.data.json
+|       |       idtracking.meta.json
+|       |       lexer.data.json
+|       |       lexer.meta.json
+|       |       loaders.data.json
+|       |       loaders.meta.json
+|       |       nodes.data.json
+|       |       nodes.meta.json
+|       |       optimizer.data.json
+|       |       optimizer.meta.json
+|       |       parser.data.json
+|       |       parser.meta.json
+|       |       runtime.data.json
+|       |       runtime.meta.json
+|       |       sandbox.data.json
+|       |       sandbox.meta.json
+|       |       tests.data.json
+|       |       tests.meta.json
+|       |       utils.data.json
+|       |       utils.meta.json
+|       |       visitor.data.json
+|       |       visitor.meta.json
+|       |       _identifier.data.json
+|       |       _identifier.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---json
+|       |       decoder.data.json
+|       |       decoder.meta.json
+|       |       encoder.data.json
+|       |       encoder.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---jwt
+|       |       algorithms.data.json
+|       |       algorithms.meta.json
+|       |       api_jwk.data.json
+|       |       api_jwk.meta.json
+|       |       api_jws.data.json
+|       |       api_jws.meta.json
+|       |       api_jwt.data.json
+|       |       api_jwt.meta.json
+|       |       exceptions.data.json
+|       |       exceptions.meta.json
+|       |       jwks_client.data.json
+|       |       jwks_client.meta.json
+|       |       jwk_set_cache.data.json
+|       |       jwk_set_cache.meta.json
+|       |       types.data.json
+|       |       types.meta.json
+|       |       utils.data.json
+|       |       utils.meta.json
+|       |       warnings.data.json
+|       |       warnings.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---logging
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---markdown_it
+|       |   |   main.data.json
+|       |   |   main.meta.json
+|       |   |   parser_block.data.json
+|       |   |   parser_block.meta.json
+|       |   |   parser_core.data.json
+|       |   |   parser_core.meta.json
+|       |   |   parser_inline.data.json
+|       |   |   parser_inline.meta.json
+|       |   |   renderer.data.json
+|       |   |   renderer.meta.json
+|       |   |   ruler.data.json
+|       |   |   ruler.meta.json
+|       |   |   token.data.json
+|       |   |   token.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   _punycode.data.json
+|       |   |   _punycode.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---common
+|       |   |       entities.data.json
+|       |   |       entities.meta.json
+|       |   |       html_blocks.data.json
+|       |   |       html_blocks.meta.json
+|       |   |       html_re.data.json
+|       |   |       html_re.meta.json
+|       |   |       normalize_url.data.json
+|       |   |       normalize_url.meta.json
+|       |   |       utils.data.json
+|       |   |       utils.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---helpers
+|       |   |       parse_link_destination.data.json
+|       |   |       parse_link_destination.meta.json
+|       |   |       parse_link_label.data.json
+|       |   |       parse_link_label.meta.json
+|       |   |       parse_link_title.data.json
+|       |   |       parse_link_title.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---presets
+|       |   |       commonmark.data.json
+|       |   |       commonmark.meta.json
+|       |   |       default.data.json
+|       |   |       default.meta.json
+|       |   |       zero.data.json
+|       |   |       zero.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---rules_block
+|       |   |       blockquote.data.json
+|       |   |       blockquote.meta.json
+|       |   |       code.data.json
+|       |   |       code.meta.json
+|       |   |       fence.data.json
+|       |   |       fence.meta.json
+|       |   |       heading.data.json
+|       |   |       heading.meta.json
+|       |   |       hr.data.json
+|       |   |       hr.meta.json
+|       |   |       html_block.data.json
+|       |   |       html_block.meta.json
+|       |   |       lheading.data.json
+|       |   |       lheading.meta.json
+|       |   |       list.data.json
+|       |   |       list.meta.json
+|       |   |       paragraph.data.json
+|       |   |       paragraph.meta.json
+|       |   |       reference.data.json
+|       |   |       reference.meta.json
+|       |   |       state_block.data.json
+|       |   |       state_block.meta.json
+|       |   |       table.data.json
+|       |   |       table.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---rules_core
+|       |   |       block.data.json
+|       |   |       block.meta.json
+|       |   |       inline.data.json
+|       |   |       inline.meta.json
+|       |   |       linkify.data.json
+|       |   |       linkify.meta.json
+|       |   |       normalize.data.json
+|       |   |       normalize.meta.json
+|       |   |       replacements.data.json
+|       |   |       replacements.meta.json
+|       |   |       smartquotes.data.json
+|       |   |       smartquotes.meta.json
+|       |   |       state_core.data.json
+|       |   |       state_core.meta.json
+|       |   |       text_join.data.json
+|       |   |       text_join.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---rules_inline
+|       |           autolink.data.json
+|       |           autolink.meta.json
+|       |           backticks.data.json
+|       |           backticks.meta.json
+|       |           balance_pairs.data.json
+|       |           balance_pairs.meta.json
+|       |           emphasis.data.json
+|       |           emphasis.meta.json
+|       |           entity.data.json
+|       |           entity.meta.json
+|       |           escape.data.json
+|       |           escape.meta.json
+|       |           fragments_join.data.json
+|       |           fragments_join.meta.json
+|       |           html_inline.data.json
+|       |           html_inline.meta.json
+|       |           image.data.json
+|       |           image.meta.json
+|       |           link.data.json
+|       |           link.meta.json
+|       |           linkify.data.json
+|       |           linkify.meta.json
+|       |           newline.data.json
+|       |           newline.meta.json
+|       |           state_inline.data.json
+|       |           state_inline.meta.json
+|       |           strikethrough.data.json
+|       |           strikethrough.meta.json
+|       |           text.data.json
+|       |           text.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---markupsafe
+|       |       _native.data.json
+|       |       _native.meta.json
+|       |       _speedups.data.json
+|       |       _speedups.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---mdurl
+|       |       _decode.data.json
+|       |       _decode.meta.json
+|       |       _encode.data.json
+|       |       _encode.meta.json
+|       |       _format.data.json
+|       |       _format.meta.json
+|       |       _parse.data.json
+|       |       _parse.meta.json
+|       |       _url.data.json
+|       |       _url.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---mmh3
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---multidict
+|       |       _abc.data.json
+|       |       _abc.meta.json
+|       |       _compat.data.json
+|       |       _compat.meta.json
+|       |       _multidict_py.data.json
+|       |       _multidict_py.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---multiprocessing
+|       |       connection.data.json
+|       |       connection.meta.json
+|       |       context.data.json
+|       |       context.meta.json
+|       |       managers.data.json
+|       |       managers.meta.json
+|       |       pool.data.json
+|       |       pool.meta.json
+|       |       popen_fork.data.json
+|       |       popen_fork.meta.json
+|       |       popen_forkserver.data.json
+|       |       popen_forkserver.meta.json
+|       |       popen_spawn_posix.data.json
+|       |       popen_spawn_posix.meta.json
+|       |       popen_spawn_win32.data.json
+|       |       popen_spawn_win32.meta.json
+|       |       process.data.json
+|       |       process.meta.json
+|       |       queues.data.json
+|       |       queues.meta.json
+|       |       reduction.data.json
+|       |       reduction.meta.json
+|       |       sharedctypes.data.json
+|       |       sharedctypes.meta.json
+|       |       shared_memory.data.json
+|       |       shared_memory.meta.json
+|       |       spawn.data.json
+|       |       spawn.meta.json
+|       |       synchronize.data.json
+|       |       synchronize.meta.json
+|       |       util.data.json
+|       |       util.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---os
+|       |       path.data.json
+|       |       path.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---packaging
+|       |       version.data.json
+|       |       version.meta.json
+|       |       _structures.data.json
+|       |       _structures.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---pathlib
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---playwright
+|       |   |   _repo_version.data.json
+|       |   |   _repo_version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---async_api
+|       |   |       _context_manager.data.json
+|       |   |       _context_manager.meta.json
+|       |   |       _generated.data.json
+|       |   |       _generated.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_impl
+|       |           _accessibility.data.json
+|       |           _accessibility.meta.json
+|       |           _api_structures.data.json
+|       |           _api_structures.meta.json
+|       |           _artifact.data.json
+|       |           _artifact.meta.json
+|       |           _assertions.data.json
+|       |           _assertions.meta.json
+|       |           _async_base.data.json
+|       |           _async_base.meta.json
+|       |           _browser.data.json
+|       |           _browser.meta.json
+|       |           _browser_context.data.json
+|       |           _browser_context.meta.json
+|       |           _browser_type.data.json
+|       |           _browser_type.meta.json
+|       |           _cdp_session.data.json
+|       |           _cdp_session.meta.json
+|       |           _clock.data.json
+|       |           _clock.meta.json
+|       |           _connection.data.json
+|       |           _connection.meta.json
+|       |           _console_message.data.json
+|       |           _console_message.meta.json
+|       |           _dialog.data.json
+|       |           _dialog.meta.json
+|       |           _download.data.json
+|       |           _download.meta.json
+|       |           _driver.data.json
+|       |           _driver.meta.json
+|       |           _element_handle.data.json
+|       |           _element_handle.meta.json
+|       |           _errors.data.json
+|       |           _errors.meta.json
+|       |           _event_context_manager.data.json
+|       |           _event_context_manager.meta.json
+|       |           _fetch.data.json
+|       |           _fetch.meta.json
+|       |           _file_chooser.data.json
+|       |           _file_chooser.meta.json
+|       |           _frame.data.json
+|       |           _frame.meta.json
+|       |           _glob.data.json
+|       |           _glob.meta.json
+|       |           _greenlets.data.json
+|       |           _greenlets.meta.json
+|       |           _har_router.data.json
+|       |           _har_router.meta.json
+|       |           _helper.data.json
+|       |           _helper.meta.json
+|       |           _impl_to_api_mapping.data.json
+|       |           _impl_to_api_mapping.meta.json
+|       |           _input.data.json
+|       |           _input.meta.json
+|       |           _json_pipe.data.json
+|       |           _json_pipe.meta.json
+|       |           _js_handle.data.json
+|       |           _js_handle.meta.json
+|       |           _local_utils.data.json
+|       |           _local_utils.meta.json
+|       |           _locator.data.json
+|       |           _locator.meta.json
+|       |           _map.data.json
+|       |           _map.meta.json
+|       |           _network.data.json
+|       |           _network.meta.json
+|       |           _object_factory.data.json
+|       |           _object_factory.meta.json
+|       |           _page.data.json
+|       |           _page.meta.json
+|       |           _playwright.data.json
+|       |           _playwright.meta.json
+|       |           _selectors.data.json
+|       |           _selectors.meta.json
+|       |           _set_input_files_helpers.data.json
+|       |           _set_input_files_helpers.meta.json
+|       |           _stream.data.json
+|       |           _stream.meta.json
+|       |           _str_utils.data.json
+|       |           _str_utils.meta.json
+|       |           _tracing.data.json
+|       |           _tracing.meta.json
+|       |           _transport.data.json
+|       |           _transport.meta.json
+|       |           _video.data.json
+|       |           _video.meta.json
+|       |           _waiter.data.json
+|       |           _waiter.meta.json
+|       |           _web_error.data.json
+|       |           _web_error.meta.json
+|       |           _writable_stream.data.json
+|       |           _writable_stream.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---postgrest
+|       |   |   base_client.data.json
+|       |   |   base_client.meta.json
+|       |   |   base_request_builder.data.json
+|       |   |   base_request_builder.meta.json
+|       |   |   constants.data.json
+|       |   |   constants.meta.json
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       client.data.json
+|       |   |       client.meta.json
+|       |   |       request_builder.data.json
+|       |   |       request_builder.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           client.data.json
+|       |           client.meta.json
+|       |           request_builder.data.json
+|       |           request_builder.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---propcache
+|       |       api.data.json
+|       |       api.meta.json
+|       |       _helpers.data.json
+|       |       _helpers.meta.json
+|       |       _helpers_py.data.json
+|       |       _helpers_py.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---pydantic
+|       |   |   aliases.data.json
+|       |   |   aliases.meta.json
+|       |   |   alias_generators.data.json
+|       |   |   alias_generators.meta.json
+|       |   |   annotated_handlers.data.json
+|       |   |   annotated_handlers.meta.json
+|       |   |   color.data.json
+|       |   |   color.meta.json
+|       |   |   config.data.json
+|       |   |   config.meta.json
+|       |   |   dataclasses.data.json
+|       |   |   dataclasses.meta.json
+|       |   |   errors.data.json
+|       |   |   errors.meta.json
+|       |   |   fields.data.json
+|       |   |   fields.meta.json
+|       |   |   functional_serializers.data.json
+|       |   |   functional_serializers.meta.json
+|       |   |   functional_validators.data.json
+|       |   |   functional_validators.meta.json
+|       |   |   json_schema.data.json
+|       |   |   json_schema.meta.json
+|       |   |   main.data.json
+|       |   |   main.meta.json
+|       |   |   networks.data.json
+|       |   |   networks.meta.json
+|       |   |   root_model.data.json
+|       |   |   root_model.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   type_adapter.data.json
+|       |   |   type_adapter.meta.json
+|       |   |   validate_call_decorator.data.json
+|       |   |   validate_call_decorator.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   warnings.data.json
+|       |   |   warnings.meta.json
+|       |   |   _migration.data.json
+|       |   |   _migration.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---deprecated
+|       |   |       class_validators.data.json
+|       |   |       class_validators.meta.json
+|       |   |       config.data.json
+|       |   |       config.meta.json
+|       |   |       copy_internals.data.json
+|       |   |       copy_internals.meta.json
+|       |   |       json.data.json
+|       |   |       json.meta.json
+|       |   |       parse.data.json
+|       |   |       parse.meta.json
+|       |   |       tools.data.json
+|       |   |       tools.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---plugin
+|       |   |       _schema_validator.data.json
+|       |   |       _schema_validator.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---v1
+|       |   |       annotated_types.data.json
+|       |   |       annotated_types.meta.json
+|       |   |       class_validators.data.json
+|       |   |       class_validators.meta.json
+|       |   |       color.data.json
+|       |   |       color.meta.json
+|       |   |       config.data.json
+|       |   |       config.meta.json
+|       |   |       dataclasses.data.json
+|       |   |       dataclasses.meta.json
+|       |   |       datetime_parse.data.json
+|       |   |       datetime_parse.meta.json
+|       |   |       decorator.data.json
+|       |   |       decorator.meta.json
+|       |   |       env_settings.data.json
+|       |   |       env_settings.meta.json
+|       |   |       errors.data.json
+|       |   |       errors.meta.json
+|       |   |       error_wrappers.data.json
+|       |   |       error_wrappers.meta.json
+|       |   |       fields.data.json
+|       |   |       fields.meta.json
+|       |   |       json.data.json
+|       |   |       json.meta.json
+|       |   |       main.data.json
+|       |   |       main.meta.json
+|       |   |       networks.data.json
+|       |   |       networks.meta.json
+|       |   |       parse.data.json
+|       |   |       parse.meta.json
+|       |   |       schema.data.json
+|       |   |       schema.meta.json
+|       |   |       tools.data.json
+|       |   |       tools.meta.json
+|       |   |       types.data.json
+|       |   |       types.meta.json
+|       |   |       typing.data.json
+|       |   |       typing.meta.json
+|       |   |       utils.data.json
+|       |   |       utils.meta.json
+|       |   |       validators.data.json
+|       |   |       validators.meta.json
+|       |   |       version.data.json
+|       |   |       version.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_internal
+|       |           _config.data.json
+|       |           _config.meta.json
+|       |           _core_metadata.data.json
+|       |           _core_metadata.meta.json
+|       |           _core_utils.data.json
+|       |           _core_utils.meta.json
+|       |           _dataclasses.data.json
+|       |           _dataclasses.meta.json
+|       |           _decorators.data.json
+|       |           _decorators.meta.json
+|       |           _decorators_v1.data.json
+|       |           _decorators_v1.meta.json
+|       |           _discriminated_union.data.json
+|       |           _discriminated_union.meta.json
+|       |           _docs_extraction.data.json
+|       |           _docs_extraction.meta.json
+|       |           _fields.data.json
+|       |           _fields.meta.json
+|       |           _forward_ref.data.json
+|       |           _forward_ref.meta.json
+|       |           _generate_schema.data.json
+|       |           _generate_schema.meta.json
+|       |           _generics.data.json
+|       |           _generics.meta.json
+|       |           _import_utils.data.json
+|       |           _import_utils.meta.json
+|       |           _internal_dataclass.data.json
+|       |           _internal_dataclass.meta.json
+|       |           _known_annotated_metadata.data.json
+|       |           _known_annotated_metadata.meta.json
+|       |           _mock_val_ser.data.json
+|       |           _mock_val_ser.meta.json
+|       |           _model_construction.data.json
+|       |           _model_construction.meta.json
+|       |           _namespace_utils.data.json
+|       |           _namespace_utils.meta.json
+|       |           _repr.data.json
+|       |           _repr.meta.json
+|       |           _schema_gather.data.json
+|       |           _schema_gather.meta.json
+|       |           _schema_generation_shared.data.json
+|       |           _schema_generation_shared.meta.json
+|       |           _serializers.data.json
+|       |           _serializers.meta.json
+|       |           _signature.data.json
+|       |           _signature.meta.json
+|       |           _typing_extra.data.json
+|       |           _typing_extra.meta.json
+|       |           _utils.data.json
+|       |           _utils.meta.json
+|       |           _validate_call.data.json
+|       |           _validate_call.meta.json
+|       |           _validators.data.json
+|       |           _validators.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---pydantic_core
+|       |       core_schema.data.json
+|       |       core_schema.meta.json
+|       |       _pydantic_core.data.json
+|       |       _pydantic_core.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---pydantic_settings
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   main.data.json
+|       |   |   main.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   \---sources
+|       |       |   base.data.json
+|       |       |   base.meta.json
+|       |       |   types.data.json
+|       |       |   types.meta.json
+|       |       |   utils.data.json
+|       |       |   utils.meta.json
+|       |       |   __init__.data.json
+|       |       |   __init__.meta.json
+|       |       |   
+|       |       \---providers
+|       |               aws.data.json
+|       |               aws.meta.json
+|       |               azure.data.json
+|       |               azure.meta.json
+|       |               cli.data.json
+|       |               cli.meta.json
+|       |               dotenv.data.json
+|       |               dotenv.meta.json
+|       |               env.data.json
+|       |               env.meta.json
+|       |               gcp.data.json
+|       |               gcp.meta.json
+|       |               json.data.json
+|       |               json.meta.json
+|       |               nested_secrets.data.json
+|       |               nested_secrets.meta.json
+|       |               pyproject.data.json
+|       |               pyproject.meta.json
+|       |               secrets.data.json
+|       |               secrets.meta.json
+|       |               toml.data.json
+|       |               toml.meta.json
+|       |               yaml.data.json
+|       |               yaml.meta.json
+|       |               __init__.data.json
+|       |               __init__.meta.json
+|       |               
+|       +---pyee
+|       |       asyncio.data.json
+|       |       asyncio.meta.json
+|       |       base.data.json
+|       |       base.meta.json
+|       |       executor.data.json
+|       |       executor.meta.json
+|       |       trio.data.json
+|       |       trio.meta.json
+|       |       twisted.data.json
+|       |       twisted.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---pyiceberg
+|       |   |   conversions.data.json
+|       |   |   conversions.meta.json
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   manifest.data.json
+|       |   |   manifest.meta.json
+|       |   |   partitioning.data.json
+|       |   |   partitioning.meta.json
+|       |   |   schema.data.json
+|       |   |   schema.meta.json
+|       |   |   serializers.data.json
+|       |   |   serializers.meta.json
+|       |   |   transforms.data.json
+|       |   |   transforms.meta.json
+|       |   |   typedef.data.json
+|       |   |   typedef.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---avro
+|       |   |   |   decoder.data.json
+|       |   |   |   decoder.meta.json
+|       |   |   |   encoder.data.json
+|       |   |   |   encoder.meta.json
+|       |   |   |   file.data.json
+|       |   |   |   file.meta.json
+|       |   |   |   reader.data.json
+|       |   |   |   reader.meta.json
+|       |   |   |   resolver.data.json
+|       |   |   |   resolver.meta.json
+|       |   |   |   writer.data.json
+|       |   |   |   writer.meta.json
+|       |   |   |   __init__.data.json
+|       |   |   |   __init__.meta.json
+|       |   |   |   
+|       |   |   \---codecs
+|       |   |           bzip2.data.json
+|       |   |           bzip2.meta.json
+|       |   |           codec.data.json
+|       |   |           codec.meta.json
+|       |   |           deflate.data.json
+|       |   |           deflate.meta.json
+|       |   |           snappy_codec.data.json
+|       |   |           snappy_codec.meta.json
+|       |   |           zstandard_codec.data.json
+|       |   |           zstandard_codec.meta.json
+|       |   |           __init__.data.json
+|       |   |           __init__.meta.json
+|       |   |           
+|       |   +---catalog
+|       |   |   |   noop.data.json
+|       |   |   |   noop.meta.json
+|       |   |   |   __init__.data.json
+|       |   |   |   __init__.meta.json
+|       |   |   |   
+|       |   |   \---rest
+|       |   |           auth.data.json
+|       |   |           auth.meta.json
+|       |   |           response.data.json
+|       |   |           response.meta.json
+|       |   |           __init__.data.json
+|       |   |           __init__.meta.json
+|       |   |           
+|       |   +---expressions
+|       |   |       literals.data.json
+|       |   |       literals.meta.json
+|       |   |       parser.data.json
+|       |   |       parser.meta.json
+|       |   |       visitors.data.json
+|       |   |       visitors.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---io
+|       |   |       pyarrow.data.json
+|       |   |       pyarrow.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---table
+|       |   |   |   inspect.data.json
+|       |   |   |   inspect.meta.json
+|       |   |   |   locations.data.json
+|       |   |   |   locations.meta.json
+|       |   |   |   maintenance.data.json
+|       |   |   |   maintenance.meta.json
+|       |   |   |   metadata.data.json
+|       |   |   |   metadata.meta.json
+|       |   |   |   name_mapping.data.json
+|       |   |   |   name_mapping.meta.json
+|       |   |   |   puffin.data.json
+|       |   |   |   puffin.meta.json
+|       |   |   |   refs.data.json
+|       |   |   |   refs.meta.json
+|       |   |   |   snapshots.data.json
+|       |   |   |   snapshots.meta.json
+|       |   |   |   sorting.data.json
+|       |   |   |   sorting.meta.json
+|       |   |   |   statistics.data.json
+|       |   |   |   statistics.meta.json
+|       |   |   |   upsert_util.data.json
+|       |   |   |   upsert_util.meta.json
+|       |   |   |   __init__.data.json
+|       |   |   |   __init__.meta.json
+|       |   |   |   
+|       |   |   \---update
+|       |   |           schema.data.json
+|       |   |           schema.meta.json
+|       |   |           snapshot.data.json
+|       |   |           snapshot.meta.json
+|       |   |           spec.data.json
+|       |   |           spec.meta.json
+|       |   |           statistics.data.json
+|       |   |           statistics.meta.json
+|       |   |           __init__.data.json
+|       |   |           __init__.meta.json
+|       |   |           
+|       |   \---utils
+|       |           bin_packing.data.json
+|       |           bin_packing.meta.json
+|       |           concurrent.data.json
+|       |           concurrent.meta.json
+|       |           config.data.json
+|       |           config.meta.json
+|       |           datetime.data.json
+|       |           datetime.meta.json
+|       |           decimal.data.json
+|       |           decimal.meta.json
+|       |           deprecated.data.json
+|       |           deprecated.meta.json
+|       |           lazydict.data.json
+|       |           lazydict.meta.json
+|       |           parsing.data.json
+|       |           parsing.meta.json
+|       |           properties.data.json
+|       |           properties.meta.json
+|       |           schema_conversion.data.json
+|       |           schema_conversion.meta.json
+|       |           singleton.data.json
+|       |           singleton.meta.json
+|       |           truncate.data.json
+|       |           truncate.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---pyparsing
+|       |   |   actions.data.json
+|       |   |   actions.meta.json
+|       |   |   common.data.json
+|       |   |   common.meta.json
+|       |   |   core.data.json
+|       |   |   core.meta.json
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   helpers.data.json
+|       |   |   helpers.meta.json
+|       |   |   results.data.json
+|       |   |   results.meta.json
+|       |   |   testing.data.json
+|       |   |   testing.meta.json
+|       |   |   unicode.data.json
+|       |   |   unicode.meta.json
+|       |   |   util.data.json
+|       |   |   util.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   \---diagram
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---pyroaring
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---realtime
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   message.data.json
+|       |   |   message.meta.json
+|       |   |   transformers.data.json
+|       |   |   transformers.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       channel.data.json
+|       |   |       channel.meta.json
+|       |   |       client.data.json
+|       |   |       client.meta.json
+|       |   |       presence.data.json
+|       |   |       presence.meta.json
+|       |   |       push.data.json
+|       |   |       push.meta.json
+|       |   |       timer.data.json
+|       |   |       timer.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           channel.data.json
+|       |           channel.meta.json
+|       |           client.data.json
+|       |           client.meta.json
+|       |           presence.data.json
+|       |           presence.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---rich
+|       |       abc.data.json
+|       |       abc.meta.json
+|       |       align.data.json
+|       |       align.meta.json
+|       |       ansi.data.json
+|       |       ansi.meta.json
+|       |       box.data.json
+|       |       box.meta.json
+|       |       cells.data.json
+|       |       cells.meta.json
+|       |       color.data.json
+|       |       color.meta.json
+|       |       color_triplet.data.json
+|       |       color_triplet.meta.json
+|       |       columns.data.json
+|       |       columns.meta.json
+|       |       console.data.json
+|       |       console.meta.json
+|       |       constrain.data.json
+|       |       constrain.meta.json
+|       |       containers.data.json
+|       |       containers.meta.json
+|       |       control.data.json
+|       |       control.meta.json
+|       |       default_styles.data.json
+|       |       default_styles.meta.json
+|       |       emoji.data.json
+|       |       emoji.meta.json
+|       |       errors.data.json
+|       |       errors.meta.json
+|       |       filesize.data.json
+|       |       filesize.meta.json
+|       |       file_proxy.data.json
+|       |       file_proxy.meta.json
+|       |       highlighter.data.json
+|       |       highlighter.meta.json
+|       |       json.data.json
+|       |       json.meta.json
+|       |       jupyter.data.json
+|       |       jupyter.meta.json
+|       |       live.data.json
+|       |       live.meta.json
+|       |       live_render.data.json
+|       |       live_render.meta.json
+|       |       markdown.data.json
+|       |       markdown.meta.json
+|       |       markup.data.json
+|       |       markup.meta.json
+|       |       measure.data.json
+|       |       measure.meta.json
+|       |       padding.data.json
+|       |       padding.meta.json
+|       |       pager.data.json
+|       |       pager.meta.json
+|       |       palette.data.json
+|       |       palette.meta.json
+|       |       panel.data.json
+|       |       panel.meta.json
+|       |       pretty.data.json
+|       |       pretty.meta.json
+|       |       progress.data.json
+|       |       progress.meta.json
+|       |       progress_bar.data.json
+|       |       progress_bar.meta.json
+|       |       protocol.data.json
+|       |       protocol.meta.json
+|       |       region.data.json
+|       |       region.meta.json
+|       |       repr.data.json
+|       |       repr.meta.json
+|       |       rule.data.json
+|       |       rule.meta.json
+|       |       scope.data.json
+|       |       scope.meta.json
+|       |       screen.data.json
+|       |       screen.meta.json
+|       |       segment.data.json
+|       |       segment.meta.json
+|       |       spinner.data.json
+|       |       spinner.meta.json
+|       |       status.data.json
+|       |       status.meta.json
+|       |       style.data.json
+|       |       style.meta.json
+|       |       styled.data.json
+|       |       styled.meta.json
+|       |       syntax.data.json
+|       |       syntax.meta.json
+|       |       table.data.json
+|       |       table.meta.json
+|       |       terminal_theme.data.json
+|       |       terminal_theme.meta.json
+|       |       text.data.json
+|       |       text.meta.json
+|       |       theme.data.json
+|       |       theme.meta.json
+|       |       themes.data.json
+|       |       themes.meta.json
+|       |       traceback.data.json
+|       |       traceback.meta.json
+|       |       _cell_widths.data.json
+|       |       _cell_widths.meta.json
+|       |       _emoji_codes.data.json
+|       |       _emoji_codes.meta.json
+|       |       _emoji_replace.data.json
+|       |       _emoji_replace.meta.json
+|       |       _export_format.data.json
+|       |       _export_format.meta.json
+|       |       _extension.data.json
+|       |       _extension.meta.json
+|       |       _fileno.data.json
+|       |       _fileno.meta.json
+|       |       _log_render.data.json
+|       |       _log_render.meta.json
+|       |       _loop.data.json
+|       |       _loop.meta.json
+|       |       _null_file.data.json
+|       |       _null_file.meta.json
+|       |       _palettes.data.json
+|       |       _palettes.meta.json
+|       |       _pick.data.json
+|       |       _pick.meta.json
+|       |       _ratio.data.json
+|       |       _ratio.meta.json
+|       |       _spinners.data.json
+|       |       _spinners.meta.json
+|       |       _stack.data.json
+|       |       _stack.meta.json
+|       |       _timer.data.json
+|       |       _timer.meta.json
+|       |       _win32_console.data.json
+|       |       _win32_console.meta.json
+|       |       _windows.data.json
+|       |       _windows.meta.json
+|       |       _windows_renderer.data.json
+|       |       _windows_renderer.meta.json
+|       |       _wrap.data.json
+|       |       _wrap.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       __main__.data.json
+|       |       __main__.meta.json
+|       |       
+|       +---sniffio
+|       |       _impl.data.json
+|       |       _impl.meta.json
+|       |       _version.data.json
+|       |       _version.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---storage3
+|       |   |   constants.data.json
+|       |   |   constants.meta.json
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       analytics.data.json
+|       |   |       analytics.meta.json
+|       |   |       bucket.data.json
+|       |   |       bucket.meta.json
+|       |   |       client.data.json
+|       |   |       client.meta.json
+|       |   |       file_api.data.json
+|       |   |       file_api.meta.json
+|       |   |       request.data.json
+|       |   |       request.meta.json
+|       |   |       vectors.data.json
+|       |   |       vectors.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           analytics.data.json
+|       |           analytics.meta.json
+|       |           bucket.data.json
+|       |           bucket.meta.json
+|       |           client.data.json
+|       |           client.meta.json
+|       |           file_api.data.json
+|       |           file_api.meta.json
+|       |           request.data.json
+|       |           request.meta.json
+|       |           vectors.data.json
+|       |           vectors.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---string
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---supabase
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---lib
+|       |   |       client_options.data.json
+|       |   |       client_options.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   +---_async
+|       |   |       auth_client.data.json
+|       |   |       auth_client.meta.json
+|       |   |       client.data.json
+|       |   |       client.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           auth_client.data.json
+|       |           auth_client.meta.json
+|       |           client.data.json
+|       |           client.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---supabase_auth
+|       |   |   constants.data.json
+|       |   |   constants.meta.json
+|       |   |   errors.data.json
+|       |   |   errors.meta.json
+|       |   |   helpers.data.json
+|       |   |   helpers.meta.json
+|       |   |   timer.data.json
+|       |   |   timer.meta.json
+|       |   |   types.data.json
+|       |   |   types.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       gotrue_admin_api.data.json
+|       |   |       gotrue_admin_api.meta.json
+|       |   |       gotrue_admin_mfa_api.data.json
+|       |   |       gotrue_admin_mfa_api.meta.json
+|       |   |       gotrue_admin_oauth_api.data.json
+|       |   |       gotrue_admin_oauth_api.meta.json
+|       |   |       gotrue_base_api.data.json
+|       |   |       gotrue_base_api.meta.json
+|       |   |       gotrue_client.data.json
+|       |   |       gotrue_client.meta.json
+|       |   |       gotrue_mfa_api.data.json
+|       |   |       gotrue_mfa_api.meta.json
+|       |   |       storage.data.json
+|       |   |       storage.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           gotrue_admin_api.data.json
+|       |           gotrue_admin_api.meta.json
+|       |           gotrue_admin_mfa_api.data.json
+|       |           gotrue_admin_mfa_api.meta.json
+|       |           gotrue_admin_oauth_api.data.json
+|       |           gotrue_admin_oauth_api.meta.json
+|       |           gotrue_base_api.data.json
+|       |           gotrue_base_api.meta.json
+|       |           gotrue_client.data.json
+|       |           gotrue_client.meta.json
+|       |           gotrue_mfa_api.data.json
+|       |           gotrue_mfa_api.meta.json
+|       |           storage.data.json
+|       |           storage.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---supabase_functions
+|       |   |   errors.data.json
+|       |   |   errors.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---_async
+|       |   |       functions_client.data.json
+|       |   |       functions_client.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---_sync
+|       |           functions_client.data.json
+|       |           functions_client.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---sys
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---tenacity
+|       |   |   after.data.json
+|       |   |   after.meta.json
+|       |   |   before.data.json
+|       |   |   before.meta.json
+|       |   |   before_sleep.data.json
+|       |   |   before_sleep.meta.json
+|       |   |   nap.data.json
+|       |   |   nap.meta.json
+|       |   |   retry.data.json
+|       |   |   retry.meta.json
+|       |   |   stop.data.json
+|       |   |   stop.meta.json
+|       |   |   tornadoweb.data.json
+|       |   |   tornadoweb.meta.json
+|       |   |   wait.data.json
+|       |   |   wait.meta.json
+|       |   |   _utils.data.json
+|       |   |   _utils.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   \---asyncio
+|       |           retry.data.json
+|       |           retry.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---typing_inspection
+|       |       introspection.data.json
+|       |       introspection.meta.json
+|       |       typing_objects.data.json
+|       |       typing_objects.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---unittest
+|       |       async_case.data.json
+|       |       async_case.meta.json
+|       |       case.data.json
+|       |       case.meta.json
+|       |       loader.data.json
+|       |       loader.meta.json
+|       |       main.data.json
+|       |       main.meta.json
+|       |       result.data.json
+|       |       result.meta.json
+|       |       runner.data.json
+|       |       runner.meta.json
+|       |       signals.data.json
+|       |       signals.meta.json
+|       |       suite.data.json
+|       |       suite.meta.json
+|       |       _log.data.json
+|       |       _log.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---urllib
+|       |       error.data.json
+|       |       error.meta.json
+|       |       parse.data.json
+|       |       parse.meta.json
+|       |       request.data.json
+|       |       request.meta.json
+|       |       response.data.json
+|       |       response.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---websockets
+|       |   |   client.data.json
+|       |   |   client.meta.json
+|       |   |   datastructures.data.json
+|       |   |   datastructures.meta.json
+|       |   |   exceptions.data.json
+|       |   |   exceptions.meta.json
+|       |   |   frames.data.json
+|       |   |   frames.meta.json
+|       |   |   headers.data.json
+|       |   |   headers.meta.json
+|       |   |   http11.data.json
+|       |   |   http11.meta.json
+|       |   |   imports.data.json
+|       |   |   imports.meta.json
+|       |   |   protocol.data.json
+|       |   |   protocol.meta.json
+|       |   |   server.data.json
+|       |   |   server.meta.json
+|       |   |   speedups.data.json
+|       |   |   speedups.meta.json
+|       |   |   streams.data.json
+|       |   |   streams.meta.json
+|       |   |   typing.data.json
+|       |   |   typing.meta.json
+|       |   |   uri.data.json
+|       |   |   uri.meta.json
+|       |   |   utils.data.json
+|       |   |   utils.meta.json
+|       |   |   version.data.json
+|       |   |   version.meta.json
+|       |   |   __init__.data.json
+|       |   |   __init__.meta.json
+|       |   |   
+|       |   +---asyncio
+|       |   |       client.data.json
+|       |   |       client.meta.json
+|       |   |       compatibility.data.json
+|       |   |       compatibility.meta.json
+|       |   |       connection.data.json
+|       |   |       connection.meta.json
+|       |   |       messages.data.json
+|       |   |       messages.meta.json
+|       |   |       router.data.json
+|       |   |       router.meta.json
+|       |   |       server.data.json
+|       |   |       server.meta.json
+|       |   |       __init__.data.json
+|       |   |       __init__.meta.json
+|       |   |       
+|       |   \---extensions
+|       |           base.data.json
+|       |           base.meta.json
+|       |           permessage_deflate.data.json
+|       |           permessage_deflate.meta.json
+|       |           __init__.data.json
+|       |           __init__.meta.json
+|       |           
+|       +---wsgiref
+|       |       types.data.json
+|       |       types.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---yarl
+|       |       _parse.data.json
+|       |       _parse.meta.json
+|       |       _path.data.json
+|       |       _path.meta.json
+|       |       _query.data.json
+|       |       _query.meta.json
+|       |       _quoters.data.json
+|       |       _quoters.meta.json
+|       |       _quoting.data.json
+|       |       _quoting.meta.json
+|       |       _quoting_py.data.json
+|       |       _quoting_py.meta.json
+|       |       _url.data.json
+|       |       _url.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---zipfile
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       +---zoneinfo
+|       |       _common.data.json
+|       |       _common.meta.json
+|       |       _tzpath.data.json
+|       |       _tzpath.meta.json
+|       |       __init__.data.json
+|       |       __init__.meta.json
+|       |       
+|       \---_typeshed
+|               importlib.data.json
+|               importlib.meta.json
+|               wsgi.data.json
+|               wsgi.meta.json
+|               __init__.data.json
+|               __init__.meta.json
+|               
++---.pytest_cache
+|   |   .gitignore
+|   |   CACHEDIR.TAG
+|   |   README.md
+|   |   
+|   \---v
+|       \---cache
+|               lastfailed
+|               nodeids
+|               
++---app
+|   |   comparison.py
+|   |   comparison.py.backup
+|   |   config.py
+|   |   database.py
+|   |   logger.py
+|   |   __init__.py
+|   |   
+|   +---backup
+|   |       base_scraper_bk.py
+|   |       comparison_bk.py
+|   |       
+|   +---scrapers
+|   |   |   base_scraper.py
+|   |   |   base_scraper.py.backup
+|   |   |   hobby_link_japan.py
+|   |   |   hobby_link_japan.py.backup
+|   |   |   hobby_planet.py
+|   |   |   hobby_planet.py.backup
+|   |   |   hobby_planet.py.backup2
+|   |   |   _selectors.py
+|   |   |   
+|   |   +---backup
+|   |   |       hobby_link_japan.py.backup.py
+|   |   |       hobby_link_japan_backup.py
+|   |   |       hobby_link_japan_bk_2026.py
+|   |   |       hobby_link_japan_bk_error_feb26.py
+|   |   |       
+|   |   \---__pycache__
+|   |           base_scraper.cpython-311.pyc
+|   |           hobby_link_japan.cpython-311.pyc
+|   |           hobby_planet.cpython-311.pyc
+|   |           _selectors.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           comparison.cpython-311.pyc
+|           config.cpython-311.pyc
+|           database.cpython-311.pyc
+|           logger.cpython-311.pyc
+|           __init__.cpython-311.pyc
+|           
++---backup
+|       .env_bk
+|       
++---tests
+|   |   test_results.json
+|   |   test_scrapers.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           test_scrapers.cpython-311-pytest-9.0.2.pyc
+|           test_scrapers.cpython-311.pyc
+|           __init__.cpython-311.pyc
+|           
+\---__pycache__
+        api_server.cpython-311.pyc
+        
