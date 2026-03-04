@@ -1,0 +1,189 @@
+{
+  "name": "Gunpla News Industrial 7 - Curate Archive Post",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "1",
+      "name": "Daily Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gunpla-news",
+        "options": {}
+      },
+      "id": "2",
+      "name": "News Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "agent": "toolsAgent",
+        "model": "gpt-4",
+        "apiKey": "{{ $env.PERPLEXITY_API_KEY }}",
+        "options": {
+          "systemMessage": "You are Gunpla News Curator. Score urgency 0-10 (10=PGU-level breaking). Curate best news, reject to backlog if <7. Output JSON: {score: number, approve: boolean, postCopy: string, tags: array}. Sources: RSS, Twitter, P-Bandai."
+        },
+        "tools": [
+          {
+            "type": "code",
+            "name": "urgencyScore",
+            "code": "return {score: Math.random()*10}"
+          }
+        ]
+      },
+      "id": "3",
+      "name": "AI Curator Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "table": "news_backlog",
+        "columns": "source, title, content, score, scraped_at",
+        "additionalFields": {}
+      },
+      "id": "4",
+      "name": "Supabase Archive",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [900, 200],
+      "credentials": {
+        "supabaseApi": "Supabase Creds"
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.score }}",
+              "operation": "largerEqual",
+              "value2": 7
+            }
+          ]
+        }
+      },
+      "id": "5",
+      "name": "Approve?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format FB post\nreturn {\n  message: `🚨 Gunpla Alert! ${$json.title}\nScore: ${$json.score}/10\n${$json.postCopy}\n#Gunpla ${$json.tags.join(' ')}`,\n  access_token: $env.FB_TOKEN\n};"
+      },
+      "id": "6",
+      "name": "Format FB Post",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "post",
+        "operation": "create",
+        "pageId": "YOUR_FB_PAGE_ID",
+        "additionalFields": {}
+      },
+      "id": "7",
+      "name": "FB Graph Post",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [1560, 200],
+      "credentials": {
+        "facebookGraphApiOAuth2Api": "FB Creds"
+      }
+    }
+  ],
+  "connections": {
+    "Daily Trigger": {
+      "main": [
+        [
+          {
+            "node": "News Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "News Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Curator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Curator Agent": {
+      "main": [
+        [
+          {
+            "node": "Supabase Archive",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Approve?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approve?": {
+      "main": [
+        [
+          {
+            "node": "Format FB Post",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        null
+      ]
+    },
+    "Format FB Post": {
+      "main": [
+        [
+          {
+            "node": "FB Graph Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2026-03-03T23:24:00.000Z",
+  "versionId": "1"
+}
