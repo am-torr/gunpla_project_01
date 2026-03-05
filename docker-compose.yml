@@ -1,4 +1,4 @@
-
+version: '3.8'
 services:
   scraper:
     build:
@@ -26,39 +26,41 @@ services:
       - gunpla-network
     restart: unless-stopped
 
-  supabase:  # FULL MAPPING (add your existing config)
-    image: supabase/postgres:15.1.0.147  # Or your version
+  supabase:
+    image: supabase/postgres:15.1.0.147
     container_name: gunpla-supabase
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: your_password  # .env SUPABASE_DB_PASSWORD?
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  # From .env
       PGUSER: postgres
     volumes:
       - supabase-data:/var/lib/postgresql/data
-      - ./supabase-init:/docker-entrypoint-initdb.d  # pgvector + gunpla_vectors
+      - ./supabase-init:/docker-entrypoint-initdb.d  # Schema init
     networks:
       - gunpla-network
     restart: unless-stopped
 
-  doc-ingest:
-    build: ./doc-ingest
-    container_name: gunpla-doc-ingest
+  doc-ingest:  # ← NOW CORRECTLY NESTED
+    build:
+      context: ./doc-ingest
+      dockerfile: Dockerfile
+    env_file:
+      - .env  # Loads your Supabase/OpenAI keys      
     volumes:
-      - './doc-ingest:/app'
-      - './doc-ingest/data:/app/data'
-      - './corpus:/app/corpus:ro'
-    env_file: .env
-    networks:
-      - gunpla-network
-    restart: unless-stopped
+      - ./doc-ingest:/app
+
+    command: python ingest.py  # Clean CMD
     depends_on:
       - supabase
-
-networks:
-  gunpla-network:
-    driver: bridge
+    networks:
+      - gunpla-network
+    restart: unless-stopped
 
 volumes:
   n8n-data:
   supabase-data:
+
+networks:
+  gunpla-network:
+    driver: bridge
