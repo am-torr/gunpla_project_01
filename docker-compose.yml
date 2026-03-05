@@ -57,6 +57,20 @@ services:
       - gunpla-network
     restart: unless-stopped
 
+
+  hf-embed:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-latest
+    ports:
+      - "5001:5001"
+    environment:
+      - HF_MODEL_ID=sentence-transformers/all-MiniLM-L6-v2
+    command: >
+      --model-id sentence-transformers/all-MiniLM-L6-v2
+      --hostname 0.0.0.0
+      --port 5001
+    restart: unless-stopped
+
+
 volumes:
   n8n-data:
   supabase-data:
@@ -64,3 +78,5 @@ volumes:
 networks:
   gunpla-network:
     driver: bridge
+
+
