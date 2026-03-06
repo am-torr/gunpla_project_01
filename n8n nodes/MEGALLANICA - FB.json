@@ -1,0 +1,288 @@
+{
+  "name": "MEGALLANICA - FB",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        -272
+      ],
+      "id": "b65488bf-37c3-4a2f-8eef-14f356667381",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "attached_media",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        304,
+        -272
+      ],
+      "id": "842637bd-54c9-4cf1-b902-91f23d1c26b1",
+      "name": "Feed"
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "photos",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "url",
+                "value": "={{ $json.image_list }}"
+              }
+            ]
+          },
+          "queryParametersJson": "{ \n  \"message\": \"test 6\",\n  \"published\": \"false\"\n}"
+        }
+      },
+      "id": "ae2dafb1-e0d5-41f5-8ecd-3c397a2eb467",
+      "name": "MEGALLANICA - A",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        -128,
+        -272
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "OHG8gI06fQQahdTg",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "feed",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "message",
+                "value": "={{ $('prep1').item.json.title }}"
+              },
+              {
+                "name": "published",
+                "value": "true"
+              },
+              {
+                "name": "attached_media",
+                "value": "={{ $json.attached_media }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "4f6c1445-9dff-4806-857d-548a7f4843b7",
+      "name": "MEGALLANICA - B",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        512,
+        -272
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "OHG8gI06fQQahdTg",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "image_list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -272
+      ],
+      "id": "1f4141e1-b990-4692-8a28-2488fe43c017",
+      "name": "split"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a5d1c59-a4a9-47e9-bb8c-db2d6d45fbc2",
+              "name": "image_list",
+              "value": "[ 'https://www.hlj.com/productimages/ban/banh691910_3.jpg', 'https://www.hlj.com/productimages/ban/banh691910_5.jpg', 'https://www.hlj.com/productimages/ban/banh691910_6.jpg' ]",
+              "type": "array"
+            },
+            {
+              "id": "f1325b29-e148-4189-a646-bc91aae9f5fd",
+              "name": "title",
+              "value": "tested - 1",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        528,
+        320
+      ],
+      "id": "9ef40860-3992-41a3-9b02-e42b9be73c4a",
+      "name": "prep3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a5d1c59-a4a9-47e9-bb8c-db2d6d45fbc2",
+              "name": "image_list",
+              "value": "[ 'https://www.hlj.com/productimages/ban/banh691910_3.jpg', 'https://www.hlj.com/productimages/ban/banh691910_5.jpg', 'https://www.hlj.com/productimages/ban/banh691910_6.jpg' ]",
+              "type": "array"
+            },
+            {
+              "id": "f1325b29-e148-4189-a646-bc91aae9f5fd",
+              "name": "title",
+              "value": "tested - 1",
+              "type": "string"
+            },
+            {
+              "id": "ff4ce2b9-a169-4ee7-bf04-7bb37b6efecd",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -528,
+        -272
+      ],
+      "id": "8c7cacb5-7abd-4963-a91e-cff85a22baa7",
+      "name": "prep1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f7ba1bd-330d-4d5b-adde-b98f740e3be6",
+              "name": "media_fbid",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        -272
+      ],
+      "id": "d0ea17dc-e5f9-4397-970a-9d4466c9ebcd",
+      "name": "prep2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "prep1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Feed": {
+      "main": [
+        [
+          {
+            "node": "MEGALLANICA - B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MEGALLANICA - A": {
+      "main": [
+        [
+          {
+            "node": "prep2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "split": {
+      "main": [
+        [
+          {
+            "node": "MEGALLANICA - A",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prep1": {
+      "main": [
+        [
+          {
+            "node": "split",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prep2": {
+      "main": [
+        [
+          {
+            "node": "Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "f349a073-86cf-4e3f-be49-205a92141ae9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ea691c6f51efbbf05182e7534f0b6bc407916e9380348f32610ab7adee2da23"
+  },
+  "id": "XRQ1M3zRdx7pMyqI",
+  "tags": []
+}

@@ -1,0 +1,669 @@
+{
+  "name": "Gunpla News Industrial 7 - Curate Archive Post",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b08ac8dc-dcb8-476e-8a49-a2cbd42d24e4",
+      "name": "Daily Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -3264,
+        -1488
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gunpla-news",
+        "options": {}
+      },
+      "id": "da177071-fe1e-438d-84a8-0f2908c29455",
+      "name": "News Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -2992,
+        -1488
+      ],
+      "webhookId": "7ef63490-ceca-49eb-8823-5bb98c455ffb"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b5b92998-9231-4a93-a2dd-0164898ff2be",
+      "name": "AI Curator Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [
+        -3184,
+        -64
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.score ?? 0 }}",
+              "operation": "largerEqual",
+              "value2": 7
+            }
+          ]
+        }
+      },
+      "id": "cdd333fc-563a-4742-b3d7-269f0eb29fca",
+      "name": "Approve?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -1296,
+        -1712
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $json;\n\n// Ngeekhong Golden Traits applied:\n// 1. Raw facts first (grade, price, release)\n// 2. PHP equivalent (PH localization gap)\n// 3. Beginner context line if applicable\n// 4. Primary source URL (credibility)\n// 5. FOMO copy only for Tier 1 (P-Bandai/PGU/MGSD)\n// 6. Neutral tone — no elitism, all grades valid\n// 7. Affiliate link appended\n\nconst score   = item.score  ?? 0;\nconst title   = item.title  ?? 'Gunpla News';\nconst source  = item.source ?? 'unknown';\nconst content = item.content ?? '';\nconst tier    = item.tier   ?? 'digest';\nconst tags    = item.tags   ?? [];\n\n// PHP conversion (approx ¥1 = ₱0.40, adjust in Supabase or cron)\nconst phpRate = 0.40;\nconst yenMatch = content.match(/[¥￥](\\d[\\d,]+)/);\nconst yenPrice = yenMatch ? parseInt(yenMatch[1].replace(/,/g, '')) : null;\nconst phpPrice = yenPrice ? Math.round(yenPrice * phpRate).toLocaleString() : null;\n\n// Grade → beginner context map (ngeekhong equal-grade philosophy)\nconst gradeContext = {\n  'HG':   '🟢 High Grade — Best starter kit. Build time: 1-2 hrs.',\n  'RG':   '🔵 Real Grade — HG detail at MG price. Panel lines heaven.',\n  'MG':   '🟡 Master Grade — Inner frame, serious detail. 4-8 hrs.',\n  'PG':   '🔴 Perfect Grade — Full mechanical detail. 20+ hrs.',\n  'MGSD': '⭐ MGSD — Super Deformed with MG-level engineering. Unique.',\n  'MGEX': '🔴 MG Extreme — LED, chrome, top-tier. Grail kit.',\n};\nconst gradeKey = Object.keys(gradeContext).find(k =>\n  title.toUpperCase().includes(k) || (tags.join(' ').toUpperCase().includes(k))\n);\nconst beginnerLine = gradeContext[gradeKey] ?? '';\n\n// FOMO trigger (Tier 1 only — ngeekhong never overhyped Tier 3)\nconst isTier1 = score >= 9 || tier === 'urgent';\nconst fomoLine = isTier1\n  ? `\\n🚨 P-Bandai / Limited window — order fast or pay scalper price.`\n  : '';\n\n// Affiliate link (HLJ default, swap for Shopee/GTO per source)\nconst affiliateBase = 'https://hlj.com/?ref=mechahub';\nconst affiliateLink = `\\n🛒 Check availability: ${affiliateBase}`;\n\n// Source credibility line (ngeekhong always cited primary)\nconst sourceMap = {\n  'gunjap':      '📰 Source: GUNJAP.net (JP primary)',\n  'gundam.info': '📰 Source: Gundam.info (Official)',\n  'reddit':      '📰 Source: r/Gunpla community',\n  'bandai':      '📰 Source: Bandai Hobby Site (Official)',\n  'hobbyplanet': '📰 Source: Hobby Planet PH',\n};\nconst sourceLine = sourceMap[source.toLowerCase()] ?? `📰 Source: ${source}`;\n\n// Build the post\nconst phpLine = phpPrice\n  ? `💰 Est. PHP: ₱${phpPrice} (¥${yenPrice?.toLocaleString()} at today's rate)`\n  : '';\n\nconst postCopy =\n`${isTier1 ? '🔥' : '📢'} ${title}\n\n${content}\n${phpLine ? '\\n' + phpLine : ''}\n${beginnerLine ? '\\n' + beginnerLine : ''}\n${fomoLine}\n${affiliateLink}\n\n${sourceLine}\n#Gunpla #MechaHub ${tags.map(t => '#' + t.replace(/\\s+/g, '')).join(' ')}`.trim();\n\nreturn [{\n  json: {\n    ...item,\n    postCopy,\n    phpPrice,\n    gradeKey,\n    isTier1\n  }\n}];\n"
+      },
+      "id": "f7d71fd8-9978-4b6d-a39f-eae048682052",
+      "name": "Format FB Post",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2576,
+        -752
+      ]
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "=112577573855520",
+        "options": {}
+      },
+      "id": "55158794-b580-4a39-b85a-a98f0f43f2b0",
+      "name": "FB Graph Post",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        -80
+      ],
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "OHG8gI06fQQahdTg",
+          "name": "Facebook Graph account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -2528,
+        -1216
+      ],
+      "id": "072ca502-c936-4dba-bef9-1f6a27b0b4c4",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "HbUgRm9xhA1vLDK4",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "=Industrial 7 Gunpla Curator.\n\nInput: title=\"{{ $json.title }}\", source=\"{{ $json.source }}\", content=\"{{ $json.content }}\".\n\nScore 0-10 urgency:\n10: PGU/MGSD/P-Bandai <48h\n9: MG Ver.Ka/reissue FOMO\n7-8: HG/RG reveal\n<6: Teaser\n\nOutput **JSON ONLY**, no prose:\n{\"title\":\"{{ $json.title }}\",\"source\":\"{{ $json.source }}\",\"content\":\"{{ $json.content }}\",\"score\":10,\"approve\":true,\"postCopy\":\"🚨 MGSD PHP15k FOMO HLJ/Shopee\",\"tags\":[\"MGSD\",\"Tier1\"],\"tier\":\"\n",
+        "options": {}
+      },
+      "id": "dffdffa6-de57-48b6-b583-540301a5f7a8",
+      "name": "AI Curator Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [
+        -2416,
+        -1488
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2ea8d8bb-50f8-4c48-b482-07f8887a83fc",
+      "name": "Supabase Archive_old",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2752,
+        -96
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "tableId": "=news_backlog",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "source",
+              "fieldValue": "={{ $json.source ?? '=' }}"
+            },
+            {
+              "fieldId": "title",
+              "fieldValue": "={{ $json.title ?? '=' }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "={{ $json.content ?? '=' }}"
+            },
+            {
+              "fieldId": "score",
+              "fieldValue": "={{ $json.score ?? 0 }}"
+            }
+          ]
+        }
+      },
+      "id": "b6d1b422-80f9-4c42-9234-e21975cf7290",
+      "name": "Supabase Archive",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1824,
+        -1488
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "news_backlog",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id ?? 0 }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "embedding",
+              "fieldValue": "=={{ JSON.stringify($json) }}"
+            }
+          ]
+        }
+      },
+      "id": "52537293-a44a-4d3c-a698-2240ac123a22",
+      "name": "Persist Embedding v1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        -992
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://host.docker.internal:5001/embed",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"inputs\": \"{{ $json.embed_text }}\"}\n",
+        "options": {}
+      },
+      "id": "cbcae96d-fa7b-4f3c-90d7-318a1c34a8a3",
+      "name": "HF Embed (Local)1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1328,
+        -1104
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prep embed_text for Python server (D:\\PROJECT\\doc-ingest\\embed_server.py)\nfor (const item of $input.all()) {\n  item.json.embed_text = `${item.json.title || ''} ${item.json.content || ''}`.trim();\n  item.json.supabase_id = item.json.id || item.json.supabase_id;\n}\nreturn $input.all();"
+      },
+      "id": "e780ccf0-a8f3-451d-8d2d-85a0ad1ff702",
+      "name": "embed_text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1488,
+        -1232
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "am.torralba013@gmail.com",
+        "toEmail": "am.torralba013@gmail.com",
+        "subject": "=Gunpla Approval: {{ $json.title }}\n",
+        "text": "=={{ $('Approval filter').first().json.body }}",
+        "options": {}
+      },
+      "id": "78a5a899-cf7f-4a8f-b26f-837630189c5c",
+      "name": "SMTP Send",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        -576,
+        -1728
+      ],
+      "webhookId": "8f7144b8-5b59-4108-bff9-aba81515d416",
+      "credentials": {
+        "smtp": {
+          "id": "11LfG9IIMfO6utJq",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const prose = $input.first()?.json?.output || '';\nconst jsonMatch = prose.match(/\\[({.*?})\\]/s);\nlet newsItem;\nif (jsonMatch) {\n  try {\n    newsItem = JSON.parse('[' + jsonMatch[1] + ']');\n  } catch {\n    newsItem = {};\n  }\n} else {\n  newsItem = {\n    title: $json.title || 'MGSD Test',\n    source: $json.source || 'gunjap',\n    content: $json.content || ''\n  };\n}\nreturn [{ json: newsItem }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2704,
+        -1488
+      ],
+      "id": "c24ed8ea-35fb-48fd-bbf8-d7a20d525d2e",
+      "name": "format WH"
+    },
+    {
+      "parameters": {
+        "jsCode": "const id = $('Supabase Archive').first().json?.id ?? Date.now();\nconst score = $json.score ?? 0;\nconst title = $json.title ?? 'Gunpla News';\nconst source = $json.source ?? '';\nconst content = $json.content ?? '';\nconst tier = $json.tier ?? 'digest';\n// postCopy fallback to content if empty\nconst postCopy = ($json.postCopy && $json.postCopy.trim() !== '')\n  ? $json.postCopy\n  : `🚨 ${title} - ${content}`;\nconst base = 'http://localhost:5679/webhook/gunpla-approve';\n\nreturn [{json: {\n  subject: `🚨 [TIER${score >= 9 ? '1' : '2'}] Approve: ${title.slice(0,50)}`,\n  body: postCopy + '\\n\\n' +\n        'Score: ' + score + '/10 | Source: ' + source + ' | Tier: ' + tier + '\\n\\n' +\n        '✅ APPROVE: ' + base + '?action=approve&id=' + id + '\\n' +\n        '❌ REJECT:  ' + base + '?action=reject&id=' + id,\n  id, title, score, postCopy\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1504,
+        -1712
+      ],
+      "id": "baee0b15-d27f-4908-ba5e-73aa3314986b",
+      "name": "Approval filter"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst prose = input.output || '';\n\n// Aggressive parse: numbers, booleans, lists from prose\nconst scoreMatch = prose.match(/score[ \\t:]*(\\d+)/i);\nconst approveMatch = prose.match(/approve[ \\t:]*([true|false])/i);\nconst tierMatch = prose.match(/tier[ \\t:]*[\"'`]?([^\",`\\n]+)/i);\nconst tagsMatch = prose.match(/tags[ \\t:]*\\[(.*?)\\]/i);\n\n// JSON fallback first\nlet parsed = {};\ntry {\n  parsed = JSON.parse(prose);\n} catch {\n  // Prose extract\n  parsed.score = parseInt(scoreMatch?.[1] || 0);\n  parsed.approve = approveMatch?.[1]?.toLowerCase() === 'true';\n  parsed.tier = tierMatch?.[1]?.trim() || 'digest';\n  \n  if (tagsMatch?.[1]) {\n    parsed.tags = tagsMatch[1].split(',').map(t => t.trim().replace(/[\"'\\[\\]]/g, ''));\n  }\n}\n\n// Merge input + parsed\nreturn [{\n  json: {\n    title: input.title || parsed.title || 'Unknown',\n    source: input.source || parsed.source || 'unknown',\n    content: input.content || parsed.content || '',\n    ...parsed,\n    postCopy: parsed.postCopy || ''\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2048,
+        -1488
+      ],
+      "id": "bfeae112-f2d9-4c25-8830-3e85f66b735c",
+      "name": "Archive filter"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -560
+      ],
+      "id": "950cf969-cbe0-4746-a098-2a262aa8c36a",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "path": "gunpla-approve",
+        "options": {}
+      },
+      "id": "ddcecb74-5385-4741-821a-5393a214457d",
+      "name": "Approval Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -3248,
+        -656
+      ],
+      "webhookId": "gunpla-approve-001"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.query.action }}",
+              "value2": "approve"
+            }
+          ]
+        }
+      },
+      "id": "1fd06f4b-1a6d-4403-a58c-f52e34b650f5",
+      "name": "Action?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -3024,
+        -656
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "news_backlog",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.query.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "approved"
+            }
+          ]
+        }
+      },
+      "id": "79fd7742-cf96-41e7-b1a0-3f8d02983c9b",
+      "name": "Mark Approved",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2800,
+        -752
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "news_backlog",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.query.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "status",
+              "fieldValue": "rejected"
+            }
+          ]
+        }
+      },
+      "id": "293abf67-3cf0-41b6-9f19-a4c3f967b0f2",
+      "name": "Mark Rejected",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -2800,
+        -560
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "News Webhook": [
+      {
+        "json": {
+          "title": "MGSD Test",
+          "source": "gunjap",
+          "content": "Bandai preview PHP15k"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "News Webhook": {
+      "main": [
+        [
+          {
+            "node": "format WH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Curator Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Approve?": {
+      "main": [
+        [
+          {
+            "node": "SMTP Send",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format FB Post": {
+      "main": [
+        []
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Curator Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Curator Agent1": {
+      "main": [
+        [
+          {
+            "node": "Archive filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Archive": {
+      "main": [
+        [
+          {
+            "node": "Approval filter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "embed_text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HF Embed (Local)1": {
+      "main": [
+        [
+          {
+            "node": "Persist Embedding v1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "embed_text": {
+      "main": [
+        [
+          {
+            "node": "HF Embed (Local)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SMTP Send": {
+      "main": [
+        []
+      ]
+    },
+    "format WH": {
+      "main": [
+        [
+          {
+            "node": "AI Curator Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approval filter": {
+      "main": [
+        [
+          {
+            "node": "Approve?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Archive filter": {
+      "main": [
+        [
+          {
+            "node": "Supabase Archive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        []
+      ]
+    },
+    "Approval Webhook": {
+      "main": [
+        [
+          {
+            "node": "Action?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Action?": {
+      "main": [
+        [
+          {
+            "node": "Mark Approved",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark Rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Approved": {
+      "main": [
+        [
+          {
+            "node": "Format FB Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Rejected": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "8aa2219f-f68e-4def-820d-a48dc7f28232",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ea691c6f51efbbf05182e7534f0b6bc407916e9380348f32610ab7adee2da23"
+  },
+  "id": "792lwtkRhA61rSxL",
+  "tags": []
+}

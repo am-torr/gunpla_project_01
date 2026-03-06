@@ -1,0 +1,275 @@
+{
+  "name": "Gunpla News Side 4 - Gather & Forward",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1a24f76e-cabf-490d-8dae-875546c4fc0c",
+      "name": "AI Curator Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [
+        -1696,
+        -112
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "d069c287-a4b9-4fc1-bda5-4cf32eb73e1e",
+      "name": "Supabase Archive_old",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -144
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "10831a8f-86d9-4370-acd7-edfaae6ba7f9",
+      "name": "Cron Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -1664,
+        -976
+      ]
+    },
+    {
+      "parameters": {
+        "text": "=JSON ONLY. NO PROSE. NO EXPLANATIONS. NO SUMMARY. START WITH [ END WITH ].\n\nYou receive ARRAY of Gunpla news. LOOP EACH:\n\n1. Score 0-10: 10=PGU/MGSD/P-Bandai<48h/GUNJAP exclusive; 9=RG reissue; 5-7=HG review; <5=archive.\n2. Approve: true >=8 (FB urgent).\n3. postCopy: 150w PH hype/FOMO/PHP est (HG1.5k/MG4k/PG15k)/affiliate (HLJ/AmiAmi).\n4. tags: [MGSD,PGU].\n5. image_url: bandai-hobby.net/kit.jpg sim.\n6. php_price_est: \"15000\".\n7. tier: \"urgent\"/\"digest\".\n\nSCHEMA: [{\"title\":str,\"source\":str,\"score\":int,\"approve\":bool,\"postCopy\":str,\"tags\":[str],\"image_url\":str,\"php_price_est\":str,\"tier\":str}]\n\nEXAMPLE INPUT: [{\"title\":\"MGSD Test\",\"source\":\"gunjap\"}]\nEXAMPLE OUTPUT: [{\"title\":\"MGSD Test\",\"source\":\"gunjap\",\"score\":9,\"approve\":true,\"postCopy\":\"🚨 MGSD drop PHP8k FOMO HLJ!\",\"tags\":[\"MGSD\"],\"image_url\":\"bandai-hobby.net/mg.jpg\",\"php_price_est\":\"8000\",\"tier\":\"urgent\"}]\n\nPROCESSED ARRAY:\n",
+        "options": {}
+      },
+      "id": "dfaf3789-cbbb-4d98-8dfe-e3bf0bf969e0",
+      "name": "News Gather Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        -976
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "b0899933-c691-46be-8086-d384e5c29676",
+      "name": "SplitInBatches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        -976
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:5679/webhook/gunpla-news",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "4fdb0648-385e-4ee6-b3ae-691846b76d60",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -560,
+        -976
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "07a69d1d-ae2c-439f-b0bc-e672c602510a",
+      "name": "Groq Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -1312,
+        -704
+      ],
+      "credentials": {
+        "groqApi": {
+          "id": "HbUgRm9xhA1vLDK4",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "=news_backlog",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "source",
+              "fieldValue": "=={{ $json.source }}"
+            },
+            {
+              "fieldId": "title",
+              "fieldValue": "=={{ $json.title }}"
+            },
+            {
+              "fieldId": "content",
+              "fieldValue": "=={{  $json.content  }}"
+            },
+            {
+              "fieldId": "score",
+              "fieldValue": "={{ parseInt($json.score) }}"
+            }
+          ]
+        }
+      },
+      "id": "1983b1bc-7d12-4380-b684-fec879b5816c",
+      "name": "Supabase Archive",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1488,
+        -304
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "OZZlfyiNQsAVjZxj",
+          "name": "Supabase account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1328,
+        -304
+      ],
+      "id": "e650ff0d-9041-4caa-8a51-d884233c18bf",
+      "name": "Merge1",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -912
+      ],
+      "id": "217d741c-3f9f-4a1f-ba9e-b6417c7f676f",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "AI Curator Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Cron Trigger": {
+      "main": [
+        [
+          {
+            "node": "News Gather Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "News Gather Agent": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitInBatches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "News Gather Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        []
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "909edbff-b95a-4602-a79a-97e87a4046c5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ea691c6f51efbbf05182e7534f0b6bc407916e9380348f32610ab7adee2da23"
+  },
+  "id": "jUqrkNLqnn6LvLEU",
+  "tags": []
+}
