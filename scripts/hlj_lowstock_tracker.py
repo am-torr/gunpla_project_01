@@ -49,7 +49,7 @@ from bs4 import BeautifulSoup
 
 # ── Config ────────────────────────────────────────────────────────────────────
 HLJ_BASE      = "https://www.hlj.com"
-SCRAPE_URL    = f"{HLJ_BASE}/search/?GenreCode2=Gundam&StockLevel=In+Stock"
+SCRAPE_URL    = f"{HLJ_BASE}/search/?Word=gunpla&StockLevel=In%C2%A0Stock"
 AFFILIATE_TAG = "utm_source=speedartug&utm_medium=affiliate"
 JPY_TO_PHP    = 0.37
 SCRAPE_DELAY  = 3        # seconds – respectful crawling
@@ -108,6 +108,56 @@ def extract_grade_scale(name: str) -> str:
     scale = re.search(r"1/(\d+)", name)
     return f"1/{scale.group(1)}" if scale else "Unknown"
 
+
+
+# ── Gunpla Name/SKU Filter ────────────────────────────────────────────────────
+# HLJ's Word=gunpla search is mostly clean, but this secondary filter catches
+# any non-kit items (magazines, apparel, figures, accessories) that slip through.
+
+GUNPLA_NAME_KW = [
+    # Grades (space-padded to avoid false matches like "mgh", "sdcard")
+    "hguc", "hgce", "hgibo", "hgac", "hgbd", "hgtwfm",
+    "mg ", " mg ", "rg ", " rg ", "pg ", " pg ",
+    "mgsd", "mgex", "eg ", " eg ",
+    " sd ", "bb ", "sd bb",
+    # Scale patterns
+    "1/144", "1/100", "1/60", "1/48",
+    # Gundam-specific mobile suit names that only appear on kits
+    "gundam", "zaku", "gm ", "rx-78", "wing zero", "strike freedom",
+    "unicorn", "nu gundam", "sazabi", "sinanju", "barbatos",
+    "astray", "exia", "00 raiser", "freedom", "justice",
+    "destiny", "providence", "impulse", "infinite justice",
+    # Gunpla keyword itself
+    "gunpla",
+]
+
+# Non-Gunpla SKU patterns to EXCLUDE (these prefixes = apparel/merch/books)
+NON_GUNPLA_SKU_PREFIXES = (
+    "ABA",   # Abystyle apparel / anime merch
+    "KBY",   # Kibear / novelties
+    "AZM",   # Aoshima model kits (aircraft, cars — not Gunpla)
+    "KPM",   # Klear Kutter masks (aircraft model accessories)
+    "AZMP",  # Aoshima aircraft
+)
+
+
+def is_gunpla(name: str, sku: str) -> bool:
+    """
+    Returns True if the item is a Gunpla model kit.
+    Two-pass check:
+      1. SKU prefix blacklist — fast reject for known non-Gunpla vendors
+      2. Name keyword whitelist — must contain a grade/scale/MS-name keyword
+    """
+    sku_upper = sku.upper()
+
+    # Hard reject: known non-Gunpla SKU prefixes
+    if sku_upper.startswith(NON_GUNPLA_SKU_PREFIXES):
+        return False
+
+    name_lower = name.lower()
+
+    # Whitelist: name must contain at least one Gunpla-related keyword
+    return any(kw in name_lower for kw in GUNPLA_NAME_KW)
 
 # ── Core Scraper ──────────────────────────────────────────────────────────────
 async def scrape_low_stock() -> list:
@@ -181,6 +231,11 @@ async def scrape_low_stock() -> list:
                 img_el  = card.select_one(HLJSelectors.PRODUCT_IMAGE)
                 img_src = img_el.get("src", "") if img_el else ""
                 img_url = f"https:{img_src}" if img_src.startswith("//") else img_src
+
+                # GUNPLA FILTER — skip non-kit items (merch, apparel, books)
+                if not is_gunpla(name, sku):
+                    print(f"  [{idx:02d}/{proc}] SKIP non-Gunpla: {name[:40]}")
+                    continue
 
                 print(f"  [{idx:02d}/{proc}] {name[:44]:<44} | {sku:<14} | {stock}")
 
