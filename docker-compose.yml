@@ -15,9 +15,11 @@ services:
       - n8n
   hlj-lowstock:
      build:
-       context: .scripts/hlj-lowstock  # new folder
+       context: scripts/hlj-lowstock  # new folder
        dockerfile: Dockerfile
      container_name: gunpla-hlj-lowstock
+     ports:
+          - "8001:8001"     # ← ADD THIS for host testing     
      env_file: .env
      networks:
        - gunpla-network
