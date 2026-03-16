@@ -195,8 +195,4 @@ hlj_page.html
 *Copy*
 
 # ─── Project-specific: Docker overrides ───
-<<<<<<< HEAD
 docker-compose.override.yml
-=======
-docker-compose.override.yml
->>>>>>> ef7e95a5d5de95f7b5c621d5180a90bc72ece7f7
