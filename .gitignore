@@ -179,3 +179,20 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# ─── Project-specific: Secrets — NEVER commit ───
+.env*
+*.env
+*.backup.*
+backup/
+
+# ─── Project-specific: Dev artifacts ───
+thread15-*
+hlj_debug.png
+hlj_page.html
+*bk*
+*.tmp
+*Copy*
+
+# ─── Project-specific: Docker overrides ───
+docker-compose.override.yml
