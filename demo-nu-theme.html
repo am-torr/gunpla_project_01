@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gunpla Price Tracker - ν Gundam Theme Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #080c10; background-image: radial-gradient(ellipse at 20% 50%, rgba(57,255,110,.05) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(72,144,217,.04) 0%, transparent 50%); font-family: 'Rajdhani', sans-serif; color: #e8edf2; min-height: 100vh; }
+.header { text-align: center; padding: 48px 20px 32px; border-bottom: 1px solid #1e3a2a; position: relative; }
+.header::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 120px; height: 1px; background: #39ff6e; box-shadow: 0 0 12px #39ff6e; }
+.header h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #e8edf2; text-shadow: 0 0 30px rgba(57,255,110,.25); margin-bottom: 10px; }
+.header p { font-family: 'Share Tech Mono', monospace; font-size: .75rem; letter-spacing: .2em; color: #6b7f8a; text-transform: uppercase; }
+.controls { display: flex; gap: 20px; padding: 24px 32px; background: #0e1519; border-bottom: 1px solid #1e3a2a; flex-wrap: wrap; align-items: flex-end; }
+.control-group { display: flex; flex-direction: column; gap: 6px; }
+.control-group label { font-family: 'Share Tech Mono', monospace; font-size: .65rem; letter-spacing: .25em; color: #39ff6e; text-transform: uppercase; }
+select, input[type=number] { background: #111a20; border: 1px solid #1e3a2a; color: #e8edf2; font-family: 'Rajdhani', sans-serif; font-size: .9rem; padding: 8px 12px; border-radius: 2px; outline: none; }
+select:focus, input:focus { border-color: #39ff6e; }
+.btn { padding: 9px 24px; border: 1px solid #39ff6e; background: transparent; color: #39ff6e; font-family: 'Share Tech Mono', monospace; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; box-shadow: 0 0 8px rgba(57,255,110,.15); transition: all .2s; }
+.btn:hover { background: #39ff6e; color: #080c10; box-shadow: 0 0 16px rgba(57,255,110,.4); }
+.status-bar { display: flex; justify-content: space-between; padding: 10px 32px; background: #0e1519; border-bottom: 1px solid #1e3a2a; font-family: 'Share Tech Mono', monospace; font-size: .7rem; letter-spacing: .1em; color: #6b7f8a; }
+.status-bar .count { color: #39ff6e; font-weight: bold; }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; padding: 32px; background: #1e3a2a; }
+.product-card { background: #111a20; padding: 20px; display: flex; flex-direction: column; gap: 12px; border-left: 2px solid transparent; position: relative; transition: all .2s; }
+.product-card:hover { background: #162028; border-left-color: #39ff6e; }
+.product-card::before { content: ''; position: absolute; top: 0; right: 0; width: 16px; height: 16px; border-top: 1px solid #39ff6e; border-right: 1px solid #39ff6e; opacity: .4; }
+.product-card .name { font-size: .85rem; font-weight: 600; letter-spacing: .03em; line-height: 1.4; text-transform: uppercase; color: #e8edf2; }
+.product-card .price { font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; font-weight: 700; color: #c8923a; letter-spacing: .05em; margin: 4px 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: 'Share Tech Mono', monospace; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; padding: 3px 8px; border-radius: 1px; background: transparent; }
+.tag.grade { border: 1px solid #4a90d9; color: #4a90d9; }
+.tag.scale { border: 1px solid #3a5a6a; color: #6b7f8a; }
+.tag.store { border: 1px solid #3a5a6a; color: #6b7f8a; }
+.tag.in-stock { border: 1px solid #39ff6e; color: #39ff6e; }
+.tag.unknown { border: 1px solid #3a5a6a; color: #6b7f8a; }
+.product-card a { margin-top: auto; display: block; text-align: center; padding: 8px; font-family: 'Share Tech Mono', monospace; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: #6b7f8a; border: 1px solid #1e3a2a; text-decoration: none; border-radius: 1px; transition: all .2s; }
+.product-card a:hover { color: #39ff6e; border-color: #39ff6e; }
+.footer { text-align: center; padding: 24px; border-top: 1px solid #1e3a2a; font-family: 'Share Tech Mono', monospace; font-size: .65rem; letter-spacing: .15em; color: #6b7f8a; text-transform: uppercase; }
+.footer a { color: #39ff6e; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>GUNPLA PRICE TRACKER</h1>
+  <p>Live scraping Hobby Planet PH + Hobby Link Japan</p>
+</div>
+<div class="controls">
+  <div class="control-group"><label>STORE</label><select><option>Hobby Planet PH</option><option>Hobby Link Japan</option><option>All Stores</option></select></div>
+  <div class="control-group"><label>GRADE</label><select><option>Master Grade (MG)</option><option>High Grade (HG)</option><option>Real Grade (RG)</option><option>Perfect Grade (PG)</option></select></div>
+  <div class="control-group"><label>SORT</label><select><option>Latest</option><option>Price: Low to High</option><option>Price: High to Low</option></select></div>
+  <div class="control-group"><label>LIMIT</label><input type="number" value="10" style="width:70px"></div>
+  <div class="control-group"><label>&nbsp;</label><button class="btn">SCRAPE LIVE</button></div>
+</div>
+<div class="status-bar">
+  <span>Scraped at 1:55:04 AM</span>
+  <span class="count">10 products found</span>
+</div>
+<div class="products-grid">
+  <div class="product-card"><div class="name">P-Bandai MG 1/100 GUNDAM ASTRAEA + PROTO GN TWIN BROAD BLADE</div><div class="price">₱4,000</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai FULL MECHANICS 1/100 Boost Raider Gundam</div><div class="price">₱3,800</div><div class="meta"><span class="tag unknown">Unknown</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">Bandai MG 1/100 GUNDAM F90</div><div class="price">₱2,500</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai MG 1/100 GUNDAM F90 [MARS ZEON FORCES TYPE]</div><div class="price">₱2,500</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai MG 1/100 GUNDAM F91 ver2.0 BACK CANON & TWIN V.S.B.R. SET UP TYPE</div><div class="price">₱3,500</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai MG 1/100 RGM-79DO GM Dominance</div><div class="price">₱3,500</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai MG 1/100 M'QUVE'S Gouf</div><div class="price">₱3,000</div><div class="meta"><span class="tag grade">MG</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+  <div class="product-card"><div class="name">P-Bandai RE 1/100 Quess Air's Jagd Doga</div><div class="price">₱3,000</div><div class="meta"><span class="tag grade">RE</span><span class="tag scale">1/100</span><span class="tag store">HP</span><span class="tag in-stock">In Stock</span></div><a href="#">VIEW PRODUCT →</a></div>
+</div>
+<div class="footer">Built by am-torr &middot; <a href="https://github.com/am-torr">GitHub</a> &middot; FastAPI + Python</div>
+</body>
+</html>
