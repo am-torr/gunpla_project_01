@@ -55,7 +55,7 @@ JPY_TO_PHP    = 0.37
 SCRAPE_DELAY  = 3        # seconds – respectful crawling
 LIMIT         = 50
 # LOW_STOCK_KW = ["only 1", "only 2", "only 3", "only 4"]
-LOW_STOCK_KW  = ["only 1"]
+LOW_STOCK_KW  = ["only 5"]
 OUTPUT_DIR    = Path(__file__).resolve().parent
 
 FIELDS = ["name","grade_scale","price_jpy","price_php",
