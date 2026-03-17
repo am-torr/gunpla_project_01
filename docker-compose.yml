@@ -19,7 +19,9 @@ services:
        dockerfile: Dockerfile
      container_name: gunpla-hlj-lowstock
      ports:
-          - "8001:8001"     # ← ADD THIS for host testing     
+       - "8001:8001"
+     volumes:
+       - ./scripts/hlj-lowstock:/app
      env_file: .env
      networks:
        - gunpla-network

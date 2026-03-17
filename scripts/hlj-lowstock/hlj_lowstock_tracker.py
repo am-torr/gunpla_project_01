@@ -54,8 +54,8 @@ AFFILIATE_TAG = "utm_source=speedartug&utm_medium=affiliate"
 JPY_TO_PHP    = 0.37
 SCRAPE_DELAY  = 3        # seconds – respectful crawling
 LIMIT         = 50
-# LOW_STOCK_KW  = ["only 1", "only 2"]
-LOW_STOCK_KW  = ["only 3", "only 4"]
+# LOW_STOCK_KW = ["only 1", "only 2", "only 3", "only 4"]
+LOW_STOCK_KW  = ["only 1"]
 OUTPUT_DIR    = Path(__file__).resolve().parent
 
 FIELDS = ["name","grade_scale","price_jpy","price_php",
