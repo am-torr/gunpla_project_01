@@ -54,8 +54,8 @@ AFFILIATE_TAG = "utm_source=speedartug&utm_medium=affiliate"
 JPY_TO_PHP    = 0.37
 SCRAPE_DELAY  = 3        # seconds – respectful crawling
 LIMIT         = 50
-# LOW_STOCK_KW  = ["only 1", "only 2"]
-LOW_STOCK_KW  = ["only 3", "only 4"]
+# LOW_STOCK_KW = ["only 1", "only 2", "only 3", "only 4"]
+LOW_STOCK_KW  = ["only 5"]
 OUTPUT_DIR    = Path(__file__).resolve().parent
 
 FIELDS = ["name","grade_scale","price_jpy","price_php",
@@ -84,90 +84,92 @@ def build_affiliate_url(product_url: str) -> str:
 
 
 def extract_grade_scale(name: str) -> str:
-    """Best-effort grade/scale parsed from product name."""
-    checks = [
-        (r"\bMGEX\b",  "MGEX"),
-        (r"\bMGSD\b",  "MGSD"),
-        (r"\bPG\b",    "PG 1/60"),
-        (r"\bMG\b",    "MG 1/100"),
-        (r"\bRG\b",    "RG 1/144"),
-        (r"\bHGUC\b",  "HGUC 1/144"),
-        (r"\bHGCE\b",  "HGCE 1/144"),
-        (r"\bHGIBO\b", "HGIBO 1/144"),
-        (r"\bHGAC\b",  "HGAC 1/144"),
-        (r"\bHG\b",    "HG 1/144"),
-        (r"\bEG\b",    "EG 1/144"),
-        (r"\bSD\b",    "SD"),
+    """Dynamic grade/scale parser — auto-detects any HG__ variant."""
+
+    # Fixed grades — order matters (specific before generic)
+    FIXED = [
+        (r"\bMGEX\b", "MGEX"),
+        (r"\bMGSD\b", "MGSD"),
+        (r"\bPG\b",   "PG 1/60"),
+        (r"\bMG\b",   "MG 1/100"),
+        (r"\bRG\b",   "RG 1/144"),
+        (r"\bEG\b",   "EG 1/144"),
+        (r"\bBB\b",   "SD BB"),
+        (r"\bSD\b",   "SD"),
     ]
-    for pat, label in checks:
+
+    # Step 1 — fixed grades first
+    for pat, label in FIXED:
         if re.search(pat, name, re.I):
             scale = re.search(r"1/(\d+)", name)
-            if scale:
-                grade = label.split()[0]
-                return f"{grade} 1/{scale.group(1)}"
-            return label
+            grade = label.split()[0]
+            return f"{grade} 1/{scale.group(1)}" if scale else label
+
+    # Step 2 — dynamic HG__ catch-all (HGUC, HGCE, HGIBO, HGTWFM, HGWFM, HGSD, etc.)
+    hg_match = re.search(r"\bHG([A-Z]{0,6})\b", name, re.I)
+    if hg_match:
+        suffix = hg_match.group(1).upper()
+        grade  = f"HG{suffix}" if suffix else "HG"
+        scale  = re.search(r"1/(\d+)", name)
+        return f"{grade} 1/{scale.group(1)}" if scale else f"{grade} 1/144"
+
+    # Step 3 — scale only fallback
     scale = re.search(r"1/(\d+)", name)
     return f"1/{scale.group(1)}" if scale else "Unknown"
-
 
 
 # ── Gunpla Name/SKU Filter ────────────────────────────────────────────────────
 # HLJ's Word=gunpla search is mostly clean, but this secondary filter catches
 # any non-kit items (magazines, apparel, figures, accessories) that slip through.
 
-GUNPLA_NAME_KW = [
-    # Grades (space-padded to avoid false matches like "mgh", "sdcard")
-    "hguc", "hgce", "hgibo", "hgac", "hgbd", "hgtwfm",
-    "mg ", " mg ", "rg ", " rg ", "pg ", " pg ",
-    "mgsd", "mgex", "eg ", " eg ",
-    " sd ", "bb ", "sd bb",
-    # Scale patterns
-    "1/144", "1/100", "1/60", "1/48",
-    # Gundam-specific mobile suit names that only appear on kits
-    "gundam", "zaku", "gm ", "rx-78", "wing zero", "strike freedom",
-    "unicorn", "nu gundam", "sazabi", "sinanju", "barbatos",
-    "astray", "exia", "00 raiser", "freedom", "justice",
-    "destiny", "providence", "impulse", "infinite justice",
-    # Gunpla keyword itself
-    "gunpla",
-]
-
-# Non-Gunpla SKU patterns to EXCLUDE (these prefixes = apparel/merch/books)
+# ── Gunpla Name/SKU Filter ─────────────────────────────────────────────────
 NON_GUNPLA_SKU_PREFIXES = (
     "ABA",   # Abystyle apparel / anime merch
     "KBY",   # Kibear / novelties
-    "AZM",   # Aoshima model kits (aircraft, cars — not Gunpla)
-    "KPM",   # Klear Kutter masks (aircraft model accessories)
+    "AZM",   # Aoshima model kits (aircraft, cars)
+    "KPM",   # Klear Kutter masks
     "AZMP",  # Aoshima aircraft
 )
 
+# Grade patterns — regex, catches any HG__ variant
+GRADE_PATTERNS = re.compile(
+    r"\b(MGEX|MGSD|PG|MG|RG|EG|SD|BB|HG[A-Z]{0,6})\b", re.I
+)
+
+# Scale patterns
+SCALE_PATTERNS = re.compile(r"1/(144|100|60|48|35)", re.I)
+
+# Known MS/kit name keywords — only add names unique to Gunpla kits
+MS_KEYWORDS = [
+    "gundam", "gunpla", "zaku", "rx-78", "wing zero", "strike freedom",
+    "unicorn", "nu gundam", "sazabi", "sinanju", "barbatos", "astray",
+    "exia", "00 raiser", "freedom", "justice", "destiny", "providence",
+    "impulse", "infinite justice", "gelgoog", "gouf", "dom ", "rick dom",
+    "gm ", "ball ", "jegan", "ReZEL", "kshatriya", "hyaku shiki",
+]
 
 def is_gunpla(name: str, sku: str) -> bool:
-    """
-    Returns True if the item is a Gunpla model kit.
-    Two-pass check:
-      1. SKU prefix blacklist — fast reject for known non-Gunpla vendors
-      2. Name keyword whitelist — must contain a grade/scale/MS-name keyword
-    """
-    sku_upper = sku.upper()
-
-    # Hard reject: known non-Gunpla SKU prefixes
-    if sku_upper.startswith(NON_GUNPLA_SKU_PREFIXES):
+    if sku.upper().startswith(NON_GUNPLA_SKU_PREFIXES):
         return False
-
     name_lower = name.lower()
+    return bool(
+        GRADE_PATTERNS.search(name)        # any grade match
+        or SCALE_PATTERNS.search(name)     # any scale match
+        or any(kw in name_lower for kw in MS_KEYWORDS)  # MS name match
+    )
 
-    # Whitelist: name must contain at least one Gunpla-related keyword
-    return any(kw in name_lower for kw in GUNPLA_NAME_KW)
 
 # ── Core Scraper ──────────────────────────────────────────────────────────────
-async def scrape_low_stock() -> list:
+#async def scrape_low_stock() -> list:
+async def scrape_low_stock(stock_filter: list = None) -> list:
+    
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
     print(f"\n{'='*64}")
     print(f"  HLJ LOW-STOCK TRACKER  |  {ts}")
     print(f"{'='*64}")
     print(f"  URL    : {SCRAPE_URL}")
-    print(f"  Limit  : {LIMIT}  |  Filter : {LOW_STOCK_KW}")
+    active_filter = stock_filter if stock_filter else LOW_STOCK_KW
+    print(f"  Limit  : {LIMIT}  |  Filter : {active_filter}")
     print(f"  Delay  : {SCRAPE_DELAY}s  |  JPY->PHP: {JPY_TO_PHP}")
     print(f"{'='*64}\n")
 
@@ -241,7 +243,8 @@ async def scrape_low_stock() -> list:
                 print(f"  [{idx:02d}/{proc}] {name[:44]:<44} | {sku:<14} | {stock}")
 
                 # LOW-STOCK FILTER
-                if not any(kw in stock.lower() for kw in LOW_STOCK_KW):
+                #if not any(kw in stock.lower() for kw in LOW_STOCK_KW):
+                if not any(kw in stock.lower() for kw in active_filter):
                     continue
 
                 print(f"  !!! LOW STOCK -> {name[:60]}")
