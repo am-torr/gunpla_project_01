@@ -161,13 +161,17 @@ def is_gunpla(name: str, sku: str) -> bool:
     return any(kw in name_lower for kw in GUNPLA_NAME_KW)
 
 # ── Core Scraper ──────────────────────────────────────────────────────────────
-async def scrape_low_stock() -> list:
+#async def scrape_low_stock() -> list:
+async def scrape_low_stock(stock_filter: list = None) -> list:
+    
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
     print(f"\n{'='*64}")
     print(f"  HLJ LOW-STOCK TRACKER  |  {ts}")
     print(f"{'='*64}")
     print(f"  URL    : {SCRAPE_URL}")
-    print(f"  Limit  : {LIMIT}  |  Filter : {LOW_STOCK_KW}")
+    #print(f"  Limit  : {LIMIT}  |  Filter : {LOW_STOCK_KW}")
+    active_filter = stock_filter if stock_filter else LOW_STOCK_KW
+    print(f"  Limit  : {LIMIT}  |  Filter : {active_filter}")
     print(f"  Delay  : {SCRAPE_DELAY}s  |  JPY->PHP: {JPY_TO_PHP}")
     print(f"{'='*64}\n")
 
@@ -241,7 +245,8 @@ async def scrape_low_stock() -> list:
                 print(f"  [{idx:02d}/{proc}] {name[:44]:<44} | {sku:<14} | {stock}")
 
                 # LOW-STOCK FILTER
-                if not any(kw in stock.lower() for kw in LOW_STOCK_KW):
+                #if not any(kw in stock.lower() for kw in LOW_STOCK_KW):
+                if not any(kw in stock.lower() for kw in active_filter):
                     continue
 
                 print(f"  !!! LOW STOCK -> {name[:60]}")
