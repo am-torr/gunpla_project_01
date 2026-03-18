@@ -7,12 +7,9 @@ app = FastAPI()
 
 @app.get("/low-stock")
 async def low_stock(
-    stock_levels: List[str] = Query(
-        default=["only 1", "only 2"],
-        alias="stock"
-    )
+    stock: List[str] = Query(default=["only 1", "only 2"])
 ):
-    items = await scrape_low_stock(stock_filter=stock_levels)
+    items = await scrape_low_stock(stock_filter=stock)
     return {"items": items}
 
 @app.get("/health")
