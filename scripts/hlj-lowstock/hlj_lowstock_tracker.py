@@ -25,7 +25,7 @@ import re
 import sys
 import os
 import requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()  # Loads .env from script dir or parent
@@ -61,6 +61,7 @@ SCRAPE_DELAY  = 3        # seconds – respectful crawling
 LIMIT         = 50
 LOW_STOCK_KW  = ["only 5"]
 OUTPUT_DIR    = Path(__file__).resolve().parent
+PHT = timezone(timedelta(hours=8))
 
 FIELDS = ["name","grade_scale","price_jpy","price_php","price_sgd","price_usd","price_myr","price_thb","price_idr","stock","sku","image_url","affiliate_url","scraped_at","notes"]
 
@@ -141,7 +142,7 @@ def parse_price(text: str):
 
 
 def fmt_jpy(price) -> str:
-    return f"\\u00a5{price:,.0f}" if price else "N/A"
+    return f"¥{price:,.0f}" if price else "N/A"
 
 
 def build_affiliate_url(product_url: str) -> str:
@@ -154,33 +155,33 @@ def extract_grade_scale(name: str) -> str:
 
     # Fixed grades — order matters (specific before generic)
     FIXED = [
-        (r"\\bMGEX\\b", "MGEX"),
-        (r"\\bMGSD\\b", "MGSD"),
-        (r"\\bPG\\b",   "PG 1/60"),
-        (r"\\bMG\\b",   "MG 1/100"),
-        (r"\\bRG\\b",   "RG 1/144"),
-        (r"\\bEG\\b",   "1/144 ENTRY GRADE"),
-        (r"\\bBB\\b",   "SD BB"),
-        (r"\\bSD\\b",   "SD"),
+        (r"\bMGEX\b", "MGEX"),
+        (r"\bMGSD\b", "MGSD"),
+        (r"\bPG\b",   "PG 1/60"),
+        (r"\bMG\b",   "MG 1/100"),
+        (r"\bRG\b",   "RG 1/144"),
+        (r"\bEG\b",   "1/144 ENTRY GRADE"),
+        (r"\bBB\b",   "SD BB"),
+        (r"\bSD\b",   "SD"),
     ]
 
     # Step 1 — fixed grades first
     for pat, label in FIXED:
         if re.search(pat, name, re.I):
-            scale = re.search(r"1/(\\d+)", name)
+            scale = re.search(r"1/(\d+)", name)
             grade = label.split()[0]
             return f"{grade} 1/{scale.group(1)}" if scale else label
 
     # Step 2 — dynamic HG__ catch-all (HGUC, HGCE, HGIBO, HGTWFM, HGWFM, HGSD, etc.)
-    hg_match = re.search(r"\\bHG([A-Z]{0,6})\\b", name, re.I)
+    hg_match = re.search(r"\bHG([A-Z]{0,6})\b", name, re.I)
     if hg_match:
         suffix = hg_match.group(1).upper()
         grade  = f"HG{suffix}" if suffix else "HG"
-        scale  = re.search(r"1/(\\d+)", name)
+        scale  = re.search(r"1/(\d+)", name)
         return f"{grade} 1/{scale.group(1)}" if scale else f"{grade} 1/144"
 
     # Step 3 — scale only fallback
-    scale = re.search(r"1/(\\d+)", name)
+    scale = re.search(r"1/(\d+)", name)
     return f"1/{scale.group(1)}" if scale else "Unknown"
 
 
@@ -194,7 +195,7 @@ NON_GUNPLA_SKU_PREFIXES = (
 )
 
 GRADE_PATTERNS = re.compile(
-    r"\\b(MGEX|MGSD|PG|MG|RG|EG|SD|BB|HG[A-Z]{0,6})\\b", re.I
+    r"\b(MGEX|MGSD|PG|MG|RG|EG|SD|BB|HG[A-Z]{0,6})\b", re.I
 )
 
 SCALE_PATTERNS = re.compile(r"1/(144|100|60|48|35)", re.I)
@@ -358,7 +359,7 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
                     "sku":           sku,
                     "image_url":     img_url,
                     "affiliate_url": build_affiliate_url(prod_url),
-                    "scraped_at":    datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+                    "scraped_at": datetime.now(PHT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
                     "notes":         ""
                 })
 
