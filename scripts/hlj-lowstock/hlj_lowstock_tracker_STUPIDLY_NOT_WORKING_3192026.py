@@ -25,7 +25,7 @@ import re
 import sys
 import os
 import requests
-from datetime import datetime, timezone, timedelta
+from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()  # Loads .env from script dir or parent
@@ -61,7 +61,6 @@ SCRAPE_DELAY  = 3        # seconds – respectful crawling
 LIMIT         = 50
 LOW_STOCK_KW  = ["only 5"]
 OUTPUT_DIR    = Path(__file__).resolve().parent
-PHT = timezone(timedelta(hours=8))
 
 FIELDS = ["name","grade_scale","price_jpy","price_php","price_sgd","price_usd","price_myr","price_thb","price_idr","stock","sku","image_url","affiliate_url","scraped_at","notes"]
 
@@ -92,11 +91,10 @@ def fetch_rates():
         resp.raise_for_status()
         rows = resp.json()
         if rows:
-            row = {k: float(rows[0][k]) for k in ['php','sgd','usd','myr','thb','idr']}
-            updated = str(rows[0].get('updated_at', 'unknown'))[:16]
+            row = rows[0]
             print(f"  Rates: ₱{row['php']:.4f} S${row['sgd']:.4f} ${row['usd']:.4f} "
                   f"RM{row['myr']:.4f} ฿{row['thb']:.4f} IDR{row['idr']:.0f} "
-                  f"({updated})")
+                  f"({row['updated_at'][:16]})")
             return row
         else:
             print("  WARN: No rates in Supabase — using fallback")
@@ -115,34 +113,19 @@ def fetch_rates():
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-def parse_currency_price(text: str):
-    """Returns (value, currency) or (None, None)"""
-    if not text:
-        return None, None
-    
-    # Detect currency symbol
-    if '₱' in text: curr = 'PHP'
-    elif '¥' in text or '円' in text: curr = 'JPY'
-    elif '$' in text: curr = 'USD'
-    else: curr = 'UNKNOWN'
-    
-    cleaned = re.sub(r"[^\d.]", "", text)
-    value = float(cleaned) if cleaned else None
-    return value, curr
-
 def parse_price(text: str):
+    """Mirrors base_scraper.py parse_price()."""
     if not text:
         return None
-    cleaned = re.sub(r"[^\d.]", "", text)
+    cleaned = re.sub(r"[^\\d.]", "", text)
     try:
         return float(cleaned) if cleaned else None
     except ValueError:
         return None
 
 
-
 def fmt_jpy(price) -> str:
-    return f"¥{price:,.0f}" if price else "N/A"
+    return f"\\u00a5{price:,.0f}" if price else "N/A"
 
 
 def build_affiliate_url(product_url: str) -> str:
@@ -155,33 +138,34 @@ def extract_grade_scale(name: str) -> str:
 
     # Fixed grades — order matters (specific before generic)
     FIXED = [
-        (r"\bMGEX\b", "MGEX"),
-        (r"\bMGSD\b", "MGSD"),
-        (r"\bPG\b",   "PG 1/60"),
-        (r"\bMG\b",   "MG 1/100"),
-        (r"\bRG\b",   "RG 1/144"),
-        (r"\bEG\b",   "1/144 ENTRY GRADE"),
-        (r"\bBB\b",   "SD BB"),
-        (r"\bSD\b",   "SD"),
+        (r"\\bMGEX\\b", "MGEX"),
+        (r"\\bMGSD\\b", "MGSD"),
+        (r"\\bPG\\b",   "PG 1/60"),
+        (r"\\bMG\\b",   "MG 1/100"),
+        (r"\\bRG\\b",   "RG 1/144"),
+        (r"\\bEG\\b",   "1/144 ENTRY GRADE"),
+        (r"\\bEG\\b",   "EG 1/144"),
+        (r"\\bBB\\b",   "SD BB"),
+        (r"\\bSD\\b",   "SD"),
     ]
 
     # Step 1 — fixed grades first
     for pat, label in FIXED:
         if re.search(pat, name, re.I):
-            scale = re.search(r"1/(\d+)", name)
+            scale = re.search(r"1/(\\d+)", name)
             grade = label.split()[0]
             return f"{grade} 1/{scale.group(1)}" if scale else label
 
     # Step 2 — dynamic HG__ catch-all (HGUC, HGCE, HGIBO, HGTWFM, HGWFM, HGSD, etc.)
-    hg_match = re.search(r"\bHG([A-Z]{0,6})\b", name, re.I)
+    hg_match = re.search(r"\\bHG([A-Z]{0,6})\\b", name, re.I)
     if hg_match:
         suffix = hg_match.group(1).upper()
         grade  = f"HG{suffix}" if suffix else "HG"
-        scale  = re.search(r"1/(\d+)", name)
+        scale  = re.search(r"1/(\\d+)", name)
         return f"{grade} 1/{scale.group(1)}" if scale else f"{grade} 1/144"
 
     # Step 3 — scale only fallback
-    scale = re.search(r"1/(\d+)", name)
+    scale = re.search(r"1/(\\d+)", name)
     return f"1/{scale.group(1)}" if scale else "Unknown"
 
 
@@ -195,7 +179,7 @@ NON_GUNPLA_SKU_PREFIXES = (
 )
 
 GRADE_PATTERNS = re.compile(
-    r"\b(MGEX|MGSD|PG|MG|RG|EG|SD|BB|HG[A-Z]{0,6})\b", re.I
+    r"\\b(MGEX|MGSD|PG|MG|RG|EG|SD|BB|HG[A-Z]{0,6})\\b", re.I
 )
 
 SCALE_PATTERNS = re.compile(r"1/(144|100|60|48|35)", re.I)
@@ -271,10 +255,8 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
                 price_el  = card.select_one(HLJSelectors.PRODUCT_PRICE)
                 price_txt = price_el.text.strip() if price_el else ""
                 sku = "Unknown"
-                                
                 if price_el and price_el.get("id"):
                     sku = price_el["id"].replace("_price", "")
-                print(f"       List price txt: '{price_txt}'")  # DEBUG
 
                 # Stock detection — exact logic from hobby_link_japan.py
                 order_stop = card.find(string=re.compile(r"Order Stop|Notify Me", re.I))
@@ -309,36 +291,9 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
 
                 print(f"  !!! LOW STOCK -> {name[:60]}")
 
-                try:
-                    detail_page = await browser.new_page()
-                    await detail_page.goto(prod_url, wait_until="networkidle")
-                    detail_price_el = await detail_page.wait_for_selector(
-                        f'#{sku}_price:not(:empty)', timeout=5000
-                    )
-                    price_txt = await detail_price_el.text_content()
-                    price_txt = price_txt.strip() if price_txt else ""
-                    await detail_page.close()
-                    print(f"       Product price: {price_txt}")
-                except Exception as e:
-                    print(f"       WARN product page: {e} — using list")
-
-
                 # Price conversion
-                value, curr = parse_currency_price(price_txt)
-                if value:
-                    if curr == 'PHP':
-                        price_php = value
-                        price_jpy = round(value / rates["php"], 0)
-                    elif curr == 'JPY':
-                        price_jpy = value
-                        price_php = round(value * rates["php"], 2)
-                    else:
-                        price_jpy = value  # Assume JPY default
-                        price_php = round(value * rates["php"], 2)
-                else:
-                    price_jpy = price_php = None
-
-              
+                price_jpy = parse_price(price_txt)
+                price_php = round(price_jpy * rates["php"], 2) if price_jpy else None
                 price_sgd = round(price_jpy * rates["sgd"], 2) if price_jpy else None
                 price_usd = round(price_jpy * rates["usd"], 2) if price_jpy else None
                 price_myr = round(price_jpy * rates["myr"], 2) if price_jpy else None
@@ -359,7 +314,7 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
                     "sku":           sku,
                     "image_url":     img_url,
                     "affiliate_url": build_affiliate_url(prod_url),
-                    "scraped_at": datetime.now(PHT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
+                    "scraped_at":    datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
                     "notes":         ""
                 })
 

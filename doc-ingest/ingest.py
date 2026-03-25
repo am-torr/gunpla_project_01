@@ -2,6 +2,9 @@
 from sentence_transformers import SentenceTransformer
 import os
 from supabase import create_client
+from dotenv import load_dotenv
+load_dotenv()  # Loads .env from script dir or parent
+
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 supabase = create_client(os.getenv('SUPABASE_URL'), os.getenv('SUPABASE_SERVICE_ROLE_KEY'))
