@@ -19,7 +19,7 @@ services:
        dockerfile: Dockerfile
      container_name: gunpla-hlj-lowstock
      ports:
-       - "8001:8001"
+       - "8001:8000"
      volumes:
        - ./scripts/hlj-lowstock:/app
      env_file: .env
