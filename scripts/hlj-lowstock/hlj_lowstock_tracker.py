@@ -52,6 +52,7 @@ except ImportError:
 
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
+from playwright_stealth import stealth_async
 
 # ── Config ────────────────────────────────────────────────────────────────────
 HLJ_BASE      = "https://www.hlj.com"
@@ -233,12 +234,33 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
     print(f"{'='*64}\n")
 
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
-        page    = await browser.new_page()
+        browser = await pw.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--window-size=1920,1080",
+            ]
+        )
+        context = await browser.new_context(
+            viewport={"width": 1920, "height": 1080},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            locale="en-US",
+            timezone_id="Asia/Manila",
+            extra_http_headers={
+                "Accept-Language": "en-US,en;q=0.9",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            }
+        )
+        page = await context.new_page()
+        await stealth_async(page)
+        await asyncio.sleep(2)
 
         print(">> Loading HLJ Gundam in-stock page...")
-        await page.goto(SCRAPE_URL, wait_until="networkidle")
-
+        await page.goto(SCRAPE_URL, wait_until="domcontentloaded", timeout=60000)
+        
         print(">> Fetching live exchange rates...")
         rates = fetch_rates()
 
