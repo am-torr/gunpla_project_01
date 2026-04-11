@@ -25,6 +25,7 @@ import re
 import sys
 import os
 import requests
+from urllib.parse import urljoin
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
@@ -56,15 +57,15 @@ from playwright_stealth import stealth_async
 
 # ── Config ────────────────────────────────────────────────────────────────────
 HLJ_BASE      = "https://www.hlj.com"
-SCRAPE_URL    = f"{HLJ_BASE}/search/?Word=gunpla&StockLevel=In%C2%A0Stock"
-AFFILIATE_TAG = "utm_source=speedartug&utm_medium=affiliate"
-SCRAPE_DELAY  = 3        # seconds – respectful crawling
-LIMIT         = 50
-LOW_STOCK_KW  = ["only 5"]
+SCRAPE_URL         = f"{HLJ_BASE}/search/?Word=gundam&StockLevel=In%C2%A0Stock"
+AFFILIATE_TAG      = "utm_source=speedartug&utm_medium=affiliate"
+SCRAPE_DELAY       = 1        # seconds – respectful crawling
+LOW_STOCK_THRESHOLD = 5       # catches "Only 1" through "Only 5 left in stock"
+MAX_PAGES          = 10       # Word=gundam has ~407 items across 17 pages
 OUTPUT_DIR    = Path(__file__).resolve().parent
 PHT = timezone(timedelta(hours=8))
 
-FIELDS = ["name","grade_scale","price_jpy","price_php","price_sgd","price_usd","price_myr","price_thb","price_idr","stock","sku","image_url","affiliate_url","scraped_at","notes"]
+FIELDS = ["name","grade_scale","price_jpy","price_php","price_sgd","price_usd","price_myr","price_thb","price_idr","stock","sku","image_url","image_urls","affiliate_url","scraped_at","notes"]
 
 # ── SUPABASE EXCHANGE RATES ──────────────────────────────────────────────────
 SUPABASE_URL = os.getenv("SUPABASE_URL")
@@ -185,7 +186,65 @@ def extract_grade_scale(name: str) -> str:
     scale = re.search(r"1/(\d+)", name)
     return f"1/{scale.group(1)}" if scale else "Unknown"
 
+import json
+from urllib.parse import urljoin
 
+async def get_detail_images(detail_page, img_url: str) -> list:
+    """Get up to 3 full-size product images from HLJ detail page."""
+    def fix_url(u: str) -> str:
+        if not u:
+            return ""
+        if u.startswith("//"):
+            return "https:" + u
+        return urljoin("https://www.hlj.com", u)
+
+    images = []
+
+    try:
+        # 1) Full-size gallery images from Fotorama anchors
+        anchors = await detail_page.query_selector_all(
+            ".product-images-fotorama-container a[href*='productimages']"
+        )
+        for a in anchors:
+            href = await a.get_attribute("href")
+            if href:
+                u = fix_url(href)
+                if u and u not in images:
+                    images.append(u)
+                if len(images) >= 3:
+                    break
+
+        # 2) JSON-LD fallback for single-image products
+        if not images:
+            scripts = await detail_page.query_selector_all(
+                'script[type="application/ld+json"]'
+            )
+            for s in scripts:
+                txt = await s.text_content()
+                if not txt:
+                    continue
+                try:
+                    data = json.loads(txt)
+                    if isinstance(data, dict) and data.get("image"):
+                        main_img = fix_url(data["image"])
+                        if main_img and main_img not in images:
+                            images.append(main_img)
+                        break
+                except Exception:
+                    continue
+
+        # 3) Final fallback to list image
+        if not images and img_url and "noImage" not in img_url:
+            images = [img_url]
+
+    except Exception as e:
+        print(f"       WARN get_detail_images: {e}")
+        if img_url and "noImage" not in img_url:
+            images = [img_url]
+
+    print(f"       Images found: {len(images)}")
+    return images[:3]
+    
 # ── Gunpla Name/SKU Filter ────────────────────────────────────────────────────
 NON_GUNPLA_SKU_PREFIXES = (
     "ABA",   # Abystyle apparel / anime merch
@@ -193,6 +252,8 @@ NON_GUNPLA_SKU_PREFIXES = (
     "AZM",   # Aoshima model kits (aircraft, cars)
     "KPM",   # Klear Kutter masks
     "AZMP",  # Aoshima aircraft
+    "HBJ",   # Gundam Weapons artbook/guide series (NOT plastic kits)
+    "GNZ",   # Gunze/GSI Creos markers and paints
 )
 
 GRADE_PATTERNS = re.compile(
@@ -221,15 +282,14 @@ def is_gunpla(name: str, sku: str) -> bool:
 
 
 # ── Core Scraper ──────────────────────────────────────────────────────────────
-async def scrape_low_stock(stock_filter: list = None) -> list:
-    
+async def scrape_low_stock(threshold: int = None) -> list:
+    thresh = threshold if threshold is not None else LOW_STOCK_THRESHOLD
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
     print(f"\n{'='*64}")
     print(f"  HLJ LOW-STOCK TRACKER  |  {ts}")
     print(f"{'='*64}")
     print(f"  URL    : {SCRAPE_URL}")
-    active_filter = stock_filter if stock_filter else LOW_STOCK_KW
-    print(f"  Limit  : {LIMIT}  |  Filter : {active_filter}")
+    print(f"  Threshold : only ≤{thresh} left  |  Pages : {MAX_PAGES}")
     print(f"  Delay  : {SCRAPE_DELAY}s")
     print(f"{'='*64}\n")
 
@@ -258,138 +318,157 @@ async def scrape_low_stock(stock_filter: list = None) -> list:
         await stealth_async(page)
         await asyncio.sleep(2)
 
-        print(">> Loading HLJ Gundam in-stock page...")
-        await page.goto(SCRAPE_URL, wait_until="domcontentloaded", timeout=60000)
-        
         print(">> Fetching live exchange rates...")
         rates = fetch_rates()
 
-        print(">> Waiting for price elements...")
-        try:
-            await page.wait_for_selector(HLJSelectors.PRICE_LOADED, timeout=20000)
-        except Exception:
-            print("   WARN: Timeout waiting for prices, continuing anyway")
-        await asyncio.sleep(2)
-
-        html  = await page.content()
-        soup  = BeautifulSoup(html, "html.parser")
-        cards = soup.select(HLJSelectors.PRODUCT_CARD)
-        total = len(cards)
-        proc  = min(total, LIMIT)
-
-        print(f"\n[+] {total} products found -> checking top {proc}\n")
-
         low_stock = []
+        global_idx = 0
 
-        for idx, card in enumerate(cards[:proc], 1):
-            try:
-                # Name + URL
-                name_el  = card.select_one(HLJSelectors.PRODUCT_NAME)
-                name     = name_el.text.strip() if name_el else "Unknown"
-                href     = name_el.get("href", "") if name_el else ""
-                prod_url = f"{HLJ_BASE}{href}" if href else SCRAPE_URL
-
-                # SKU from price element id: "{SKU}_price"
-                price_el  = card.select_one(HLJSelectors.PRODUCT_PRICE)
-                price_txt = price_el.text.strip() if price_el else ""
-                sku = "Unknown"
-                                
-                if price_el and price_el.get("id"):
-                    sku = price_el["id"].replace("_price", "")
-                print(f"       List price txt: '{price_txt}'")  # DEBUG
-
-                # Stock detection — exact logic from hobby_link_japan.py
-                order_stop = card.find(string=re.compile(r"Order Stop|Notify Me", re.I))
-                if order_stop:
-                    stock = "ORDER_STOP"
-                    print(f"  BLOCKED SKU:{sku}")
-                else:
-                    stock = "Unknown"
-                    if sku != "Unknown":
-                        detail_div = card.select_one(f"div#{sku}_stockStatusDetail")
-                        if detail_div:
-                            stock = detail_div.get_text(strip=True)
-                    if stock == "Unknown":
-                        fb = card.select_one(HLJSelectors.STOCK_STATUS)
-                        stock = fb.text.strip() if fb else "Unknown"
-
-                # Image
-                img_el  = card.select_one(HLJSelectors.PRODUCT_IMAGE)
-                img_src = img_el.get("src", "") if img_el else ""
-                img_url = f"https:{img_src}" if img_src.startswith("//") else img_src
-
-                # GUNPLA FILTER
-                if not is_gunpla(name, sku):
-                    print(f"  [{idx:02d}/{proc}] SKIP non-Gunpla: {name[:40]}")
-                    continue
-
-                print(f"  [{idx:02d}/{proc}] {name[:44]:<44} | {sku:<14} | {stock}")
-
-                # LOW-STOCK FILTER
-                if not any(kw in stock.lower() for kw in active_filter):
-                    continue
-
-                print(f"  !!! LOW STOCK -> {name[:60]}")
-
-                try:
-                    detail_page = await browser.new_page()
-                    await detail_page.goto(prod_url, wait_until="networkidle")
-                    detail_price_el = await detail_page.wait_for_selector(
-                        f'#{sku}_price:not(:empty)', timeout=5000
-                    )
-                    price_txt = await detail_price_el.text_content()
-                    price_txt = price_txt.strip() if price_txt else ""
-                    await detail_page.close()
-                    print(f"       Product price: {price_txt}")
-                except Exception as e:
-                    print(f"       WARN product page: {e} — using list")
-
-
-                # Price conversion
-                value, curr = parse_currency_price(price_txt)
-                if value:
-                    if curr == 'PHP':
-                        price_php = value
-                        price_jpy = round(value / rates["php"], 0)
-                    elif curr == 'JPY':
-                        price_jpy = value
-                        price_php = round(value * rates["php"], 2)
-                    else:
-                        price_jpy = value  # Assume JPY default
-                        price_php = round(value * rates["php"], 2)
-                else:
-                    price_jpy = price_php = None
-
-              
-                price_sgd = round(price_jpy * rates["sgd"], 2) if price_jpy else None
-                price_usd = round(price_jpy * rates["usd"], 2) if price_jpy else None
-                price_myr = round(price_jpy * rates["myr"], 2) if price_jpy else None
-                price_thb = round(price_jpy * rates["thb"], 2) if price_jpy else None
-                price_idr = round(price_jpy * rates["idr"], 0) if price_jpy else None                
+        for page_num in range(1, MAX_PAGES + 1):
+            page_url = f"{SCRAPE_URL}&Page={page_num}"
+            print(f"\n>> Page {page_num}/{MAX_PAGES}: {page_url}")
+            await page.goto(page_url, wait_until="domcontentloaded", timeout=60000)
                 
-                low_stock.append({
-                    "name":          name,
-                    "grade_scale":   extract_grade_scale(name),
-                    "price_jpy":     fmt_jpy(price_jpy),
-                    "price_php":     price_php,
-                    "price_sgd":     price_sgd,
-                    "price_usd":     price_usd,
-                    "price_myr":     price_myr,
-                    "price_thb":     price_thb,
-                    "price_idr":     price_idr,
-                    "stock":         stock,
-                    "sku":           sku,
-                    "image_url":     img_url,
-                    "affiliate_url": build_affiliate_url(prod_url),
-                    "scraped_at": datetime.now(PHT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
-                    "notes":         ""
-                })
+            print(">> Waiting for price elements...")
+            try:
+                await page.wait_for_selector(HLJSelectors.PRICE_LOADED, timeout=8000)
+            except Exception:
+                print("   WARN: No prices — continuing with static HTML")
 
-                await asyncio.sleep(SCRAPE_DELAY)   
+            # Extra wait for JS-injected stock divs (load AFTER price elements)
+            try:
+                await page.wait_for_selector(HLJSelectors.STOCK_STATUS, timeout=5000)
+            except Exception:
+                await asyncio.sleep(2)
 
-            except Exception as e:
-                print(f"  WARN [{idx}]: {e}")
-                continue
+            html  = await page.content()
+            soup  = BeautifulSoup(html, "html.parser")
+            cards = soup.select(HLJSelectors.PRODUCT_CARD)
+            if not cards:
+                print(f"   No cards on page {page_num} — stopping.")
+                break
+            print(f"\n[+] Page {page_num}: {len(cards)} products found\n")
+
+            for card in cards:
+                global_idx += 1
+                idx = global_idx
+                try:
+                    # Name + URL
+                    name_el  = card.select_one(HLJSelectors.PRODUCT_NAME)
+                    name     = name_el.text.strip() if name_el else "Unknown"
+                    href     = name_el.get("href", "") if name_el else ""
+                    prod_url = f"{HLJ_BASE}{href}" if href else SCRAPE_URL
+    
+                    # SKU from price element id: "{SKU}_price"
+                    price_el  = card.select_one(HLJSelectors.PRODUCT_PRICE)
+                    price_txt = price_el.text.strip() if price_el else ""
+                    sku = "Unknown"
+                                    
+                    if price_el and price_el.get("id"):
+                        sku = price_el["id"].replace("_price", "")
+                    print(f"       List price txt: '{price_txt}'")  # DEBUG
+    
+                    # Stock detection — exact logic from hobby_link_japan.py
+                    order_stop = card.find(string=re.compile(r"Order Stop|Notify Me", re.I))
+                    if order_stop:
+                        stock = "ORDER_STOP"
+                        print(f"  BLOCKED SKU:{sku}")
+                    else:
+                        stock = "Unknown"
+                        if sku != "Unknown":
+                            detail_div = card.select_one(f"div#{sku}_stockStatusDetail")
+                            if detail_div:
+                                stock = detail_div.get_text(strip=True)
+                        if stock == "Unknown":
+                            fb = card.select_one(HLJSelectors.STOCK_STATUS)
+                            stock = fb.text.strip() if fb else "Unknown"
+    
+                    # Image
+                    img_el  = card.select_one(HLJSelectors.PRODUCT_IMAGE)
+                    img_src = img_el.get("src", "") if img_el else ""
+                    img_url = f"https:{img_src}" if img_src.startswith("//") else img_src
+    
+                    # GUNPLA FILTER
+                    if not is_gunpla(name, sku):
+                        print(f"  [{idx:04d}] SKIP non-Gunpla: {name[:40]}")
+                        continue
+                    print(f"  [{idx:04d}] {name[:44]:<44} | {sku:<14} | {stock}")
+    
+                    # LOW-STOCK FILTER — regex threshold
+                    qty_match = re.search(r"only (\d+) left", stock.lower())
+                    if not qty_match or int(qty_match.group(1)) > thresh:
+                        continue
+                                                  
+                    print(f"  !!! LOW STOCK -> {name[:60]}")
+                    needs_detail = not price_txt or ('¥' not in price_txt and '円' not in price_txt)
+                    images = [img_url] if img_url else []
+
+                    try:
+                        detail_page = await browser.new_page()
+                        await detail_page.goto(prod_url, wait_until="domcontentloaded", timeout=10000)
+
+                        if needs_detail:
+                            detail_price_el = await detail_page.wait_for_selector(
+                                f'#{sku}_price:not(:empty)', timeout=3000
+                            )
+                            fetched = await detail_price_el.text_content()
+                            price_txt = fetched.strip() if fetched else price_txt
+
+                        images = await get_detail_images(detail_page, img_url)
+
+                        await detail_page.close()
+                        print(f"       Product price: {price_txt}")
+                        print(f"       Images found: {len(images)}")
+                    except Exception as e:
+                        print(f"       WARN product page: {e} — using list")
+                        images = [img_url] if img_url else []
+       
+                 # Price conversion
+                    value, curr = parse_currency_price(price_txt)
+                    if value:
+                        if curr == 'PHP':
+                            price_php = value
+                            price_jpy = round(value / rates["php"], 0)
+                        elif curr == 'JPY':
+                            price_jpy = value
+                            price_php = round(value * rates["php"], 2)
+                        else:
+                            price_jpy = value  # Assume JPY default
+                            price_php = round(value * rates["php"], 2)
+                    else:
+                        price_jpy = price_php = None
+    
+                
+                    price_sgd = round(price_jpy * rates["sgd"], 2) if price_jpy else None
+                    price_usd = round(price_jpy * rates["usd"], 2) if price_jpy else None
+                    price_myr = round(price_jpy * rates["myr"], 2) if price_jpy else None
+                    price_thb = round(price_jpy * rates["thb"], 2) if price_jpy else None
+                    price_idr = round(price_jpy * rates["idr"], 0) if price_jpy else None                
+                    
+                    low_stock.append({
+                        "name":          name,
+                        "grade_scale":   extract_grade_scale(name),
+                        "price_jpy":     fmt_jpy(price_jpy),
+                        "price_php":     price_php,
+                        "price_sgd":     price_sgd,
+                        "price_usd":     price_usd,
+                        "price_myr":     price_myr,
+                        "price_thb":     price_thb,
+                        "price_idr":     price_idr,
+                        "stock":         stock,
+                        "sku":           sku,
+                        "image_url":     images[0] if images else img_url,
+                        "image_urls":    images if images else [img_url] if img_url else [],
+                        "affiliate_url": build_affiliate_url(prod_url),
+                        "scraped_at": datetime.now(PHT).strftime("%Y-%m-%dT%H:%M:%S+08:00"),
+                        "notes":         ""
+                    })
+    
+                    await asyncio.sleep(SCRAPE_DELAY)   
+    
+                except Exception as e:
+                    print(f"  WARN [{idx}]: {e}")
+                    continue
 
         await browser.close()
 
@@ -428,7 +507,7 @@ def save_html(items: list) -> Path:
 
     rows = ""
     if not items:
-        rows = ('<tr><td colspan="13" style="text-align:center;padding:40px;color:#888">'
+        rows = ('<tr><td colspan="14" style="text-align:center;padding:40px;color:#888">'
                 "No low-stock items found. Re-run script to refresh.</td></tr>")
     else:
         for i, it in enumerate(items):
@@ -439,11 +518,21 @@ def save_html(items: list) -> Path:
             thb_str = f"฿{it['price_thb']:,.2f}" if it["price_thb"] else "N/A"
             idr_str = f"Rp{it['price_idr']:,.0f}" if it["price_idr"] else "N/A"
 
-            img_tag = (f'<img src="{it["image_url"]}" alt="" class="th">'
-                       if it["image_url"] else "&mdash;")
+            # Multi-image thumbnails
+            img_urls = it.get('image_urls', [])
+            if not img_urls:
+                img_urls = [it.get('image_url', '')]
+            
+            thumbs = ''
+            for j, img in enumerate(img_urls[:3]):
+                if img:
+                    thumbs += f'<img src="{img}" alt="" class="th">'
+            
+            img_cell = f'<div class="ig">{thumbs}</div>' if thumbs else '&mdash;'
+            
             rows += (
                 f'<tr data-idx="{i}">'
-                f'<td>{img_tag}</td>'
+                f'<td>{img_cell}</td>'
                 f'<td class="nc"><a href="{it["affiliate_url"]}" target="_blank">{it["name"]}</a></td>'
                 f'<td><span class="gr">{it["grade_scale"]}</span></td>'
                 f'<td class="mu">{it["price_jpy"]}</td>'
@@ -521,7 +610,7 @@ def save_html(items: list) -> Path:
         "  <div>\\n"
         f'    <div class="ttl">&#9888;&#65039; HLJ Gundam Low-Stock Tracker</div>\\n'
         f'    <div class="meta">Scraped: {ts} &nbsp;&middot;&nbsp; '
-        f'Filter: &ldquo;Only 1&rdquo; / &ldquo;Only 2&rdquo;</div>\\n'
+        f'Filter: Only 1 to Only {LOW_STOCK_THRESHOLD} left</div>\\n'
         "  </div>\\n"
         f'  <span class="bdg">{count} item{"s" if count!=1 else ""} found</span>\\n'
         "</header>\\n"
@@ -599,13 +688,13 @@ def save_html(items: list) -> Path:
         "  rows.forEach(r=>tb.appendChild(r));\\n"
         "}\\n"
         "function exportCSV(){\\n"
-        '  const s=JSON.parse(localStorage.getItem(SK)||"{}");\\n'
+        '  const s=JSON.parse(localStorage.getItem(SK)||"{}");\\n'     
         '  const f=["name","grade_scale","price_jpy","price_php","price_sgd","price_usd","price_myr","price_thb","price_idr","stock",'
-        '"sku","image_url","affiliate_url","scraped_at","notes"];\\n'
+        '"sku","image_url","image_urls","affiliate_url","scraped_at","notes"];\\n'                       
         '  const lines=[f.join(",")];\\n'
         "  DATA.forEach((it,i)=>{\\n"
-        "    it.notes=s[i]||it.notes||'';\\n"
-        '    lines.push(f.map(k => "\\"" + String(it[k] || "").replace(/"/g, \'""\') + "\\"").join(","));\\n'
+        "    it.notes=s[i]||it.notes||'';\\n"        
+        '    lines.push(f.map(k => "\\"" + String(Array.isArray(it[k]) ? JSON.stringify(it[k]) : (it[k] ?? "")).replace(/"/g, \'""\') + "\\"").join(","));\\n'
         "  });\\n"
         "  const a=document.createElement('a');\\n"
         "  a.href=URL.createObjectURL(new Blob([lines.join('\\\\n')],"
