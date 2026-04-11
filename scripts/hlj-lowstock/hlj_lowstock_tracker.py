@@ -61,7 +61,7 @@ SCRAPE_URL         = f"{HLJ_BASE}/search/?Word=gundam&StockLevel=In%C2%A0Stock"
 AFFILIATE_TAG      = "utm_source=speedartug&utm_medium=affiliate"
 SCRAPE_DELAY       = 1        # seconds – respectful crawling
 LOW_STOCK_THRESHOLD = 5       # catches "Only 1" through "Only 5 left in stock"
-MAX_PAGES          = 10       # Word=gundam has ~407 items across 17 pages
+MAX_PAGES          = 14       # Word=gundam has ~407 items across 17 pages
 OUTPUT_DIR    = Path(__file__).resolve().parent
 PHT = timezone(timedelta(hours=8))
 
@@ -302,6 +302,7 @@ async def scrape_low_stock(threshold: int = None) -> list:
                 "--disable-blink-features=AutomationControlled",
                 "--disable-infobars",
                 "--window-size=1920,1080",
+                "--ignore-certificate-errors",
             ]
         )
         context = await browser.new_context(
@@ -309,11 +310,13 @@ async def scrape_low_stock(threshold: int = None) -> list:
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
             locale="en-US",
             timezone_id="Asia/Manila",
+            ignore_https_errors=True,
             extra_http_headers={
                 "Accept-Language": "en-US,en;q=0.9",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             }
         )
+
         page = await context.new_page()
         await stealth_async(page)
         await asyncio.sleep(2)
@@ -423,27 +426,75 @@ async def scrape_low_stock(threshold: int = None) -> list:
                         print(f"       WARN product page: {e} — using list")
                         images = [img_url] if img_url else []
        
-                 # Price conversion
+                    # Price conversion with NVL-style fallback: always backfill JPY from any stable currency
                     value, curr = parse_currency_price(price_txt)
-                    if value:
-                        if curr == 'PHP':
-                            price_php = value
-                            price_jpy = round(value / rates["php"], 0)
-                        elif curr == 'JPY':
+                    print(f"       DEBUG price_txt='{price_txt}' -> value={value}, curr={curr}")
+
+                    # Start all as None
+                    price_jpy = price_php = price_sgd = price_usd = price_myr = price_thb = price_idr = None
+
+                    # 1) Use whatever currency HLJ gave us as the primary source
+                    if value is not None:
+                        if curr == 'JPY':
                             price_jpy = value
-                            price_php = round(value * rates["php"], 2)
+                            price_php = round(price_jpy * rates['php'], 2)
+                        elif curr == 'PHP':
+                            price_php = value
+                            price_jpy = round(price_php / rates['php'], 0)
+                        elif curr == 'USD':
+                            price_usd = value
+                            price_jpy = round(price_usd / rates['usd'], 0)
+                            price_php = round(price_jpy * rates['php'], 2)
+                        elif curr == 'SGD':
+                            price_sgd = value
+                            price_jpy = round(price_sgd / rates['sgd'], 0)
+                            price_php = round(price_jpy * rates['php'], 2)
+                        elif curr == 'MYR':
+                            price_myr = value
+                            price_jpy = round(price_myr / rates['myr'], 0)
+                            price_php = round(price_jpy * rates['php'], 2)
+                        elif curr == 'THB':
+                            price_thb = value
+                            price_jpy = round(price_thb / rates['thb'], 0)
+                            price_php = round(price_jpy * rates['php'], 2)
+                        elif curr == 'IDR':
+                            price_idr = value
+                            price_jpy = round(price_idr / rates['idr'], 0)
+                            price_php = round(price_jpy * rates['php'], 2)
                         else:
-                            price_jpy = value  # Assume JPY default
-                            price_php = round(value * rates["php"], 2)
-                    else:
-                        price_jpy = price_php = None
-    
-                
-                    price_sgd = round(price_jpy * rates["sgd"], 2) if price_jpy else None
-                    price_usd = round(price_jpy * rates["usd"], 2) if price_jpy else None
-                    price_myr = round(price_jpy * rates["myr"], 2) if price_jpy else None
-                    price_thb = round(price_jpy * rates["thb"], 2) if price_jpy else None
-                    price_idr = round(price_jpy * rates["idr"], 0) if price_jpy else None                
+                            # Unknown symbol but numeric: treat it as JPY directly
+                            price_jpy = value
+                            price_php = round(price_jpy * rates['php'], 2)
+
+                    # 2) NVL-style backfill: if JPY is still missing but any other is present, derive it
+                    if price_jpy is None:
+                        if price_php is not None:
+                            price_jpy = round(price_php / rates['php'], 0)
+                        elif price_usd is not None:
+                            price_jpy = round(price_usd / rates['usd'], 0)
+                        elif price_sgd is not None:
+                            price_jpy = round(price_sgd / rates['sgd'], 0)
+                        elif price_myr is not None:
+                            price_jpy = round(price_myr / rates['myr'], 0)
+                        elif price_thb is not None:
+                            price_jpy = round(price_thb / rates['thb'], 0)
+                        elif price_idr is not None:
+                            price_jpy = round(price_idr / rates['idr'], 0)
+
+                    # 3) Once price_jpy is set, backfill all the rest that are still None
+                    if price_jpy is not None:
+                        if price_php is None:
+                            price_php = round(price_jpy * rates['php'], 2)
+                        if price_sgd is None:
+                            price_sgd = round(price_jpy * rates['sgd'], 2)
+                        if price_usd is None:
+                            price_usd = round(price_jpy * rates['usd'], 2)
+                        if price_myr is None:
+                            price_myr = round(price_jpy * rates['myr'], 2)
+                        if price_thb is None:
+                            price_thb = round(price_jpy * rates['thb'], 2)
+                        if price_idr is None:
+                            price_idr = round(price_jpy * rates['idr'], 0)
                     
                     low_stock.append({
                         "name":          name,
