@@ -10,6 +10,8 @@ https://github.com/user-attachments/assets/f884423f-266a-4da0-9971-0fb2de934b0f
 
 https://github.com/user-attachments/assets/163ef4a8-7450-40da-a406-2cc0c4690bb6
 
+<img width="1787" height="618" alt="image" src="https://github.com/user-attachments/assets/75c69f0e-eb69-4291-a0f6-8be2a37384e0" />
+
 
 > **N8N workflow improvements** ongoing - workflow real time approval
 
