@@ -1,3 +1,26 @@
+# N8N Low stock items tracker + AI RAG news gatherer + social media posting
+
+> **Real time scraping** that tracks low stock prices of hobby link japan items and later on expands to other shops.
+> 
+https://github.com/user-attachments/assets/f884423f-266a-4da0-9971-0fb2de934b0f
+
+
+> **N8N workflow design** robust, reliable and readable n8n workflow by applying what I've accomplished in Oracle workflow. If this design is unconventional just let me know :)
+>
+
+https://github.com/user-attachments/assets/163ef4a8-7450-40da-a406-2cc0c4690bb6
+
+
+> **N8N workflow improvements** ongoing - workflow real time approval
+
+https://github.com/user-attachments/assets/bdf2ae48-9260-4790-8d6e-07b84588cbd0
+
+
+> **Database integration** ongoing - workflow real time approval
+
+https://github.com/user-attachments/assets/1869e097-72c8-4c30-b403-2d3273199991
+
+-------------------------------------------------------------------------------
 # Gunpla Price Tracker
 
 > **Production-grade web scraper** that tracks Gunpla model kit prices across
@@ -58,3 +81,8 @@ curl "http://localhost:8000/api/scrape?store=all&limit=15"
 
 # Sort by price
 curl "http://localhost:8000/api/scrape?store=hobby-planet&sort=price-low&limit=10"
+
+
+
+
+
