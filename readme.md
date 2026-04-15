@@ -1,5 +1,7 @@
 # N8N Low stock items tracker + AI RAG news gatherer + social media posting
 
+# LIVE DEMO LINK SOON
+
 > **Real time scraping** that tracks low stock prices of hobby link japan items and later on expands to other shops.
 > 
 https://github.com/user-attachments/assets/f884423f-266a-4da0-9971-0fb2de934b0f
