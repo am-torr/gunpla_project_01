@@ -3,36 +3,40 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.scraper
+    container_name: gunpla-scraper
     ports:
       - "8000:8000"
-    container_name: gunpla-scraper
-    env_file: .env
+    env_file:
+      - .env
     command: python scheduler.py
+    depends_on:
+      - n8n
     networks:
       - gunpla-network
     restart: unless-stopped
-    depends_on:
-      - n8n
+
   hlj-lowstock:
-     build:
-       context: scripts/hlj-lowstock  # new folder
-       dockerfile: Dockerfile
-     container_name: gunpla-hlj-lowstock
-     ports:
-       - "8001:8000"
-     volumes:
-       - ./scripts/hlj-lowstock:/app
-     env_file: .env
-     networks:
-       - gunpla-network
-     restart: unless-stopped
+    build:
+      context: ./scripts/hlj-lowstock
+      dockerfile: Dockerfile
+    container_name: gunpla-hlj-lowstock
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./scripts/hlj-lowstock:/app
+    env_file:
+      - .env
+    networks:
+      - gunpla-network
+    restart: unless-stopped
 
   n8n:
     image: n8nio/n8n:latest
     container_name: gunpla-n8n
     ports:
       - "5679:5678"
-    env_file: .env
+    env_file:
+      - .env
     volumes:
       - n8n-data:/home/node/.n8n
       - ./workflows:/home/node/.n8n/workflows
@@ -46,51 +50,83 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  # From .env
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGUSER: postgres
     volumes:
       - supabase-data:/var/lib/postgresql/data
-      - ./supabase-init:/docker-entrypoint-initdb.d  # Schema init
+      - ./supabase-init:/docker-entrypoint-initdb.d
     networks:
       - gunpla-network
     restart: unless-stopped
 
-  doc-ingest:  # ← NOW CORRECTLY NESTED
+  doc-ingest:
     build:
       context: ./doc-ingest
       dockerfile: Dockerfile
     env_file:
-      - .env  # Loads your Supabase/OpenAI keys      
+      - .env
     volumes:
       - ./doc-ingest:/app
-
-    command: python ingest.py  # Clean CMD
+    command: python ingest.py
     depends_on:
       - supabase
     networks:
       - gunpla-network
     restart: unless-stopped
 
-
   hf-embed:
     image: ghcr.io/huggingface/text-embeddings-inference:cpu-latest
+    container_name: gunpla-hf-embed
     ports:
       - "5001:5001"
     environment:
-      - HF_MODEL_ID=sentence-transformers/all-MiniLM-L6-v2
+      HF_MODEL_ID: sentence-transformers/all-MiniLM-L6-v2
     command: >
       --model-id sentence-transformers/all-MiniLM-L6-v2
       --hostname 0.0.0.0
       --port 5001
+    networks:
+      - gunpla-network
     restart: unless-stopped
 
+  yourls-db:
+    image: mariadb:10.11
+    container_name: gunpla-yourls-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${YOURLS_DB_ROOT_PASS}
+      MYSQL_DATABASE: yourls
+      MYSQL_USER: yourls
+      MYSQL_PASSWORD: ${YOURLS_DB_PASS}
+    volumes:
+      - yourls-db-data:/var/lib/mysql
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  yourls:
+    image: yourls
+    container_name: gunpla-yourls
+    ports:
+      - "8002:8080"
+    environment:
+      YOURLS_SITE: http://localhost:8002
+      YOURLS_USER: ${YOURLS_USER}
+      YOURLS_PASS: ${YOURLS_PASS}
+      YOURLS_DB_HOST: yourls-db
+      YOURLS_DB_USER: yourls
+      YOURLS_DB_PASS: ${YOURLS_DB_PASS}
+      YOURLS_DB_NAME: yourls
+    depends_on:
+      - yourls-db
+    networks:
+      - gunpla-network
+    restart: unless-stopped
 
 volumes:
   n8n-data:
   supabase-data:
+  yourls-db-data:
 
 networks:
   gunpla-network:
     driver: bridge
-
-
