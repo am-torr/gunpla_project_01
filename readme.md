@@ -106,7 +106,7 @@ cd gunpla_project_01
 
 # Copy environment config
 cp .env.example .env
-# Fill in: SUPABASE_URL, SUPABASE_KEY, FB_PAGE_TOKEN, FB_PAGE_ID, BITLY_TOKEN
+# Fill in: SUPABASE_URL, SUPABASE_KEY, FB_PAGE_TOKEN, FB_PAGE_ID, BITLY_TOKEN etc.
 
 # Start all services
 docker compose up -d
@@ -114,8 +114,6 @@ docker compose up -d
 # Verify n8n is running
 curl http://localhost:5679/healthz
 
-# Verify scraper API
-curl "http://localhost:8000/api/scrape?store=hlj&grade=MG&limit=5"
 ```
 
 ---
