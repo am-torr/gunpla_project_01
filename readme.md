@@ -1,6 +1,6 @@
 # Gunpla Scarcity Content Pipeline
 
-> **Self-hosted n8n + Python + Supabase automation system** that monitors HLJ Gunpla inventory signals, stages qualified low-stock products, generates affiliate-ready Facebook post candidates, batches them for controlled publishing, and synchronizes source-to-publish state across staging, queue, and batch records — end to end, without manual intervention.
+> **Self-hosted n8n + Python + Supabase automation system** that monitors HLJ Gunpla inventory signals, stages qualified low-stock products, generates affiliate-ready Facebook post candidates, batches them for controlled publishing, and synchronizes source-to-publish state across staging, queue, and batch records.
 
 **Status:** ✅ Live · ✅ Production-deployed · ✅ Self-hosted on Docker Compose  
 **Stack:** n8n · Python · Supabase (PostgreSQL) · Facebook Graph API · Playwright · FastAPI · Docker
