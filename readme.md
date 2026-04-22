@@ -1,92 +1,155 @@
-# N8N Low stock items tracker + AI RAG news gatherer + social media posting
+# Gunpla Scarcity Content Pipeline
 
-# LIVE DEMO LINK SOON
+> **Self-hosted n8n + Python + Supabase automation system** that monitors HLJ Gunpla inventory signals, stages qualified low-stock products, generates affiliate-ready Facebook post candidates, batches them for controlled publishing, and synchronizes source-to-publish state across staging, queue, and batch records — end to end, without manual intervention.
 
-> **Real time scraping** that tracks low stock prices of hobby link japan items and later on expands to other shops.
-> 
-https://github.com/user-attachments/assets/f884423f-266a-4da0-9971-0fb2de934b0f
-
-
-> **N8N workflow design** robust, reliable and readable n8n workflow by applying what I've accomplished in Oracle workflow. If this design is unconventional just let me know :)
->
-
-https://github.com/user-attachments/assets/163ef4a8-7450-40da-a406-2cc0c4690bb6
-
-<img width="1787" height="618" alt="image" src="https://github.com/user-attachments/assets/75c69f0e-eb69-4291-a0f6-8be2a37384e0" />
-
-
-> **N8N workflow improvements** ongoing - workflow real time approval
-
-https://github.com/user-attachments/assets/bdf2ae48-9260-4790-8d6e-07b84588cbd0
-
-
-> **Database integration** ongoing - workflow real time approval
-
-https://github.com/user-attachments/assets/1869e097-72c8-4c30-b403-2d3273199991
-
--------------------------------------------------------------------------------
-# Gunpla Price Tracker
-
-> **Production-grade web scraper** that tracks Gunpla model kit prices across
-> multiple Philippine hobby stores in real time — with a live FastAPI dashboard,
-> Docker orchestration, n8n automation, and AI-powered deal alerts.
-
-**Version:** POC v2.1 — Live demo ready 
-**Built:** January 2026
-**Status:** ✅ Live API · ✅ Scrapers 100% · ✅ Docker Ready · ✅ Portfolio Active
+**Status:** ✅ Live · ✅ Production-deployed · ✅ Self-hosted on Docker Compose  
+**Stack:** n8n · Python · Supabase (PostgreSQL) · Facebook Graph API · Playwright · FastAPI · Docker
 
 ---
 
-<img width="1916" height="876" alt="image" src="https://github.com/user-attachments/assets/cfbcb0af-32aa-473d-8d20-803272f4a516" />
+## The Problem
 
-
-## 🚀 Live Demo
-
-| Resource | URL |
-|---|---|
-| 📊 Dashboard | `http://localhost:8000/` |
-| 📡 API Docs (Swagger) | `http://localhost:8000/docs` |
-| 🌐 Cloud (coming soon) | `https://gunpla-tracker.onrender.com` |
-
-> **Quick test:**
-> ```bash
-> curl "http://localhost:8000/api/scrape?store=hlj&grade=MG&limit=5"
-> ```
+Manually scouting Gunpla low-stock listings, writing affiliate post copy, uploading images, and scheduling Facebook posts across a product catalog is slow and error-prone at scale. A single missed low-stock window means a lost affiliate conversion opportunity.
 
 ---
 
-## 🎯 What It Does
+## The Solution
 
-Scrapes live Gunpla prices from **Hobby Planet PH** and **Hobby Link Japan** —
-two stores with completely different tech stacks (static HTML vs. JS-rendered prices).
+A four-stage automation pipeline that runs on a schedule:
 
+```
+HLJ Inventory Feed
+       ↓
+[01 - Ingest]  Scrape → Deduplicate by SKU → Filter low-stock → Generate content fingerprint → Stage to DB
+       ↓
+[02 - Queue]   Load staged items → Build post copy → Shorten affiliate URL (Bitly / TinyURL fallback) → Upload image to Facebook → Insert post_queue record
+       ↓
+[03 - Batch]   Schedule trigger → Assign post_queue items to publish batches → Loop over batches → Call publish sub-workflow
+       ↓
+[04 - Publish] Fetch batch items → Post to Facebook (Primary + Retry) → Evaluate response → Update post_queue + post_queue_batch + post_queue_stg
+       ↓
+    Facebook Post Live
+```
 
-## 🔧 Tech Stack
+---
+
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| **Backend** | Python 3.11, FastAPI, uvicorn |
-| **Scrapers** | Playwright (dynamic JS), BeautifulSoup (static HTML) |
-| **Scheduler** | APScheduler — hourly auto-scrape |
-| **Automation** | n8n workflow orchestration |
-| **AI** | Perplexity API — product analysis + deal copy |
-| **Database** | Supabase PostgreSQL (scaffolded, Phase 2) |
-| **Deploy** | Docker Compose → Render / AWS EC2 |
-| **Testing** | pytest — 100% pass rate |
+| **Workflow Orchestration** | n8n (self-hosted, Docker Compose) |
+| **Scraper** | Python 3.11, Playwright (JS-rendered), BeautifulSoup (static HTML) |
+| **API Integration** | Facebook Graph API, Bitly API, TinyURL API (fallback) |
+| **Database** | Supabase PostgreSQL — staging, queue, batch, and state sync tables |
+| **Backend API** | FastAPI + uvicorn |
+| **Infrastructure** | Docker Compose, Cloudflare Tunnel, self-hosted |
+| **Error Handling** | Per-node failure branches, retry logic, skip/continue loop control, dead-letter staging |
 
+---
 
-## 📋 LOCAL Test
+## Workflow Architecture
 
-# Single store
-curl "http://localhost:8000/api/scrape?store=hlj&grade=MG&limit=10"
+### 01 — Ingest HLJ Low-Stock Items
+Scrapes the HLJ product feed, normalizes output, deduplicates by SKU to prevent reprocessing, filters for qualifying low-stock signals, generates a content fingerprint (SHA hash of SKU + price), and inserts staged records into `post_queue_stg`. Explicit failure branch fires on fetch errors without crashing the run.
 
-# All stores
-curl "http://localhost:8000/api/scrape?store=all&limit=15"
+### 02 — Create Post Queue Candidates
+Loads staged items, filters for queue-eligible records, and for each item: prepares shared content inputs, builds Facebook post copy, creates a Bitly short link (with TinyURL as automatic fallback), uploads the product image to the Facebook media endpoint, and inserts a complete record into `post_queue`. Updates both `post_queue` and `post_queue_stg` status on success.
 
-# Sort by price
-curl "http://localhost:8000/api/scrape?store=hobby-planet&sort=price-low&limit=10"
+### 03 — Batch and Publish Queue Items
+Schedule-triggered dispatcher. Calls a Supabase RPC function (`assign_all_batches`) to group pending queue items into controlled publish batches. Loops over each batch and calls Workflow 04 as an isolated sub-workflow, keeping dispatch logic fully decoupled from publish execution.
 
+### 04 — Publish Facebook Post (Sub-Workflow)
+Publishes each batch to the Facebook Graph API. Primary post attempt with automatic retry path on failure. Evaluates the API response, updates `post_queue`, `post_queue_batch`, and `post_queue_stg` in sequence. Returns a structured result object (batch ID, status, posted timestamp) to the caller regardless of execution path. `Handle Primary Post Failure` branch captures unrecoverable errors without stopping the batch loop.
 
+---
 
+## Key Engineering Decisions
 
+- **Modular sub-workflow pattern** — each workflow has one job; Workflow 03 dispatches, Workflow 04 publishes. They are independently testable and replaceable.
+- **Staging table separation** — `post_queue_stg` holds raw ingestion state; `post_queue` holds publish-ready records; `post_queue_batch` tracks batch-level execution. No single table does double duty.
+- **Content fingerprinting** — SHA hash of SKU + price prevents re-staging duplicate products across runs without requiring a full table scan.
+- **URL fallback chain** — Bitly is primary short link; TinyURL fires automatically on Bitly failure. Affiliate URL is never lost.
+- **Retry + failure isolation** — Facebook post failures trigger a retry attempt before routing to the failure handler. A single failed post does not abort the batch.
+- **Self-hosted n8n** — deployed via Docker Compose with environment-variable-based credential management. No hardcoded API keys in any workflow node.
 
+---
+
+## Database Schema (Key Tables)
+
+| Table | Purpose |
+|---|---|
+| `post_queue_stg` | Raw staging — holds scraped products before queue assignment |
+| `post_queue` | Publish queue — fully-prepared post records with copy, image, URL |
+| `post_queue_batch` | Batch execution tracker — links queue items to publish runs |
+
+Key fields: `source_id`, `content_hash`, `stg_status`, `status`, `batch_queue_id`, `fb_post_id`, `posted_at`
+
+---
+
+## Error Handling & Reliability
+
+- Every critical node has an explicit failure branch
+- Loop control uses named `Skip Current Item`, `Continue Item Processing`, `Advance to Next Item` paths — not generic labels
+- Fetch failures route to `Handle HLJ Fetch Failure` without stopping subsequent items
+- Batch assignment failures route to `Handle Batch Assignment Failure` with full run context preserved
+- Post publish failures route to `Handle Primary Post Failure` after retry exhaustion
+- All cross-table state updates are sequential and confirmed before returning output
+
+---
+
+## Local Setup
+
+```bash
+# Clone repo
+git clone https://github.com/am-torr/gunpla_project_01.git
+cd gunpla_project_01
+
+# Copy environment config
+cp .env.example .env
+# Fill in: SUPABASE_URL, SUPABASE_KEY, FB_PAGE_TOKEN, FB_PAGE_ID, BITLY_TOKEN
+
+# Start all services
+docker compose up -d
+
+# Verify n8n is running
+curl http://localhost:5679/healthz
+
+# Verify scraper API
+curl "http://localhost:8000/api/scrape?store=hlj&grade=MG&limit=5"
+```
+
+---
+
+## Repository Structure
+
+```
+gunpla_project_01/
+├── workflows/          # n8n workflow JSON exports (01–04)
+├── app/                # FastAPI scraper backend
+├── m-hub-db/           # Supabase schema, migrations, RPC functions
+├── scripts/            # Utility scripts (health checks, batch tools)
+├── n8n nodes/          # Custom node configurations
+├── nginx/              # Reverse proxy config
+├── docker-compose.yml  # Full stack orchestration
+└── requirements.txt    # Python dependencies
+```
+
+---
+
+## Demo
+
+> Loom walkthrough (5 min): Ingest → Queue → Batch → Publish — **[COMING SOON]**
+
+The walkthrough covers:
+- Live scrape run showing deduplication and low-stock filtering
+- Queue candidate creation with Bitly short link generation
+- Batch assignment via Supabase RPC
+- Facebook publish with retry path and state sync
+
+---
+
+## Built By
+
+**Adrian Torralba** — AI Automation Engineer  
+Self-hosted n8n · Python · Supabase · Facebook Graph API · Docker Compose  
+[GitHub](https://github.com/am-torr)
