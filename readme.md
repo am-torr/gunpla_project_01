@@ -40,7 +40,7 @@ HLJ Inventory Feed
 | **Workflow Orchestration** | n8n (self-hosted, Docker Compose) |
 | **Scraper** | Python 3.11, Playwright (JS-rendered), BeautifulSoup (static HTML) |
 | **API Integration** | Facebook Graph API, Bitly API, TinyURL API (fallback) |
-| **Database** | Supabase PostgreSQL — staging, queue, batch, and state sync tables |
+| **Database** | Supabase PostgreSQL - staging, queue, batch, and state sync tables |
 | **Backend API** | FastAPI + uvicorn |
 | **Infrastructure** | Docker Compose, Cloudflare Tunnel, self-hosted |
 | **Error Handling** | Per-node failure branches, retry logic, skip/continue loop control, dead-letter staging |
