@@ -49,28 +49,28 @@ HLJ Inventory Feed
 
 ## Workflow Architecture
 
-### 01 — Ingest HLJ Low-Stock Items
+### 01 - Ingest HLJ Low-Stock Items
 Scrapes the HLJ product feed, normalizes output, deduplicates by SKU to prevent reprocessing, filters for qualifying low-stock signals, generates a content fingerprint (SHA hash of SKU + price), and inserts staged records into `post_queue_stg`. Explicit failure branch fires on fetch errors without crashing the run.
 
-### 02 — Create Post Queue Candidates
+### 02 - Create Post Queue Candidates
 Loads staged items, filters for queue-eligible records, and for each item: prepares shared content inputs, builds Facebook post copy, creates a Bitly short link (with TinyURL as automatic fallback), uploads the product image to the Facebook media endpoint, and inserts a complete record into `post_queue`. Updates both `post_queue` and `post_queue_stg` status on success.
 
-### 03 — Batch and Publish Queue Items
+### 03 - Batch and Publish Queue Items
 Schedule-triggered dispatcher. Calls a Supabase RPC function (`assign_all_batches`) to group pending queue items into controlled publish batches. Loops over each batch and calls Workflow 04 as an isolated sub-workflow, keeping dispatch logic fully decoupled from publish execution.
 
-### 04 — Publish Facebook Post (Sub-Workflow)
+### 04 - Publish Facebook Post (Sub-Workflow)
 Publishes each batch to the Facebook Graph API. Primary post attempt with automatic retry path on failure. Evaluates the API response, updates `post_queue`, `post_queue_batch`, and `post_queue_stg` in sequence. Returns a structured result object (batch ID, status, posted timestamp) to the caller regardless of execution path. `Handle Primary Post Failure` branch captures unrecoverable errors without stopping the batch loop.
 
 ---
 
 ## Key Engineering Decisions
 
-- **Modular sub-workflow pattern** — each workflow has one job; Workflow 03 dispatches, Workflow 04 publishes. They are independently testable and replaceable.
-- **Staging table separation** — `post_queue_stg` holds raw ingestion state; `post_queue` holds publish-ready records; `post_queue_batch` tracks batch-level execution. No single table does double duty.
-- **Content fingerprinting** — SHA hash of SKU + price prevents re-staging duplicate products across runs without requiring a full table scan.
-- **URL fallback chain** — Bitly is primary short link; TinyURL fires automatically on Bitly failure. Affiliate URL is never lost.
-- **Retry + failure isolation** — Facebook post failures trigger a retry attempt before routing to the failure handler. A single failed post does not abort the batch.
-- **Self-hosted n8n** — deployed via Docker Compose with environment-variable-based credential management. No hardcoded API keys in any workflow node.
+- **Modular sub-workflow pattern** - each workflow has one job; Workflow 03 dispatches, Workflow 04 publishes. They are independently testable and replaceable.
+- **Staging table separation** - `post_queue_stg` holds raw ingestion state; `post_queue` holds publish-ready records; `post_queue_batch` tracks batch-level execution. No single table does double duty.
+- **Content fingerprinting** - SHA hash of SKU + price prevents re-staging duplicate products across runs without requiring a full table scan.
+- **URL fallback chain** - Bitly is primary short link; TinyURL fires automatically on Bitly failure. Affiliate URL is never lost.
+- **Retry + failure isolation** - Facebook post failures trigger a retry attempt before routing to the failure handler. A single failed post does not abort the batch.
+- **Self-hosted n8n** - deployed via Docker Compose with environment-variable-based credential management. No hardcoded API keys in any workflow node.
 
 ---
 
@@ -89,7 +89,7 @@ Key fields: `source_id`, `content_hash`, `stg_status`, `status`, `batch_queue_id
 ## Error Handling & Reliability
 
 - Every critical node has an explicit failure branch
-- Loop control uses named `Skip Current Item`, `Continue Item Processing`, `Advance to Next Item` paths — not generic labels
+- Loop control uses named `Skip Current Item`, `Continue Item Processing`, `Advance to Next Item` paths - not generic labels
 - Fetch failures route to `Handle HLJ Fetch Failure` without stopping subsequent items
 - Batch assignment failures route to `Handle Batch Assignment Failure` with full run context preserved
 - Post publish failures route to `Handle Primary Post Failure` after retry exhaustion
@@ -136,7 +136,7 @@ gunpla_project_01/
 
 ## Demo
 
-> Loom walkthrough (5 min): Ingest → Queue → Batch → Publish — **[COMING SOON]**
+> Loom walkthrough (5 min): Ingest → Queue → Batch → Publish - **[COMING SOON]**
 
 The walkthrough covers:
 - Live scrape run showing deduplication and low-stock filtering
@@ -148,6 +148,6 @@ The walkthrough covers:
 
 ## Built By
 
-**Arvin Torralba** — AI Automation Engineer  
+**Arvin Torralba** - AI Automation Engineer  
 Self-hosted n8n · Python · Supabase · Facebook Graph API · Docker Compose  
 [GitHub](https://github.com/am-torr)
