@@ -78,9 +78,9 @@ Publishes each batch to the Facebook Graph API. Primary post attempt with automa
 
 | Table | Purpose |
 |---|---|
-| `post_queue_stg` | Raw staging — holds scraped products before queue assignment |
-| `post_queue` | Publish queue — fully-prepared post records with copy, image, URL |
-| `post_queue_batch` | Batch execution tracker — links queue items to publish runs |
+| `post_queue_stg` | Raw staging - holds scraped products before queue assignment |
+| `post_queue` | Publish queue - fully-prepared post records with copy, image, URL |
+| `post_queue_batch` | Batch execution tracker - links queue items to publish runs |
 
 Key fields: `source_id`, `content_hash`, `stg_status`, `status`, `batch_queue_id`, `fb_post_id`, `posted_at`
 
