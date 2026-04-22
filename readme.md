@@ -150,6 +150,6 @@ The walkthrough covers:
 
 ## Built By
 
-**Adrian Torralba** — AI Automation Engineer  
+**Arvin Torralba** — AI Automation Engineer  
 Self-hosted n8n · Python · Supabase · Facebook Graph API · Docker Compose  
 [GitHub](https://github.com/am-torr)
