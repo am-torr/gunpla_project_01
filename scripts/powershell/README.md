@@ -33,6 +33,8 @@ Your Docker Compose should include this bind mount:
 
 ## How to run
 
+Once inside the directory run this once: Set-ExecutionPolicy -Scope Process Bypass
+
 If you are inside `scripts\powershell`:
 
 ```powershell
