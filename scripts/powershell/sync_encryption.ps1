@@ -1,27 +1,40 @@
-Param(
+param(
     [string]$SourceContainer = "gunpla-n8n",
     [string]$ComposeFilePath = ""  # Path to main machine's docker-compose.yml
 )
 
+Write-Host "Attempting to extract encryption key from container '$SourceContainer'..." -ForegroundColor Cyan
+
 # Step 1: Extract key from source container
 $encryptionKey = docker exec $SourceContainer printenv N8N_ENCRYPTION_KEY 2>$null
-$encryptionKey = $encryptionKey.Trim()
 
-if ([string]::IsNullOrWhiteSpace($encryptionKey)) {
+if ($encryptionKey) {
+    $encryptionKey = $encryptionKey.Trim()
+    Write-Host "Found N8N_ENCRYPTION_KEY in environment variables." -ForegroundColor Green
+} else {
     Write-Host "N8N_ENCRYPTION_KEY env var not set. Reading from internal config file..." -ForegroundColor Yellow
     $configRaw = docker exec $SourceContainer cat /home/node/.n8n/config 2>$null
+    
+    # FIXED: Properly check if regex match succeeded before accessing $matches
     if ($configRaw -match '"encryptionKey":\s*"([^"]+)"') {
         $encryptionKey = $matches[1]
+        Write-Host "Encryption key extracted from config file." -ForegroundColor Green
     } else {
-        Write-Error "Could not extract encryption key from container '$SourceContainer'. Aborting."
+        Write-Error "Could not extract encryption key from container '$SourceContainer'. The config file does not contain a valid encryptionKey field. Aborting."
         exit 1
     }
+}
+
+# Validate we actually got a key
+if (-not $encryptionKey -or [string]::IsNullOrWhiteSpace($encryptionKey)) {
+    Write-Error "Failed to extract encryption key. The extracted value is null or empty. Aborting."
+    exit 1
 }
 
 Write-Host "Encryption key extracted successfully." -ForegroundColor Green
 
 # Step 2: Write key to target docker-compose.yml
-if ([string]::IsNullOrWhiteSpace($ComposeFilePath) -or !(Test-Path $ComposeFilePath)) {
+if ([string]::IsNullOrWhiteSpace($ComposeFilePath) -or -(Test-Path $ComposeFilePath)) {
     Write-Error "Please provide a valid -ComposeFilePath to the destination docker-compose.yml."
     exit 1
 }
