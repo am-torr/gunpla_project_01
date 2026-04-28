@@ -1,4 +1,4 @@
-services:
+﻿services:
   scraper:
     build:
       context: .
@@ -37,6 +37,7 @@ services:
       - "5679:5678"
     env_file:
       - .env
+
     volumes:
       - n8n-data:/home/node/.n8n
       - ./workflows:/home/node/.n8n/workflows
@@ -146,3 +147,9 @@ volumes:
 networks:
   gunpla-network:
     driver: bridge
+
+
+
+
+
+
