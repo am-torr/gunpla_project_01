@@ -1,4 +1,4 @@
-﻿services:
+services:
   scraper:
     build:
       context: .
@@ -138,6 +138,27 @@
     networks:
       - gunpla-network
 
+  bandai-scraper:
+    build:
+      context: ./bandai-scraper
+      dockerfile: Dockerfile
+    container_name: bandai-scraper
+    restart: unless-stopped
+    ports:
+      - "8003:8001"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./bandai-scraper/output:/app/output
+    networks:
+      - gunpla-network
+    shm_size: '1gb'
+    deploy:
+      resources:
+        limits:
+          memory: 2G
 
 volumes:
   n8n-data:
@@ -146,10 +167,7 @@ volumes:
 
 networks:
   gunpla-network:
-    driver: bridge
-
-
-
-
+    external: true
+    name: gunpla-tracker-verified_gunpla-network
 
 
