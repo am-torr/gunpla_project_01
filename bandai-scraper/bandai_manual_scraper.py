@@ -24,8 +24,8 @@ SUPABASE_KEY   = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_A
 OPENROUTER_API = os.getenv("OPENROUTER_API")
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-VISION_MODEL   = "google/gemini-flash-1.5"
 
+VISION_MODEL = "google/gemini-1.5-flash-exp-0827"
 # ─────────────────────────────────────────────────────────────────────
 # PROMPT — structured extraction from manual page 1 screenshot
 # ─────────────────────────────────────────────────────────────────────
@@ -167,59 +167,50 @@ async def extract_metadata_from_page(page, manual_id, source_url):
 # ─────────────────────────────────────────────────────────────────────
 
 async def capture_manual_page1(page):
-    """
-    Click 取扱説明書 → intercept popup PDF viewer → screenshot page 1.
-    The viewer renders as a canvas — wait for it to paint before screenshotting.
-    Falls back to detail-page screenshot if popup fails.
-    """
     screenshot_bytes = None
     try:
         print("  Looking for manual button...")
-        btn = await page.query_selector("a:has-text('取扱説明書'), button:has-text('取扱説明書')")
+        # More selectors for "取扱説明書" button
+        btn_selectors = [
+            "a:has-text('取扱説明書')", 
+            "button:has-text('取扱説明書')",
+            "a[title*='取扱説明書']", 
+            ".manual-link", ".pdf-link", "[href*='pdf']",
+            "a[href*='/pdf/']", ".download-manual"
+        ]
+        btn = None
+        for sel in btn_selectors:
+            btn = await page.query_selector(sel)
+            if btn:
+                print(f"  Button found: {sel}")
+                break
+        
         if not btn:
-            raise Exception("Manual button not found")
+            print("  No manual button — full detail screenshot")
+            screenshot_bytes = await page.screenshot(full_page=True)
+        else:
+            print("  Waiting for popup...")
+            async with page.expect_popup(timeout=60000) as popup_info:
+                await btn.click()
+            viewer = await popup_info.value
+            print(f"  PDF viewer: {viewer.url}")
+            await viewer.wait_for_load_state("networkidle")
+            await viewer.wait_for_selector("canvas", timeout=15000)
+            await asyncio.sleep(3)
+            screenshot_bytes = await viewer.screenshot(full_page=False)
+            await viewer.close()
 
-        print("  Waiting for popup...")
-        async with page.expect_popup(timeout=15000) as popup_info:
-            await btn.click()
-
-        viewer = await popup_info.value
-        print(f"  Popup URL: {viewer.url}")
-
-        # Wait for page to fully load
-        await viewer.wait_for_load_state("networkidle", timeout=20000)
-        await asyncio.sleep(4)
-
-        # Wait for canvas (PDF rendered via PDF.js or similar)
-        try:
-            await viewer.wait_for_selector("canvas", timeout=12000)
-            print("  Canvas detected — waiting for render...")
-            await asyncio.sleep(4)
-        except Exception:
-            print("  No canvas — proceeding with screenshot")
-
-        # Scroll to top to ensure page 1
-        await viewer.evaluate("window.scrollTo(0, 0)")
-        await asyncio.sleep(1)
-
-        screenshot_bytes = await viewer.screenshot(full_page=False)
-        print(f"  Screenshot: {len(screenshot_bytes) // 1024} KB")
-        await viewer.close()
-
+        print(f"  Screenshot captured: {len(screenshot_bytes)//1024} KB")
+        
     except Exception as e:
-        print(f"  Popup capture failed: {e} — using detail page fallback")
-        try:
-            screenshot_bytes = await page.screenshot(full_page=False)
-            print(f"  Fallback screenshot: {len(screenshot_bytes) // 1024} KB")
-        except Exception as e2:
-            print(f"  Fallback also failed: {e2}")
-
-    if not screenshot_bytes:
-        return None, None
-
-    b64 = base64.b64encode(screenshot_bytes).decode("utf-8")
-    return screenshot_bytes, b64
-
+        print(f"  Screenshot failed ({e}) — no vision")
+    
+    if screenshot_bytes and len(screenshot_bytes) > 50*1024:  # Min size check
+        b64 = base64.b64encode(screenshot_bytes).decode()
+        return screenshot_bytes, b64
+    print("  Screenshot invalid — skipping vision")
+    return None, None
+    
 # ─────────────────────────────────────────────────────────────────────
 # STEP 3 — Vision LLM extraction
 # ─────────────────────────────────────────────────────────────────────
