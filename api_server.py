@@ -101,7 +101,7 @@ def get_kits(filter: str = "all", limit: int = 20):
     
     return {
         "success": True,
-        "store": store or "mixed",
+        "store": "mixed",
         "products": all_kits[:limit],
         "kits": all_kits[:limit],  # Dual compat
         "total": len(all_kits),
