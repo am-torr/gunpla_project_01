@@ -1,5 +1,5 @@
 {
-  "test_date": "2026-02-26T05:24:24.657888",
+  "test_date": "2026-03-01T07:02:07.894949",
   "stores": [
     {
       "store_name": "Hobby Planet",
@@ -11,13 +11,17 @@
             "grade": null,
             "scale": "N/A",
             "special_edition": "Standard",
-            "bandai_sku": null
+            "bandai_sku": null,
+            "sku": "Alaya-Vijnana Technology Barbatos Lupus Head Bust with Sound Control RGB Lighting Effect"
           },
           "price": {
             "price": 2800.0,
             "currency": "PHP",
             "stock_status": "In Stock",
-            "product_url": "https://hobbyplanet.info/product/alaya-vijnana-technology-barbatos-lupus-head-bust-with-sound-control-rgb-lighting-effect/"
+            "product_url": "https://hobbyplanet.info/product/alaya-vijnana-technology-barbatos-lupus-head-bust-with-sound-control-rgb-lighting-effect/",
+            "product_id": "40ba3516-0173-433e-aad2-e6a286f3ed38",
+            "store_id": "681f9d8a-c57d-4944-bfea-a14ea48661d9",
+            "store_name": "Hobby Planet"
           }
         },
         {
@@ -26,13 +30,17 @@
             "grade": "MG",
             "scale": "1/100",
             "special_edition": "Standard",
-            "bandai_sku": null
+            "bandai_sku": null,
+            "sku": "Daban 6609 MG 1/100 Duel Gundam Assault Shroud"
           },
           "price": {
             "price": 1200.0,
             "currency": "PHP",
             "stock_status": "In Stock",
-            "product_url": "https://hobbyplanet.info/product/dbn-mg-1-100-duel-assault-shroud-6609/"
+            "product_url": "https://hobbyplanet.info/product/dbn-mg-1-100-duel-assault-shroud-6609/",
+            "product_id": "42c707c7-bef1-4cd3-bfb5-60e2aaee3850",
+            "store_id": "681f9d8a-c57d-4944-bfea-a14ea48661d9",
+            "store_name": "Hobby Planet"
           }
         },
         {
@@ -41,13 +49,17 @@
             "grade": "MG",
             "scale": "1/100",
             "special_edition": "Standard",
-            "bandai_sku": null
+            "bandai_sku": null,
+            "sku": "BL 2508 1/100 ZGMF-X13A Providence Gundam"
           },
           "price": {
             "price": 1350.0,
             "currency": "PHP",
             "stock_status": "In Stock",
-            "product_url": "https://hobbyplanet.info/product/bl-2508-1-100-zgmf-x13a-providence-gundam/"
+            "product_url": "https://hobbyplanet.info/product/bl-2508-1-100-zgmf-x13a-providence-gundam/",
+            "product_id": "50059e08-aae1-42d6-ba83-95de07903dcf",
+            "store_id": "681f9d8a-c57d-4944-bfea-a14ea48661d9",
+            "store_name": "Hobby Planet"
           }
         },
         {
@@ -56,13 +68,17 @@
             "grade": "MG",
             "scale": "1/100",
             "special_edition": "Standard",
-            "bandai_sku": null
+            "bandai_sku": null,
+            "sku": "Daban MG 1/100 Aegis Gundam (#6617)"
           },
           "price": {
             "price": 1250.0,
             "currency": "PHP",
             "stock_status": "In Stock",
-            "product_url": "https://hobbyplanet.info/product/daban-mg-1-100-6617-aegis-fighter/"
+            "product_url": "https://hobbyplanet.info/product/daban-mg-1-100-6617-aegis-fighter/",
+            "product_id": "ee6c2f91-5be0-456b-a833-0facf64556ee",
+            "store_id": "681f9d8a-c57d-4944-bfea-a14ea48661d9",
+            "store_name": "Hobby Planet"
           }
         },
         {
@@ -71,13 +87,17 @@
             "grade": "MG",
             "scale": "1/100",
             "special_edition": "Standard",
-            "bandai_sku": null
+            "bandai_sku": null,
+            "sku": "M-Boy Model MG 1/100 Hazel Gundam Custom MZ-001"
           },
           "price": {
             "price": 1200.0,
             "currency": "PHP",
             "stock_status": "In Stock",
-            "product_url": "https://hobbyplanet.info/product/m-boy-model-mg-1-100-hazel-custom-mz-001/"
+            "product_url": "https://hobbyplanet.info/product/m-boy-model-mg-1-100-hazel-custom-mz-001/",
+            "product_id": "cdc6cdf7-072c-4ca7-a2bb-17b1a1b7b34b",
+            "store_id": "681f9d8a-c57d-4944-bfea-a14ea48661d9",
+            "store_name": "Hobby Planet"
           }
         }
       ]
@@ -97,10 +117,13 @@
             "on_sale": true
           },
           "price": {
-            "price": 1469.06,
-            "currency": "PHP",
-            "stock_status": "Order now!",
-            "product_url": "https://www.hlj.com/gunpla-catalog-special-edition-gunpla-45th-anniversary-a-collection-of-gundams-from-all-the-anime-series-hbj64136"
+            "price": 1477.36,
+            "currency": "¥",
+            "stock_status": "ORDER_STOP",
+            "product_url": "https://www.hlj.com/gunpla-catalog-special-edition-gunpla-45th-anniversary-a-collection-of-gundams-from-all-the-anime-series-hbj64136",
+            "product_id": "a92bd407-0535-4781-a58d-6a0fbe6e8a7b",
+            "store_id": "2356ceb2-06d3-40c0-b2fd-d3dd59cdb5be",
+            "store_name": "Hobby Link Japan"
           },
           "details": {
             "code": "HBJ64136",
@@ -112,7 +135,7 @@
             ],
             "description": null,
             "includes": [],
-            "country_of_origin": "N/A",
+            "country_of_origin": "Japan",
             "manufacturer": "Hobby Japan",
             "dimensions": null,
             "weight": null,
@@ -131,10 +154,13 @@
             "on_sale": true
           },
           "price": {
-            "price": 1691.65,
-            "currency": "PHP",
-            "stock_status": "Order now!",
-            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-45th-anniversary-rx-93-new-gundam-hbj64071"
+            "price": 1701.2,
+            "currency": "¥",
+            "stock_status": "ORDER_STOP",
+            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-45th-anniversary-rx-93-new-gundam-hbj64071",
+            "product_id": "b8b7892b-625f-4b5e-bd21-bf3faf124fcb",
+            "store_id": "2356ceb2-06d3-40c0-b2fd-d3dd59cdb5be",
+            "store_name": "Hobby Link Japan"
           },
           "details": {
             "code": "HBJ64071",
@@ -165,10 +191,13 @@
             "on_sale": true
           },
           "price": {
-            "price": 356.14,
-            "currency": "PHP",
+            "price": 358.15,
+            "currency": "¥",
             "stock_status": "Order now!",
-            "product_url": "https://www.hlj.com/1-144-scale-option-parts-set-gunpla-13-gunpla-battle-arm-arms-banh674296"
+            "product_url": "https://www.hlj.com/1-144-scale-option-parts-set-gunpla-13-gunpla-battle-arm-arms-banh674296",
+            "product_id": "8fb967db-9a7c-4069-b9da-99511b1231f9",
+            "store_id": "2356ceb2-06d3-40c0-b2fd-d3dd59cdb5be",
+            "store_name": "Hobby Link Japan"
           },
           "details": {
             "code": "BANH674296",
@@ -199,10 +228,13 @@
             "on_sale": true
           },
           "price": {
-            "price": 1187.27,
-            "currency": "PHP",
+            "price": 1193.97,
+            "currency": "¥",
             "stock_status": "Only 3 left in stock.  Order now!",
-            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-builders-j-hbjgw44"
+            "product_url": "https://www.hlj.com/gundam-weapons-gunpla-builders-j-hbjgw44",
+            "product_id": "2ac4fc63-b68e-4653-915f-fbfe4f089bc2",
+            "store_id": "2356ceb2-06d3-40c0-b2fd-d3dd59cdb5be",
+            "store_name": "Hobby Link Japan"
           },
           "details": {
             "code": "HBJGW44",
@@ -233,10 +265,13 @@
             "on_sale": true
           },
           "price": {
-            "price": 890.34,
-            "currency": "PHP",
+            "price": 895.37,
+            "currency": "¥",
             "stock_status": "Order now!",
-            "product_url": "https://www.hlj.com/1-144-scale-hguc-zeta-gundam-gunpla-evolution-project-banh556110-up"
+            "product_url": "https://www.hlj.com/1-144-scale-hguc-zeta-gundam-gunpla-evolution-project-banh556110-up",
+            "product_id": "cf72267e-4b9b-4bed-b4c7-7626261ccbb5",
+            "store_id": "2356ceb2-06d3-40c0-b2fd-d3dd59cdb5be",
+            "store_name": "Hobby Link Japan"
           },
           "details": {
             "code": "BANH556110",
