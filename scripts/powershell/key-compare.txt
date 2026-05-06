@@ -1,4 +1,0 @@
-ENV KEY:
-WGOJNjicUsuS8FgmbqPNowJrjN99nhlc
-
-CONFIG RAW:
