@@ -1,22 +1,19 @@
-Param(
-    [string]$ContainerName = "gunpla-n8n"
-)
+$container = "gunpla-n8n"
+$insideFile = "/tmp/workflows-export.json"
+$outsideFile = "..\..\workflows\workflows-export.json"
 
-$RepoRoot = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-$hostPath = Join-Path $RepoRoot "workflows\workflows-export.json"
+Write-Host "Exporting workflows from container '$container'..."
 
-Write-Host "Exporting workflows from container '$ContainerName'..." -ForegroundColor Cyan
-
-docker exec -it $ContainerName `
-  n8n export:workflow --all --output=/home/node/.n8n/workflows/workflows-export.json
-
+docker exec $container n8n export:workflow --backup --output=$insideFile
 if ($LASTEXITCODE -ne 0) {
     Write-Error "n8n export:workflow failed."
-    exit $LASTEXITCODE
+    exit 1
 }
 
-if (Test-Path $hostPath) {
-    Write-Host "Export completed. File is at: $hostPath" -ForegroundColor Green
-} else {
-    Write-Warning "Export command succeeded, but workflows-export.json was not found at $hostPath. Check your volume mapping."
+docker cp "${container}:${insideFile}" $outsideFile
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "docker cp failed."
+    exit 1
 }
+
+Write-Host "Export completed: $outsideFile"
