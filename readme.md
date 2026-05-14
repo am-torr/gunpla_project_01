@@ -13,6 +13,7 @@ This project also helps exercise my visual-spatial brain and to eventually move 
 
 > [!NOTE]
 > This is an AI-assisted project using Perplexity Pro for research, plausibility checks, and prototyping.
+> 
 > Some images will not load till you log in.
 
 ---
