@@ -330,7 +330,7 @@ async def scrape_low_stock(threshold: int = None) -> list:
         for page_num in range(1, MAX_PAGES + 1):
             page_url = f"{SCRAPE_URL}&Page={page_num}"
             print(f"\n>> Page {page_num}/{MAX_PAGES}: {page_url}")
-            await page.goto(page_url, wait_until="domcontentloaded", timeout=60000)
+            await page.goto(page_url, wait_until="domcontentloaded", timeout=1800000) #1800000
                 
             print(">> Waiting for price elements...")
             try:
