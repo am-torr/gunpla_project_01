@@ -12,7 +12,7 @@ To avoid burning out doing it manually on my FB page, I made a system that does 
 This project also helps exercise my visual-spatial brain and to eventually move to less visual tools like Airflow.
 
 > [!NOTE]
-> This is an AI-assisted project using Perplexity Pro for research, plausibility checks, and prototyping.
+> This is an AI-assisted project using Perplexity Pro for research, plausibility checks, and prototyping. Using claude code as my personal developer after setting up important config such as skills.
 > 
 > Some images will not load till you log in.
 
