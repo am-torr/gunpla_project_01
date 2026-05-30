@@ -1,5 +1,8 @@
 FROM python:3.12-slim-bookworm
 
+# Build from scripts/ as context so both app/ and hlj-preorder/ are reachable:
+#   docker build -f hlj-preorder/Dockerfile -t hlj-preorder scripts/
+
 RUN apt-get update -qq && \
     apt-get install -y curl ca-certificates && \
     rm -rf /var/lib/apt/lists/*
@@ -21,6 +24,7 @@ RUN pip install --no-cache-dir --timeout=600 --retries=5 \
 RUN playwright install --with-deps chromium
 
 WORKDIR /app
-COPY . /app
+COPY app /app/app
+COPY hlj-preorder /app
 EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
