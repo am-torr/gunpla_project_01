@@ -32,13 +32,14 @@ services:
 
   hlj-lowstock:
     build:
-      context: ./scripts/hlj-lowstock
-      dockerfile: Dockerfile
+      context: ./scripts
+      dockerfile: hlj-lowstock/Dockerfile
     container_name: gunpla-hlj-lowstock
     ports:
       - "8001:8000"
     volumes:
       - ./scripts/hlj-lowstock:/app
+      - ./scripts/app:/app/app:ro
     env_file:
       - .env
     networks:
@@ -46,15 +47,16 @@ services:
     restart: unless-stopped
 
   hlj-preorder:
-    build: 
-      context: ./scripts/hlj-preorder
-      dockerfile: Dockerfile 
+    build:
+      context: ./scripts
+      dockerfile: hlj-preorder/Dockerfile
     container_name: gunpla-hlj-preorder
     ports:
       - "8010:8000"
     volumes:
       - ./scripts/hlj-preorder:/app
-    env_file: 
+      - ./scripts/app:/app/app:ro
+    env_file:
       - .env
     networks:
       - gunpla-network
