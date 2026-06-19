@@ -58,6 +58,15 @@ class Settings(BaseSettings):
     MAX_CONCURRENCY: int = 4
     AGENT_SOURCE_SYSTEM: str = "hlj-lowstock-agent"
 
+    # Scheduled runner (scheduler.py)
+    RUN_INTERVAL_HOURS: float = 6.0    # how often the containerized runner fires
+    RUN_THRESHOLD: int = 5             # /low-stock threshold per scheduled run
+    RUN_LIMIT: int = 20                # cap items processed per scheduled run
+    RUN_ON_START: bool = False         # also run once immediately on boot
+
+    # Review UI (review_app.py)
+    REVIEW_PORT: int = 8011
+
 
 settings = Settings()
 

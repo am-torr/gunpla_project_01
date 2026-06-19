@@ -1,12 +1,19 @@
-# Local low-stock Agent SDK pipeline (run on demand, outside the Docker stack).
-# Kept separate from the service requirements so it doesn't bloat the images.
+# Low-stock Agent SDK pipeline — runner (scheduler) + review UI.
 #
 # PREREQUISITE: the Claude Code CLI must be installed and on PATH — the Python
 # Agent SDK drives it as a subprocess:
 #   npm install -g @anthropic-ai/claude-code
-claude-agent-sdk>=0.1.0
-httpx>=0.27.0
-supabase>=2.3.0
-python-dotenv>=1.0.0
-pydantic>=2.6.0
-pydantic-settings>=2.1.0
+#
+# Pinned to the versions resolved + verified locally. Loose `>=` floors caused a
+# pip ResolutionImpossible in a clean image (an old supabase got selected that
+# conflicts with modern httpx); exact pins keep the build deterministic.
+claude-agent-sdk==0.2.105
+httpx==0.28.1
+supabase==2.31.0
+python-dotenv==1.2.2
+pydantic==2.13.4
+pydantic-settings==2.14.2
+# scheduled runner + review UI
+apscheduler==3.11.2
+fastapi==0.137.2
+uvicorn==0.49.0

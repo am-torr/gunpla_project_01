@@ -62,6 +62,36 @@ services:
       - gunpla-network
     restart: unless-stopped
 
+  lowstock-agent:
+    build:
+      context: .
+      dockerfile: scripts/lowstock_agent/Dockerfile
+    container_name: gunpla-lowstock-agent
+    env_file:
+      - .env
+    environment:
+      - HLJ_LOWSTOCK_URL=http://hlj-lowstock:8000
+    command: python -m scripts.lowstock_agent.scheduler
+    depends_on:
+      - hlj-lowstock
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  lowstock-review:
+    build:
+      context: .
+      dockerfile: scripts/lowstock_agent/Dockerfile
+    container_name: gunpla-lowstock-review
+    ports:
+      - "8011:8011"
+    env_file:
+      - .env
+    command: uvicorn scripts.lowstock_agent.review_app:app --host 0.0.0.0 --port 8011
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
   n8n:
     image: n8nio/n8n:latest
     container_name: gunpla-n8n

@@ -76,6 +76,20 @@ python -m scripts.lowstock_agent --dry-run \
 python -m scripts.lowstock_agent --threshold 5 --limit 20
 ```
 
+### Deploy (Docker stack)
+Two services in `docker-compose.yml`, both built from `scripts/lowstock_agent/Dockerfile`
+(Python + Node + the Claude Code CLI):
+- **`lowstock-agent`** — scheduled runner (`scheduler.py`, APScheduler). Fires the
+  pipeline every `RUN_INTERVAL_HOURS` against `hlj-lowstock:8000` (in-network).
+- **`lowstock-review`** — mobile-friendly review UI (`review_app.py`, FastAPI) on
+  **:8011**. Lists `agent_drafts` (status='draft') with Approve/Reject; approving sets
+  `status='approved'`. n8n stays untouched.
+
+```bash
+docker compose up -d --build lowstock-agent lowstock-review
+# then review drafts (incl. from your phone) at http://<host>:8011
+```
+
 ### Config / env (`.env`, reused from the rest of the project)
 - `ANTHROPIC_API_KEY` — the key already provisioned for RAG.
 - `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` — backend read/write.
@@ -84,7 +98,10 @@ python -m scripts.lowstock_agent --threshold 5 --limit 20
   `STOCK_URGENCY_THRESHOLD` (default 5, matches `02`), `DEAL_DROP_PCT`,
   `USE_PRICE_DELTA_GATE`, `CLASSIFIER_MODEL` (default `haiku`), `CLASSIFIER_BATCH_SIZE`,
   `CAPTION_MODEL` (default `sonnet`), `ENABLE_SUGGESTED_CAPTION`, `ENABLE_SHORTENER`,
-  `BITLY_ACCESS_TOKEN`, `MAX_CONCURRENCY`. See `scripts/lowstock_agent/config.py`.
+  `BITLY_ACCESS_TOKEN`, `MAX_CONCURRENCY`, `HLJ_FETCH_TIMEOUT`.
+- Scheduled runner / review: `RUN_INTERVAL_HOURS` (default 6), `RUN_THRESHOLD`,
+  `RUN_LIMIT`, `RUN_ON_START`, `REVIEW_PORT` (default 8011). See
+  `scripts/lowstock_agent/config.py`.
 
 ### Database objects (this feature)
 - `agent_drafts` — `m-hub-db/database/sql/agent_drafts.sql`
