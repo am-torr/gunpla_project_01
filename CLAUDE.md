@@ -44,6 +44,20 @@ fetch /low-stock ──> capture_history(all items)   # snapshot price+stock (no
   "Build Facebook Post Copy" exactly; the link is shortened Bitly→TinyURL→affiliate
   (`shortener.py`). `suggested_caption` is an *optional* LLM extra for the reviewer.
 
+### Two orchestration styles (batch fan-out vs Ralph loop)
+The pipeline ships both on purpose:
+- **Batch fan-out** (`orchestrator.py`) — many independent items, one LLM pass each,
+  `asyncio.gather` for throughput. This is the default pipeline. Breadth.
+- **Ralph loop** (`ralph_loop.py`) — a single agent in a tight, persistent loop:
+  one draft at a time, *generate → run a deterministic checker → re-prompt the same
+  agent with the exact failures → repeat until it passes*, then advance. State is the
+  saved `suggested_caption`, so it's resumable/idempotent. Use it when a per-item
+  quality bar needs self-correction (depth) rather than throughput.
+
+```bash
+python -m scripts.lowstock_agent.ralph_loop --max-drafts 20 --max-attempts 4
+```
+
 ### Parity with the live n8n `02 - Create Post Queue Candidates`
 Verified against the exported active workflow. `02` reads pre-staged `post_queue_stg`
 rows, builds a **deterministic** post copy (no LLM), shortens the link, and inserts

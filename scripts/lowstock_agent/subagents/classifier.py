@@ -129,13 +129,18 @@ async def _classify_chunk(items: list[dict]) -> dict:
     )
 
     structured = None
+    err = None
     try:
         async for message in query(prompt=prompt, options=options):
             if isinstance(message, ResultMessage):
-                if message.subtype == "success" and message.structured_output:
+                if getattr(message, "is_error", False):
+                    err = message.result or "unknown error"        # e.g. "Credit balance is too low"
+                elif message.subtype == "success" and message.structured_output:
                     structured = message.structured_output
     except Exception as exc:
-        print(f"  WARN classify batch: {exc}")
+        err = err or str(exc)
+    if err and structured is None:
+        print(f"  WARN classify batch: {err}")
 
     out: dict = {}
     if structured:
