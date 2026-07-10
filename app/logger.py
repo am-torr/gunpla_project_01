@@ -10,7 +10,7 @@ load_dotenv()
 class TrackerLogger:
     def __init__(self):
         url = os.getenv("SUPABASE_URL")
-        key = os.getenv("SUPABASE_ANON_KEY")
+        key = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_ANON_KEY")
         if not url or not key:
             raise ValueError("Missing SUPABASE_URL/ANON_KEY in .env")
         self.supabase = create_client(url, key)

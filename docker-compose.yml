@@ -8,6 +8,8 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     command: uvicorn api_server:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       - n8n
@@ -22,6 +24,8 @@ services:
     container_name: gunpla-scheduler
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     command: python scheduler.py
     depends_on:
       - scraper
@@ -42,6 +46,8 @@ services:
       - ./scripts/app:/app/app:ro
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     networks:
       - gunpla-network
     restart: unless-stopped
@@ -58,6 +64,8 @@ services:
       - ./scripts/app:/app/app:ro
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     networks:
       - gunpla-network
     restart: unless-stopped
@@ -71,6 +79,7 @@ services:
       - .env
     environment:
       - HLJ_LOWSTOCK_URL=http://hlj-lowstock:8000
+      - SUPABASE_URL=http://kong:8000
     command: python -m scripts.lowstock_agent.scheduler
     depends_on:
       - hlj-lowstock
@@ -87,6 +96,8 @@ services:
       - "8011:8011"
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     command: uvicorn scripts.lowstock_agent.review_app:app --host 0.0.0.0 --port 8011
     networks:
       - gunpla-network
@@ -99,6 +110,8 @@ services:
       - "5679:5678"
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
 
     volumes:
       - n8n-data:/home/node/.n8n
@@ -108,16 +121,85 @@ services:
     restart: unless-stopped
 
   supabase:
-    image: supabase/postgres:15.1.0.147
+    image: supabase/postgres:17.6.1.143
     container_name: gunpla-supabase
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
       PGUSER: postgres
     volumes:
-      - supabase-data:/var/lib/postgresql/data
-      - ./supabase-init:/docker-entrypoint-initdb.d
+      # fresh volume: the old supabase-data holds an incompatible PG15 datadir
+      - supabase-db-data:/var/lib/postgresql/data
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  rest:
+    image: postgrest/postgrest:v12.2.3
+    container_name: gunpla-rest
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD}@supabase:5432/postgres
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET}
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+    depends_on:
+      - supabase
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  kong:
+    image: kong:2.8.1
+    container_name: gunpla-kong
+    ports:
+      - "54321:8000"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /home/kong/kong.yml
+      KONG_DNS_ORDER: LAST,A,CNAME
+    volumes:
+      - ./kong.yml:/home/kong/kong.yml:ro
+    depends_on:
+      - rest
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  meta:
+    image: supabase/postgres-meta:v0.84.2
+    container_name: gunpla-meta
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: supabase
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: postgres
+      PG_META_DB_USER: postgres
+      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - supabase
+    networks:
+      - gunpla-network
+    restart: unless-stopped
+
+  # best-effort admin UI; nothing depends on it — drop if it misbehaves
+  studio:
+    image: supabase/studio:latest
+    container_name: gunpla-studio
+    ports:
+      - "54323:3000"
+    environment:
+      STUDIO_PG_META_URL: http://meta:8080
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_PUBLIC_URL: http://localhost:54321
+      SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+    depends_on:
+      - meta
+      - kong
     networks:
       - gunpla-network
     restart: unless-stopped
@@ -128,6 +210,8 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     volumes:
       - ./doc-ingest:/app
     command: python ingest.py
@@ -135,7 +219,11 @@ services:
       - supabase
     networks:
       - gunpla-network
-    restart: unless-stopped
+    # ingest.py is a one-shot script that exits 0. Any restart policy other
+    # than "no" makes Docker rerun it forever; that once wrote 108k rows.
+    # Run deliberately: docker compose run --rm doc-ingest
+    restart: "no"
+    profiles: ["manual"]
 
   hf-embed:
     image: ghcr.io/huggingface/text-embeddings-inference:cpu-latest
@@ -212,6 +300,7 @@ services:
       - .env
     environment:
       - PYTHONUNBUFFERED=1
+      - SUPABASE_URL=http://kong:8000
     volumes:
       - ./bandai-scraper/output:/app/output
     networks:
@@ -225,6 +314,8 @@ services:
   nams-framework:
     build: ./nams
     env_file: .env
+    environment:
+      SUPABASE_URL: http://kong:8000
     volumes:
       - ./nams:/app
     depends_on:
@@ -237,6 +328,7 @@ services:
 volumes:
   n8n-data:
   supabase-data:
+  supabase-db-data:
   yourls-db-data:
 
 networks:

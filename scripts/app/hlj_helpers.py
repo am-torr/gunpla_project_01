@@ -42,7 +42,7 @@ PHT           = timezone(timedelta(hours=8))
 
 # ── Supabase exchange rates ───────────────────────────────────────────────────
 SUPABASE_URL      = os.getenv("SUPABASE_URL")
-SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_ANON_KEY")
 RATES_URL         = f"{SUPABASE_URL}/rest/v1/exchange_rates?base=eq.JPY&select=*&limit=1"
 
 RATES_FALLBACK = {

@@ -4,7 +4,7 @@ load_dotenv()
 
 class NAMSFramework:
     def __init__(self):
-        self.supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_ROLE"))
+        self.supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_SERVICE_ROLE"))
     
     def embed_text(self, text):
         resp = requests.post("http://localhost:5001/embed", json={"inputs": text})
