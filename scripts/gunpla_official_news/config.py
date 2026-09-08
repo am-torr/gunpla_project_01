@@ -22,6 +22,7 @@ OFFICIAL_DOMAINS = (
     "bandai.com",
     "gundam.net",
     "gundam-base.net",
+    "gundam-official.com",
 )
 
 # Source registry. Each scraper module exposes a `Scraper` class that the runner

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "p1",
+    "title": "MGEX Strike Freedom confirmed",
+    "cites_official": false
+  },
+  {
+    "id": "p2",
+    "title": "Saw the same listing on the official page",
+    "cites_official": false
+  },
+  {
+    "id": "p3",
+    "title": "Price matches the announcement",
+    "cites_official": false
+  },
+  {
+    "id": "p4",
+    "title": "unrelated build pic",
+    "off_topic": true
+  }
+]

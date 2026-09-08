@@ -1,3 +1,5 @@
 requests>=2.31
 beautifulsoup4>=4.12
 lxml>=5.0
+# scheduler.py -- native APScheduler-style runner (AC6), same pin lowstock_agent uses
+apscheduler==3.11.2

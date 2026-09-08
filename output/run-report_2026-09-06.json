@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06",
+  "topic": null,
+  "listings": [
+    "https://en.gundam-official.com/news/",
+    "https://global.bandai-hobby.net/en-us/site/gbase_worldtour/",
+    "https://www.hlj.com/search/?Word=gundam&Sort=Newest",
+    "https://gundamkitscollection.com/",
+    "https://www.reddit.com/r/Gunpla/new/"
+  ],
+  "articles": 8,
+  "rows": 8,
+  "images_verified": 8,
+  "images_excluded_chrome": 2,
+  "images_failed": 2,
+  "reddit_unavailable": 1,
+  "outputs": {
+    "verified_brief": "output\\verified_brief_2026-09-06.md",
+    "working_data_md": "output\\working_data_2026-09-06.md",
+    "working_data_json": "output\\working_data_2026-09-06.json"
+  }
+}
