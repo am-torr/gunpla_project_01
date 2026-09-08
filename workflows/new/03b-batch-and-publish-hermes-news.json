@@ -1,0 +1,181 @@
+{
+  "name": "03b - Batch and Publish Hermes News",
+  "description": "Thin clone of '03 - Batch and Publish Queue Items', scoped to source_type='hermes_news' only via the new p_source_type param on assign_all_batches, so Hermes news briefs never get concatenated into the same Facebook post as unrelated HLJ low-stock spotlights. items_per_batch=1 -- each Hermes brief becomes its own standalone post. Calls the existing '04 - Publish Facebook Post' sub-workflow unchanged.",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "hours", "hoursInterval": 1, "triggerAtMinute": 45 }] }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [-672, -336],
+      "id": "b1b1a001-0000-4000-8000-000000000001",
+      "name": "Start - Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [0, -336],
+      "id": "b1b1a002-0000-4000-8000-000000000002",
+      "name": "End - Batch Workflow Complete"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "b1b1a010-0000-4000-8000-000000000010", "name": "items_per_batch", "value": 1, "type": "number" },
+            { "id": "b1b1a011-0000-4000-8000-000000000011", "name": "message", "value": "", "type": "string" },
+            { "id": "b1b1a012-0000-4000-8000-000000000012", "name": "p_source_type", "value": "hermes_news", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-672, -112],
+      "id": "b1b1a003-0000-4000-8000-000000000003",
+      "name": "Load Batch Configuration"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL.replace(/\\/$/, '') }}/rest/v1/rpc/assign_all_batches",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "{{ $env.SUPABASE_SERVICE_KEY_ROLE }}" },
+            { "name": "Authorization", "value": "==Bearer {{ $env.SUPABASE_SERVICE_KEY_ROLE }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"p_max\": {{ $('Load Batch Configuration').item.json.items_per_batch }},\n  \"p_message\": {{ JSON.stringify($('Load Batch Configuration').item.json.message) }},\n  \"p_source_type\": {{ JSON.stringify($('Load Batch Configuration').item.json.p_source_type) }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-448, -112],
+      "id": "b1b1a004-0000-4000-8000-000000000004",
+      "name": "Assign Batch Queue Items",
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": { "id": "CCpTP1R9jjMOly5T", "name": "Header Auth account" }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 3 },
+          "conditions": [
+            {
+              "id": "b1b1a013-0000-4000-8000-000000000013",
+              "leftValue": "={{ $json.batch_id }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [-240, -112],
+      "id": "b1b1a005-0000-4000-8000-000000000005",
+      "name": "Check Batch Assignment Success"
+    },
+    {
+      "parameters": { "options": {} },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [64, -128],
+      "id": "b1b1a006-0000-4000-8000-000000000006",
+      "name": "Loop Over Queue Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item => {\n  const data = item.json.batch_queue_id ?? item.json;\n\n  return {\n    json: {\n      batch_id: data.batch_id,\n      message: data.message,\n      copy_message: data.copy_message,\n      published: true,\n      attached_media: data.attached_media ?? []\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, -112],
+      "id": "b1b1a007-0000-4000-8000-000000000007",
+      "name": "Build Facebook Publish Payload"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "zXfSe3sUsSZ9pATv",
+          "mode": "id",
+          "cachedResultUrl": "/workflow/zXfSe3sUsSZ9pATv"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [704, -112],
+      "id": "b1b1a008-0000-4000-8000-000000000008",
+      "name": "Call Publish Post Sub-Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [1024, 48],
+      "id": "b1b1a009-0000-4000-8000-000000000009",
+      "name": "Continue Batch Loop"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [-240, 112],
+      "id": "b1b1a014-0000-4000-8000-000000000014",
+      "name": "Handle Batch Assignment Failure"
+    }
+  ],
+  "connections": {
+    "Start - Schedule Trigger": { "main": [[{ "node": "Load Batch Configuration", "type": "main", "index": 0 }]] },
+    "Load Batch Configuration": { "main": [[{ "node": "Assign Batch Queue Items", "type": "main", "index": 0 }]] },
+    "Assign Batch Queue Items": { "main": [[{ "node": "Check Batch Assignment Success", "type": "main", "index": 0 }]] },
+    "Check Batch Assignment Success": {
+      "main": [
+        [{ "node": "Loop Over Queue Items", "type": "main", "index": 0 }],
+        [{ "node": "Handle Batch Assignment Failure", "type": "main", "index": 0 }]
+      ]
+    },
+    "Loop Over Queue Items": {
+      "main": [
+        [{ "node": "End - Batch Workflow Complete", "type": "main", "index": 0 }],
+        [{ "node": "Build Facebook Publish Payload", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build Facebook Publish Payload": { "main": [[{ "node": "Call Publish Post Sub-Workflow", "type": "main", "index": 0 }]] },
+    "Call Publish Post Sub-Workflow": { "main": [[{ "node": "Continue Batch Loop", "type": "main", "index": 0 }]] },
+    "Continue Batch Loop": { "main": [[{ "node": "Loop Over Queue Items", "type": "main", "index": 0 }]] }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "_import_notes": [
+    "Deliberately imported/created with active=false. This is the one workflow in the whole design that actually calls '04 - Publish Facebook Post' -- do NOT activate its Schedule Trigger until you've run the manual end-to-end verification in the plan and are ready for Hermes-sourced content to post to the real Facebook page.",
+    "Depends on the assign_all_batches SQL migration (p_source_type param) being applied to the live Supabase project first -- see m-hub-db/database/function/assign_all_batches.sql (already updated in this repo, NOT yet applied to https://xrtfyzegmyyazuwntkph.supabase.co pending your approval).",
+    "'Call Publish Post Sub-Workflow' points at the existing live '04' workflow id (zXfSe3sUsSZ9pATv) unchanged -- 04 itself needs zero edits.",
+    "Schedule set to hourly at :45 (offset from 03's :20/:03 pattern) purely so the two don't fire in the same minute -- tune as you like once active."
+  ]
+}

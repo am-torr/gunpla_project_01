@@ -1,0 +1,212 @@
+{
+  "name": "Hermes News Webhook Ingest",
+  "description": "Receives a Facebook-ready brief pushed directly by Hermes's gunpla-news-gatherer cron jobs (post_to_n8n.py), stages it into post_queue_stg using the exact same content_hash + import_post_queue_stg RPC pattern as '01 - Ingest HLJ Low-Stock Items'. Does not talk to Discord at all -- Hermes pushes here on its own after formatting a brief.",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "hermes-gunpla-news",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-960, 80],
+      "id": "b1a1a001-0000-4000-8000-000000000001",
+      "name": "Webhook - Hermes News Intake"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b1a1a002-0000-4000-8000-000000000002",
+              "leftValue": "={{ $json.headers['x-hermes-secret'] }}",
+              "rightValue": "={{ $env.HERMES_WEBHOOK_SECRET }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [-736, 80],
+      "id": "b1a1a003-0000-4000-8000-000000000003",
+      "name": "Check Webhook Secret"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || {};\nconst workingData = Array.isArray(body.working_data) ? body.working_data : [];\n\n// Collect up to 4 distinct image URLs across all working-data rows\nconst imageUrls = [];\nfor (const row of workingData) {\n  for (const key of ['ImageURL1', 'ImageURL2', 'ImageURL3']) {\n    const url = row[key];\n    if (url && !imageUrls.includes(url)) imageUrls.push(url);\n  }\n  if (imageUrls.length >= 4) break;\n}\n\nconst jobId = body.job_id || 'unknown';\nconst runAt = body.run_at || new Date().toISOString();\n\nreturn [{\n  json: {\n    brief_text: body.brief_text || '',\n    working_data: workingData,\n    job_id: jobId,\n    run_at: runAt,\n    source_type: 'hermes_news',\n    source_id: `${jobId}_${runAt}`,\n    image_urls: imageUrls,\n    repost_days: 14\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-512, 0],
+      "id": "b1a1a004-0000-4000-8000-000000000004",
+      "name": "Normalize Hermes Payload"
+    },
+    {
+      "parameters": {
+        "value": "={{ String($json.source_type) + String($json.source_id) }}",
+        "dataPropertyName": "content_hash"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 2,
+      "position": [-288, 0],
+      "id": "b1a1a005-0000-4000-8000-000000000005",
+      "name": "Generate Content Fingerprint"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=={\n  \"batch_queue_id\": null,\n  \"source_type\": \"{{ $json.source_type }}\",\n  \"source_id\": \"{{ $json.source_id }}\",\n  \"post_copy\": {{ JSON.stringify($json.brief_text) }},\n  \"image_urls\": {{ JSON.stringify($json.image_urls) }},\n  \"affiliate_url\": null,\n  \"channel\": \"facebook\",\n  \"urgency\": 5,\n  \"tags\": [\"hermes\", \"news\"],\n  \"content_hash\": \"{{ $json.content_hash }}\",\n  \"stg_status\": \"raw\",\n  \"ingested_by\": \"n8n-workflow\",\n  \"source_system\": \"hermes-cron\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-64, 0],
+      "id": "b1a1a006-0000-4000-8000-000000000006",
+      "name": "Prepare Staging Insert Payload"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL.replace(/\\/$/, '') }}/rest/v1/rpc/import_post_queue_stg",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_KEY_ROLE }}" },
+            { "name": "Authorization", "value": "==Bearer {{ $env.SUPABASE_SERVICE_KEY_ROLE }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ p_row: $json, p_repost_days: $('Normalize Hermes Payload').item.json.repost_days }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [160, 0],
+      "id": "b1a1a007-0000-4000-8000-000000000007",
+      "name": "Insert Staging Records",
+      "credentials": {
+        "httpHeaderAuth": { "id": "CCpTP1R9jjMOly5T", "name": "Header Auth account" }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b1a1a008-0000-4000-8000-000000000008",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [384, 0],
+      "id": "b1a1a009-0000-4000-8000-000000000009",
+      "name": "Check Staging Insert Success"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, inserted: $json.inserted ?? true, reason: $json.reason ?? 'new' }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [608, -80],
+      "id": "b1a1a010-0000-4000-8000-000000000010",
+      "name": "Respond Success"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: false, error: 'staging_insert_failed', detail: $json }) }}",
+        "options": { "responseCode": 502 }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [608, 80],
+      "id": "b1a1a011-0000-4000-8000-000000000011",
+      "name": "Respond Staging Failure"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: false, error: 'unauthorized' }) }}",
+        "options": { "responseCode": 401 }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [-736, 240],
+      "id": "b1a1a012-0000-4000-8000-000000000012",
+      "name": "Respond Unauthorized"
+    }
+  ],
+  "connections": {
+    "Webhook - Hermes News Intake": {
+      "main": [[{ "node": "Check Webhook Secret", "type": "main", "index": 0 }]]
+    },
+    "Check Webhook Secret": {
+      "main": [
+        [{ "node": "Normalize Hermes Payload", "type": "main", "index": 0 }],
+        [{ "node": "Respond Unauthorized", "type": "main", "index": 0 }]
+      ]
+    },
+    "Normalize Hermes Payload": {
+      "main": [[{ "node": "Generate Content Fingerprint", "type": "main", "index": 0 }]]
+    },
+    "Generate Content Fingerprint": {
+      "main": [[{ "node": "Prepare Staging Insert Payload", "type": "main", "index": 0 }]]
+    },
+    "Prepare Staging Insert Payload": {
+      "main": [[{ "node": "Insert Staging Records", "type": "main", "index": 0 }]]
+    },
+    "Insert Staging Records": {
+      "main": [[{ "node": "Check Staging Insert Success", "type": "main", "index": 0 }]]
+    },
+    "Check Staging Insert Success": {
+      "main": [
+        [{ "node": "Respond Success", "type": "main", "index": 0 }],
+        [{ "node": "Respond Staging Failure", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "_import_notes": [
+    "NOT YET IMPORTED into the live n8n instance -- .env's N8N_API_KEY returned 401 Unauthorized against http://localhost:5679/api/v1 (stale/rotated key). Import manually via n8n UI (Workflows -> Import from File), or generate a fresh API key in n8n Settings and re-run the import via API.",
+    "Requires a new env var HERMES_WEBHOOK_SECRET on the n8n container (docker-compose.yml environment block or .env) -- pick any long random string, this is the shared secret Hermes's post_to_n8n.py sends as X-Hermes-Secret.",
+    "The 'Insert Staging Records' node reuses the existing 'Header Auth account' credential (id CCpTP1R9jjMOly5T) already used by 01/02/03 for the Supabase service-role key -- no new credential needed for that call.",
+    "Reachable at http://localhost:5679/webhook/hermes-gunpla-news once imported and active (n8n only listens on the production webhook path when active=true, which this workflow is set to)."
+  ]
+}

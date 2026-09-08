@@ -1,0 +1,110 @@
+{
+  "https://en.gundam-official.com/media/gallery-index.html": {
+    "content_type": "text/html; charset=utf-8",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/mgex-strike-freedom-01.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/mgex-strike-freedom-02.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/mgex-strike-freedom-03.png": {
+    "content_type": "image/png",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/mgex-strike-freedom-04.webp": {
+    "content_type": "image/webp",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/missing-hero.jpg": {
+    "content_type": "image/jpeg",
+    "status": 404
+  },
+  "https://en.gundam-official.com/media/next-future-tour-key.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://en.gundam-official.com/media/resized_Rectangle_1180.png": {
+    "content_type": "image/png",
+    "status": 200
+  },
+  "https://en.gundam-official.com/news/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "news_index.html"
+  },
+  "https://en.gundam-official.com/news/1001": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_1001_mgex_strike_freedom.html"
+  },
+  "https://en.gundam-official.com/news/1002": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_1002_next_future_tour.html"
+  },
+  "https://global.bandai-hobby.net/en-us/site/gbase_worldtour/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "gbase_index.html"
+  },
+  "https://global.bandai-hobby.net/en-us/site/gbase_worldtour/event-2026-osaka": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_gbase_osaka.html"
+  },
+  "https://global.bandai-hobby.net/media/gbase-osaka-hall.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://gundamkitscollection.com/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "gkc_index.html"
+  },
+  "https://gundamkitscollection.com/2026/09/mg-sazabi-ver-ka-2-0.html": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_gkc_sazabi.html"
+  },
+  "https://www.hlj.com/1-100-mg-freedom-gundam-ver-2-0-bans64213": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_hlj_mg_freedom.html"
+  },
+  "https://www.hlj.com/1-144-rg-nu-gundam-bans65118": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_hlj_rg_nu.html"
+  },
+  "https://www.hlj.com/media/bans64213-box.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://www.hlj.com/media/bans65118-box.jpg": {
+    "content_type": "image/jpeg",
+    "status": 200
+  },
+  "https://www.hlj.com/search/?Word=gundam&Sort=Newest": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "hlj_index.html"
+  },
+  "https://www.reddit.com/r/Gunpla/comments/abc123/pg_unicorn_2_leak/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_reddit_pg_unicorn_leak.html"
+  },
+  "https://www.reddit.com/r/Gunpla/comments/def456/gbase_shanghai_official_post/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "article_reddit_gbase_shanghai.html"
+  },
+  "https://www.reddit.com/r/Gunpla/new/": {
+    "content_type": "text/html; charset=utf-8",
+    "file": "reddit_index.html"
+  },
+  "https://www.reddit.com/r/Gunpla/search.json?q=gbase+shanghai": {
+    "content_type": "application/json",
+    "file": "reddit_gbase_shanghai.json"
+  },
+  "https://www.reddit.com/r/Gunpla/search.json?q=gundam+next+future": {
+    "content_type": "application/json",
+    "status": 403
+  },
+  "https://www.reddit.com/r/Gunpla/search.json?q=mgex+strike+freedom": {
+    "content_type": "application/json",
+    "file": "reddit_mgex_strike_freedom.json"
+  }
+}
