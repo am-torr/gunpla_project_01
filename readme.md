@@ -12,9 +12,11 @@ To avoid burning out doing it manually on my FB page, I made a system that does 
 This project also helps exercise my visual-spatial brain and to eventually move to less visual tools like Airflow.
 
 > [!NOTE]
-> This is an AI-assisted project using Perplexity Pro for research, plausibility checks, and prototyping. Using claude code as my personal developer after setting up important config such as skills.
-> 
-> Some images will not load till you log in.
+> This is an AI-assisted project. I use Perplexity Pro for research, plausibility checks, and prototyping, and Claude Code once I have the important config and skills in place.
+>
+> I still started with the core workflow logic myself because I wanted to understand how the system works first before using AI to move faster.
+>
+> Some GitHub-hosted images may not load unless you're signed in. I can provide the workflow and database screenshots separately.
 
 ---
 
@@ -25,9 +27,9 @@ The project is divided into several main workflow groups:
 | Status | Group | Description |
 |---|---|---|
 | 🔄 In Progress | NEWS GATHERING | Gathers relevant news from different sources using LLM |
-| ✅ Live | AUTO CATEGORIZE | Uses a SELECT AI adjacent feature to generate queries and categorization |
+| ✅ Working | AUTO CATEGORIZE | Uses a SELECT AI adjacent feature to generate queries and categorization |
 | 🔄 In Progress | APPROVAL | Contains hooks for Gmail approval of posts |
-| ✅ Live | FETCHING, BATCH AND POSTING | Posts fetched and approved items to social media |
+| ✅ Working / posted successfully | FETCHING, BATCH AND POSTING | Posts fetched and approved items to social media |
 | 🔄 In Progress | ARCHIVING | Archives posted items |
 
 ---
@@ -60,6 +62,20 @@ Facebook Post Live
 ```
 
 **Tools / Tech Used:** n8n · Python 3.11 · Playwright · Supabase (PostgreSQL) · FastAPI · Facebook Graph API · Bitly API · OpenRouter (llama-3.3-70b) · Docker Compose · nginx
+
+### What I personally built
+
+I started by building the core n8n flow myself because I wanted to understand the pattern first instead of immediately letting AI generate everything.
+
+I personally wrote and modified JavaScript in Code nodes for things like deduplication, transformations, post formatting, payload construction, and API response/status handling. I also worked on the Supabase/PostgreSQL functions, scraper/backend pieces, Facebook Graph API integration, loops, IF nodes, sub-workflows, and the Docker setup.
+
+I use AI tools such as Perplexity and Claude Code to make research, coding, and iteration faster, but I still own the architecture, debugging, verification, and the decision on whether a change is safe enough to keep.
+
+### Current operating status
+
+The core fetch → queue → batch → publish path has successfully posted to Facebook. The repo also contains manual/test copies and in-progress workflows, so not every exported workflow is active at the same time.
+
+News gathering, approval, archiving, and alerting are still being developed and are marked as in progress below.
 
 ---
 
@@ -127,7 +143,7 @@ graph LR
 
 ---
 
-## WORFLOW:
+## WORKFLOW:
 
 
 ### Queueing - Uploading FB image
